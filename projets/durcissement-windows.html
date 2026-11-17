@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Durcissement Windows — CIS niveau 1 · Ahmed Faouzi</title>
+    <meta name="description" content="Durcissement d'un poste client Windows de la M2L selon les recommandations ANSSI / CIS niveau 1 : comptes, mots de passe, verrouillage, SMBv1, NTLMv2, LLMNR, journalisation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body data-base="../">
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="../index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi</span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="../projects.html" aria-current="page">Projets</a></li>
+                <li><a href="../competences.html">Compétences</a></li>
+                <li><a href="../e5.html">E5</a></li>
+                <li><a href="../veille.html">Veille</a></li>
+                <li><a href="../about.html">Parcours</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn" data-theme-toggle aria-label="Changer de thème">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="case-head">
+        <div class="wrap">
+            <p class="crumbs"><a href="../projects.html">Projets</a><span>/</span><span>Cybersécurité</span><span>/</span><span>Atelier</span></p>
+            <h1><span class="idx">06</span>Durcissement Windows</h1>
+            <p class="lead">Durcir un poste client de la Maison des Ligues livré en configuration par défaut, sans jamais perdre l'accès, en justifiant et en prouvant chaque mesure.</p>
+            <dl class="case-meta">
+                <div><dt>Cadre</dt><dd>Atelier cybersécurité</dd></div>
+                <div><dt>Équipe</dt><dd>4 personnes</dd></div>
+                <div><dt>Référentiel</dt><dd>ANSSI / CIS niveau 1</dd></div>
+                <div><dt>Période</dt><dd>Sept. 2026</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <div class="wrap case">
+        <ul class="toc" aria-label="Sommaire">
+            <li><a href="#contexte"><span>01</span>Contexte</a></li>
+            <li><a href="#realisation"><span>02</span>Réalisation</a></li>
+            <li><a href="#difficultes"><span>03</span>Difficultés</a></li>
+            <li><a href="#resultat"><span>04</span>Avant / après</a></li>
+            <li><a href="#competences"><span>05</span>Compétences</a></li>
+        </ul>
+
+        <article class="case-body">
+            <section class="block" id="contexte">
+                <h2><span class="n">01</span>Contexte et méthode</h2>
+                <p>Un poste Windows sorti de l'usine laisse des portes ouvertes : comptes standards actifs, mots de passe courts, protocoles obsolètes. La consigne est de durcir le poste <strong>sur une VM restaurable</strong> (snapshot T0), sans jamais se couper l'accès.</p>
+                <p>La méthode suit trois temps : <strong>audit initial → mesures justifiées → contre-audit</strong>. Chaque mesure est prouvée par une capture.</p>
+            </section>
+
+            <section class="block" id="realisation">
+                <h2><span class="n">02</span>Étapes de réalisation</h2>
+                <ol class="steps">
+                    <li><div>
+                        <strong>Audit initial</strong>
+                        <p>Relevé des ports en écoute, des services en cours d'exécution, des comptes locaux et de la configuration SMB. Constat : les comptes <strong>Administrateur et Invité sont actifs</strong>, ce qui en fait des cibles faciles pour une attaque par force brute.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>PowerShell</b> · audit</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="powershell">netstat -ano
+Get-Service | Where-Object { $_.Status -eq "Running" }
+Get-LocalUser
+Get-SmbServerConfiguration | Select-Object EnableSMB1Protocol</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Gestion des comptes</strong>
+                        <p>Désactivation du compte Invité et renommage du compte administrateur, pour compliquer les attaques qui ciblent les noms de comptes standards.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>PowerShell</b> · comptes</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="powershell">Disable-LocalUser -Name "Invité"
+Rename-LocalUser -Name "Administrateur" -NewName "Admin_Securise"</code></pre>
+                        </div>
+                        <figure class="fig">
+                            <a href="../assets/img/windows/01-comptes.jpg" target="_blank" rel="noopener"><img src="../assets/img/windows/01-comptes.jpg" alt="PowerShell : Invité désactivé, Administrateur renommé Admin_Securise, contrôle avec Get-LocalUser" loading="lazy"></a>
+                            <figcaption><b>FIG. 1</b>Compte Invité désactivé (False), administrateur renommé en Admin_Securise.</figcaption>
+                        </figure>
+                    </div></li>
+                    <li><div>
+                        <strong>Mots de passe et verrouillage</strong>
+                        <p>Stratégie de mots de passe portée aux valeurs CIS niveau 1, et verrouillage du compte après 5 échecs. Test avec un compte « Testeur » : au 6e mot de passe erroné, le compte est bloqué.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Invite de commandes</b> · verrouillage</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="cmd">net accounts /lockoutwindow:15 /lockoutduration:15 /lockoutthreshold:5</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Protocoles obsolètes</strong>
+                        <p>SMBv1 confirmé désactivé. Niveau LAN Manager forcé en NTLMv2 seul (<code>LmCompatibilityLevel = 3</code>).</p>
+                        <figure class="fig">
+                            <a href="../assets/img/windows/02-smb-ntlm.jpg" target="_blank" rel="noopener"><img src="../assets/img/windows/02-smb-ntlm.jpg" alt="PowerShell : SMBv1 désactivé et clé LmCompatibilityLevel à 3 dans HKLM\SYSTEM\CurrentControlSet\Control\Lsa" loading="lazy"></a>
+                            <figcaption><b>FIG. 2</b>SMBv1 à False, puis lecture de <code>LmCompatibilityLevel</code> dans le registre.</figcaption>
+                        </figure>
+                    </div></li>
+                    <li><div>
+                        <strong>LLMNR, exécution automatique et journalisation</strong>
+                        <p>LLMNR désactivé par stratégie locale (protection contre l'usurpation de noms), exécution automatique coupée sur tous les lecteurs (infection par clé USB). Journal Sécurité porté à 128 Mo et audit des connexions activé (succès et échecs). Rapport de validation produit avec <code>gpresult /h</code>.</p>
+                    </div></li>
+                </ol>
+            </section>
+
+            <section class="block" id="difficultes">
+                <h2><span class="n">03</span>Difficultés et solutions</h2>
+                <div class="issue">
+                    <div><span class="k">Difficulté</span><p>La première lecture de la clé de registre a échoué : <code>Get-ItemProperty</code> renvoyait une erreur de paramètre positionnel, à cause d'une syntaxe incorrecte du chemin et du nom de valeur.</p></div>
+                    <div><span class="k">Solution</span><p>Commande réécrite avec les paramètres nommés <code>-Path</code> et <code>-Name</code>. La valeur <code>LmCompatibilityLevel : 3</code> s'affiche (fig. 2).</p></div>
+                </div>
+                <div class="issue">
+                    <div><span class="k">Risque</span><p>Une mesure mal appliquée (verrouillage, renommage de l'administrateur) peut couper l'accès au poste.</p></div>
+                    <div><span class="k">Solution</span><p>Travail sur une VM avec snapshot T0, une mesure à la fois, et un test immédiat après chaque mesure.</p></div>
+                </div>
+            </section>
+
+            <section class="block" id="resultat">
+                <h2><span class="n">04</span>Contre-audit : avant / après</h2>
+                <div class="table-scroll"><table class="data-table">
+                    <thead><tr><th>Élément</th><th>État initial</th><th>Après durcissement</th></tr></thead>
+                    <tbody>
+                        <tr><td>Compte Invité</td><td>Activé</td><td>Désactivé</td></tr>
+                        <tr><td>Compte administrateur</td><td>« Administrateur »</td><td>Renommé</td></tr>
+                        <tr><td>Longueur minimale du mot de passe</td><td>7 caractères</td><td>14 caractères</td></tr>
+                        <tr><td>Historique des mots de passe</td><td>Non défini</td><td>24 mémorisés</td></tr>
+                        <tr><td>Durée de vie maximale</td><td>42 jours</td><td>365 jours</td></tr>
+                        <tr><td>Seuil de verrouillage</td><td>Non configuré</td><td>5 tentatives, 15 min</td></tr>
+                        <tr><td>SMBv1</td><td>Désactivé</td><td>Désactivé (confirmé)</td></tr>
+                        <tr><td>LAN Manager</td><td>Non forcé</td><td>NTLMv2 seul</td></tr>
+                        <tr><td>LLMNR</td><td>Activé</td><td>Désactivé</td></tr>
+                        <tr><td>Exécution automatique (USB)</td><td>Activée</td><td>Désactivée</td></tr>
+                        <tr><td>Journal Sécurité</td><td>Taille par défaut</td><td>128 Mo</td></tr>
+                        <tr><td>Audit des connexions</td><td>Non configuré</td><td>Succès et échecs</td></tr>
+                    </tbody>
+                </table></div>
+                <p>Les mesures couvrent les recommandations ANSSI / CIS niveau 1 pour un poste client : comptes, mots de passe, verrouillage, protocoles obsolètes, LLMNR/AutoRun et journalisation.</p>
+            </section>
+
+            <section class="block" id="competences">
+                <h2><span class="n">05</span>Compétences du référentiel mobilisées</h2>
+                <ul class="skills-ref">
+                    <li><span class="code-ref">B1.1</span><div><strong>Gérer le patrimoine informatique</strong><span>Exploiter des référentiels et normes (CIS, ANSSI) · Mettre en place les niveaux d'habilitation · Vérifier les règles d'utilisation des ressources</span></div></li>
+                    <li><span class="code-ref">B1.5</span><div><strong>Mettre à disposition un service informatique</strong><span>Tester chaque mesure et livrer un poste conforme</span></div></li>
+                </ul>
+            </section>
+
+            <nav class="case-nav" aria-label="Projets voisins">
+                <a href="borne-wifi-cisco.html"><small>← Précédent</small><strong>Borne Wi-Fi Cisco</strong></a>
+                <a href="securisation-debian.html"><small>Suivant →</small><strong>Sécurisation Debian</strong></a>
+            </nav>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <button class="copy-mail" data-copy-email>ahmedfaouzi55@gmail.com <span class="copy-hint">Cliquer pour copier</span></button>
+            <ul class="footer-links">
+                <li><a href="../projects.html">Tous les projets</a></li>
+                <li><a href="../e5.html">Tableau E5</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/projects.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/case.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Veille technologique — FW-01 · Ahmed Faouzi</title>
+    <meta name="description" content="Veille technologique automatisée en cybersécurité et infrastructures : tableau de bord, articles illustrés mis à jour toutes les 6 heures, et sujet approfondi sur la gestion des vulnérabilités.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi <span class="mono muted">/ rack-01</span></span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="projects.html">Projets</a></li>
+                <li><a href="competences.html">Compétences</a></li>
+                <li><a href="e5.html">E5</a></li>
+                <li><a href="veille.html" aria-current="page">Veille</a></li>
+                <li><a href="about.html">Parcours</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="page-head">
+        <div class="wrap">
+            <p class="crumbs"><a href="index.html">rack-01</a><span>/</span><span>U26 · FW-01</span></p>
+            <h1>Veille technologique.</h1>
+            <p>Huit sources spécialisées agrégées automatiquement toutes les 6 heures, filtrées et classées par thème. Sujet approfondi : <strong>les vulnérabilités et la gestion des correctifs</strong>, le quotidien d'un technicien systèmes et réseaux.</p>
+        </div>
+    </section>
+
+    <!-- ===== 01 · Tableau de bord ===== -->
+    <section class="section" style="border-top:0;padding-top:0" aria-labelledby="t-dash">
+        <div class="wrap">
+            <div class="section-head">
+                <div><p class="label"><b>01</b> Tableau de bord</p><h2 id="t-dash">Ce que le pare-feu a filtré.</h2></div>
+                <span class="mono muted" id="dash-updated">chargement…</span>
+            </div>
+            <div class="dash" aria-live="polite">
+                <div>Articles<b id="d-total">—</b><small>30 derniers jours</small></div>
+                <div>Vulnérabilités<b id="d-vuln">—</b><small>articles classés « vulnérabilités »</small></div>
+                <div>CVE citées<b id="d-cve">—</b><small>identifiants uniques</small></div>
+                <div>Sources actives<b><span class="status-led" aria-hidden="true"></span><span id="d-src">—</span></b><small>mise à jour toutes les 6 h</small></div>
+            </div>
+            <div class="dash-panels">
+                <div class="panel-v2"><h3>Par thème</h3><ul class="hbars" id="bars-theme"></ul></div>
+                <div class="panel-v2"><h3>Par source</h3><ul class="hbars" id="bars-source"></ul></div>
+                <div class="panel-v2"><h3>Produits les plus cités</h3><ul class="hbars" id="bars-product"></ul></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 02 · Sujet approfondi ===== -->
+    <section class="section" aria-labelledby="t-topic">
+        <div class="wrap">
+            <div class="section-head">
+                <div><p class="label"><b>02</b> Sujet approfondi</p><h2 id="t-topic">Vulnérabilités et gestion<br>des correctifs.</h2></div>
+            </div>
+            <div class="prose" style="margin-bottom:28px">
+                <p>Chaque semaine, des failles sont publiées dans les systèmes que j'administre en TP et en entreprise : Windows Server, Debian, équipements Cisco, hyperviseurs, applications web comme GLPI. Une part importante des compromissions exploite des vulnérabilités <strong>déjà connues</strong>, pour lesquelles l'éditeur a publié un correctif. Le problème n'est donc pas seulement technique, il est aussi organisationnel : savoir vite, prioriser, corriger sans casser.</p>
+            </div>
+
+            <h3 class="label" style="margin-bottom:14px"><b>Infographie</b> Le cycle de gestion d'une faille</h3>
+            <div class="cycle-wrap">
+                <div class="cycle">
+                    <svg viewBox="0 0 420 400" role="group" aria-label="Cycle en 6 étapes : surveiller, inventorier, évaluer, tester, déployer, vérifier">
+                        <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#58A6FF"/></marker></defs>
+                        <circle cx="210" cy="200" r="138" fill="none" stroke="#34475F" stroke-dasharray="3 5"/>
+                        <g font-family="JetBrains Mono, monospace" fill="#E6EDF3">
+                            <text x="210" y="192" text-anchor="middle" font-size="12" fill="#7D8B9C">cycle</text>
+                            <text x="210" y="212" text-anchor="middle" font-size="15" font-weight="700">correctifs</text>
+                        </g>
+                        <g id="cycle-segs" font-family="JetBrains Mono, monospace" font-size="11" fill="#E6EDF3"></g>
+                    </svg>
+                </div>
+                <div class="cycle-info" id="cycle-info" aria-live="polite"></div>
+            </div>
+
+            <h3 class="label" style="margin:44px 0 14px"><b>Vocabulaire</b> Les notions à maîtriser</h3>
+            <div class="cards">
+                <div><span class="k">CVE</span><h3>Identifiant unique</h3><p>Chaque vulnérabilité publique reçoit un identifiant (CVE-année-numéro) qui permet de la suivre d'une source à l'autre.</p></div>
+                <div><span class="k">CVSS</span><h3>Score de gravité</h3><p>Note de 0 à 10 qui aide à prioriser. Elle ne remplace pas l'analyse de l'exposition réelle du système.</p></div>
+                <div><span class="k">CERT-FR</span><h3>Avis et alertes</h3><p>Un <em>avis</em> signale une faille et son correctif. Une <em>alerte</em> signale une exploitation active : c'est urgent.</p></div>
+                <div><span class="k">Zero-day</span><h3>Faille sans correctif</h3><p>Exploitée avant que l'éditeur ne publie un correctif : seules des mesures de contournement sont possibles.</p></div>
+                <div><span class="k">Patch Tuesday</span><h3>Cycle Microsoft</h3><p>Les correctifs de sécurité Microsoft sont publiés le deuxième mardi de chaque mois.</p></div>
+                <div><span class="k">KEV</span><h3>Exploitées connues</h3><p>Le catalogue de la CISA recense les vulnérabilités dont l'exploitation est avérée : une bonne base pour prioriser.</p></div>
+            </div>
+
+            <h3 class="label" style="margin:44px 0 6px"><b>Frise</b> Comment le sujet a évolué</h3>
+            <ol class="history" id="history">
+                <li><span class="y">1999</span><strong>Naissance des CVE</strong><p>Le MITRE crée un identifiant commun pour chaque faille publique : tout le monde parle enfin de la même vulnérabilité.</p></li>
+                <li><span class="y">2003</span><strong>Patch Tuesday</strong><p>Microsoft regroupe ses correctifs de sécurité le deuxième mardi du mois : les administrateurs peuvent planifier.</p></li>
+                <li><span class="y">2017</span><strong>WannaCry</strong><p>Un rançongiciel exploite une faille SMBv1 corrigée environ deux mois plus tôt (MS17-010) : le coût d'un correctif non appliqué. <a class="accent" href="projets/durcissement-windows.html">SMBv1 → durcissement</a></p></li>
+                <li><span class="y">2021</span><strong>Log4Shell et catalogue KEV</strong><p>Faille critique dans la bibliothèque Java Log4j, présente partout. La CISA publie la liste des vulnérabilités réellement exploitées.</p></li>
+                <li><span class="y">2023</span><strong>CVSS 4.0</strong><p>Nouvelle version du score de gravité, qui tient davantage compte du contexte d'exploitation.</p></li>
+                <li><span class="y">2024</span><strong>Cyber Resilience Act</strong><p>Le règlement européen impose aux fabricants de produits numériques de gérer et corriger leurs vulnérabilités.</p></li>
+                <li class="now"><span class="y">Aujourd'hui</span><strong>Ce que montre le fil</strong><p id="history-now">Chargement des données de veille…</p></li>
+            </ol>
+
+            <h3 class="label" style="margin:44px 0 14px"><b>À la une</b> Les dernières vulnérabilités relevées</h3>
+            <div class="news-grid" id="topic-cards"><p class="muted">Chargement…</p></div>
+        </div>
+    </section>
+
+    <!-- ===== 03 · Fil ===== -->
+    <section class="section" id="fil" aria-labelledby="t-feed">
+        <div class="wrap">
+            <div class="section-head"><div><p class="label"><b>03</b> Fil d'actualité</p><h2 id="t-feed">Ce qui se passe en ce moment.</h2></div></div>
+            <div class="feed-tools">
+                <div class="filters" id="feed-filters" role="group" aria-label="Filtrer par thème" style="margin:0"></div>
+                <label class="search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                    <span class="sr-only">Rechercher dans la veille</span>
+                    <input id="feed-search" type="search" placeholder="Windows, Cisco, CVE…" autocomplete="off">
+                </label>
+            </div>
+            <div class="news-grid" id="feed" aria-live="polite"><p class="muted">Chargement…</p></div>
+            <button class="btn btn-ghost feed-more" id="feed-more" hidden>Afficher plus</button>
+        </div>
+    </section>
+
+    <!-- ===== 04 · Méthode ===== -->
+    <section class="section" aria-labelledby="t-method">
+        <div class="wrap">
+            <div class="section-head"><div><p class="label"><b>04</b> Méthode</p><h2 id="t-method">Une veille outillée.</h2></div></div>
+            <div class="cards">
+                <div><span class="k">01 · Collecter</span><h3>Agrégation automatique</h3><p>Un script PowerShell lit les flux RSS des 8 sources et récupère l'illustration de chaque article. Une tâche planifiée GitHub Actions le relance toutes les 6 heures.</p></div>
+                <div><span class="k">02 · Trier</span><h3>Classement par thème</h3><p>Chaque article est classé par mots-clés (vulnérabilités, réseau, systèmes, IA…). Les contenus publicitaires sont écartés.</p></div>
+                <div><span class="k">03 · Approfondir</span><h3>Lecture ciblée</h3><p>Lecture détaillée des avis qui concernent mon périmètre : Windows Server, Debian, Cisco, Proxmox, GLPI.</p></div>
+                <div><span class="k">04 · Restituer</span><h3>Synthèse</h3><p>Ce que j'en retiens alimente le sujet approfondi ci-dessus et mes choix techniques en projet.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 05 · Sources ===== -->
+    <section class="section" aria-labelledby="t-src">
+        <div class="wrap">
+            <div class="section-head"><div><p class="label"><b>05</b> Sources</p><h2 id="t-src">Où je m'informe.</h2></div></div>
+            <div class="table-scroll"><table class="data-table">
+                <thead><tr><th>Source</th><th>Type</th><th>Langue</th><th>Intérêt</th></tr></thead>
+                <tbody>
+                    <tr><td><a class="accent" href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener">CERT-FR</a></td><td>Institutionnel (ANSSI)</td><td class="mono">FR</td><td>Avis et alertes de sécurité officiels</td></tr>
+                    <tr><td><a class="accent" href="https://www.cybermalveillance.gouv.fr/" target="_blank" rel="noopener">Cybermalveillance.gouv.fr</a></td><td>Institutionnel</td><td class="mono">FR</td><td>Menaces visant les particuliers et les PME, prévention</td></tr>
+                    <tr><td><a class="accent" href="https://www.lemagit.fr/" target="_blank" rel="noopener">LeMagIT</a></td><td>Presse spécialisée</td><td class="mono">FR</td><td>Infrastructures, cybersécurité, analyses de fond</td></tr>
+                    <tr><td><a class="accent" href="https://www.lemondeinformatique.fr/" target="_blank" rel="noopener">Le Monde Informatique</a></td><td>Presse spécialisée</td><td class="mono">FR</td><td>Actualité sécurité des entreprises</td></tr>
+                    <tr><td><a class="accent" href="https://www.it-connect.fr/" target="_blank" rel="noopener">IT-Connect</a></td><td>Communauté / tutoriels</td><td class="mono">FR</td><td>Administration système et réseau au quotidien</td></tr>
+                    <tr><td><a class="accent" href="https://www.zataz.com/" target="_blank" rel="noopener">ZATAZ</a></td><td>Presse spécialisée</td><td class="mono">FR</td><td>Fuites de données, cybercriminalité</td></tr>
+                    <tr><td><a class="accent" href="https://www.bleepingcomputer.com/" target="_blank" rel="noopener">BleepingComputer</a></td><td>Presse spécialisée</td><td class="mono">EN</td><td>Vulnérabilités et correctifs, très réactif</td></tr>
+                    <tr><td><a class="accent" href="https://thehackernews.com/" target="_blank" rel="noopener">The Hacker News</a></td><td>Presse spécialisée</td><td class="mono">EN</td><td>Campagnes d'attaque, recherche en sécurité</td></tr>
+                </tbody>
+            </table></div>
+            <p class="note">Les illustrations des articles appartiennent à leurs éditeurs et sont affichées depuis leurs sites. Chaque carte renvoie vers l'article d'origine.</p>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <button class="copy-mail" data-copy-email>ahmedfaouzi55@gmail.com <span class="copy-hint">Cliquer pour copier</span></button>
+            <ul class="footer-links">
+                <li><a href="index.html">Retour à la baie</a></li>
+                <li><a href="projects.html">Projets</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/projects.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/veille.js"></script>
+</body>
+</html>

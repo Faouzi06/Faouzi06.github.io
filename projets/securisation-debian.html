@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sécurisation Debian — Surface d'attaque et durcissement · Ahmed Faouzi</title>
+    <meta name="description" content="Cartographie de la surface d'attaque puis durcissement d'un serveur Debian : SSH par clé, Fail2ban, UFW, AppArmor, réduction des services. Indice Lynis de 63 à 70/100.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body data-base="../">
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="../index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi</span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="../projects.html" aria-current="page">Projets</a></li>
+                <li><a href="../competences.html">Compétences</a></li>
+                <li><a href="../e5.html">E5</a></li>
+                <li><a href="../veille.html">Veille</a></li>
+                <li><a href="../about.html">Parcours</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn" data-theme-toggle aria-label="Changer de thème">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="case-head">
+        <div class="wrap">
+            <p class="crumbs"><a href="../projects.html">Projets</a><span>/</span><span>Cybersécurité</span><span>/</span><span>Atelier</span></p>
+            <h1><span class="idx">07</span>Sécurisation Debian</h1>
+            <p class="lead">Mesurer avant d'agir : relevé de la surface d'attaque au T0, puis consolidation d'un serveur Debian. Le gain est mesuré avec Lynis.</p>
+            <dl class="case-meta">
+                <div><dt>Cadre</dt><dd>Atelier cybersécurité (2 TP)</dd></div>
+                <div><dt>Équipe</dt><dd>4 personnes</dd></div>
+                <div><dt>Mesure</dt><dd>Indice Lynis 63 → 70 / 100</dd></div>
+                <div><dt>Période</dt><dd>Sept. 2026</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <div class="wrap case">
+        <ul class="toc" aria-label="Sommaire">
+            <li><a href="#contexte"><span>01</span>Contexte</a></li>
+            <li><a href="#t0"><span>02</span>État initial</a></li>
+            <li><a href="#realisation"><span>03</span>Réalisation</a></li>
+            <li><a href="#difficultes"><span>04</span>Points clés</a></li>
+            <li><a href="#resultat"><span>05</span>Résultat</a></li>
+            <li><a href="#competences"><span>06</span>Compétences</a></li>
+        </ul>
+
+        <article class="case-body">
+            <section class="block" id="contexte">
+                <h2><span class="n">01</span>Contexte et objectifs</h2>
+                <p>Deux ateliers enchaînés : d'abord <strong>cartographier la surface d'attaque</strong> d'une VM Debian et d'une VM Windows, juste après leur démarrage, pour obtenir une ligne de base. Ensuite, <strong>consolider le socle Linux</strong> et mesurer objectivement le progrès.</p>
+            </section>
+
+            <section class="block" id="t0">
+                <h2><span class="n">02</span>Relevé de l'état initial (T0)</h2>
+                <div class="code">
+                    <div class="code-head"><span><b>Bash</b> · relevé T0</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="bash">ss -tulpn                                              # ports en écoute
+systemctl list-units --type=service --state=running | wc -l   # services actifs
+awk -F: '$7!~/nologin|false/{print $1}' /etc/passwd     # comptes avec shell</code></pre>
+                </div>
+                <div class="table-scroll"><table class="data-table">
+                    <thead><tr><th>Indicateur T0</th><th>Debian</th><th>Windows</th></tr></thead>
+                    <tbody>
+                        <tr><td>Ports en écoute</td><td>11 (5 UDP + 6 TCP)</td><td>≈ 25</td></tr>
+                        <tr><td>Services actifs</td><td>38</td><td>82</td></tr>
+                        <tr><td>Comptes actifs</td><td>4</td><td>4 sur 7</td></tr>
+                        <tr><td>Protocoles obsolètes</td><td>Non vérifié dans cet atelier</td><td>SMBv1 désactivé</td></tr>
+                        <tr><td>Connexion root à distance</td><td>Non (PermitRootLogin no)</td><td>Non vérifié dans cet atelier</td></tr>
+                    </tbody>
+                </table></div>
+            </section>
+
+            <section class="block" id="realisation">
+                <h2><span class="n">03</span>Étapes de consolidation</h2>
+                <ol class="steps">
+                    <li><div>
+                        <strong>Diagnostic Lynis</strong>
+                        <p>Audit de référence avant toute modification : indice de durcissement de <strong>63/100</strong>.</p>
+                    </div></li>
+                    <li><div>
+                        <strong>SSH par clé uniquement</strong>
+                        <p>Génération d'une paire de clés Ed25519 renforcée, déploiement avec <code>ssh-copy-id</code>, puis désactivation de l'authentification par mot de passe. Cinq connexions avec des comptes fictifs ont été tentées : toutes sont rejetées avec <code>Permission denied (publickey)</code>.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Bash</b> · clé SSH</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="bash">ssh-keygen -t ed25519 -a 100 -C "admin-tp"
+ssh-copy-id -i ~/.ssh/id_ed25519.pub admin@192.168.56.2
+
+# Test : connexions refusées sans clé valide
+for i in {1..5}; do ssh fauxuser$i@192.168.56.2; done</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Défense active : Fail2ban</strong>
+                        <p>Une prison dédiée à <code>sshd</code> bannit automatiquement une adresse après des échecs répétés. Contrôle à froid, puis échecs provoqués : on passe de 0 à 5 échecs comptabilisés, et l'IP de test apparaît dans la liste des bannies.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Bash</b> · Fail2ban</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="bash">sudo systemctl restart fail2ban
+sudo fail2ban-client status sshd       # Total failed: 5 · Banned IP list: 192.168.56.1
+sudo fail2ban-client set sshd unbanip 192.168.56.1</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Cloisonnement réseau : UFW</strong>
+                        <p>Principe du moindre privilège : tout le trafic entrant est refusé par défaut, et le SSH reste la seule exception pour l'administration à distance.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Bash</b> · UFW</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="bash">sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw enable</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>AppArmor et réduction des services</strong>
+                        <p><code>aa-status</code> confirme 121 profils chargés, tous en mode <em>enforce</em>. Les services inutiles pour un serveur (CUPS pour l'impression, Avahi pour la découverte réseau) sont désactivés <strong>puis masqués</strong>, pour qu'ils ne puissent pas être réactivés par erreur.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Bash</b> · services</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="bash">sudo aa-status
+sudo systemctl disable --now cups.service avahi-daemon.service
+sudo systemctl mask cups.service avahi-daemon.service
+sudo ss -tulpn                         # seul le port 22/tcp reste en écoute</code></pre>
+                        </div>
+                    </div></li>
+                </ol>
+            </section>
+
+            <section class="block" id="difficultes">
+                <h2><span class="n">04</span>Points clés</h2>
+                <div class="issue">
+                    <div><span class="k">Constat</span><p><code>systemctl disable</code> ne suffisait pas : les sockets <code>cups.socket</code> et <code>avahi-daemon.socket</code> pouvaient relancer les services.</p></div>
+                    <div><span class="k">Solution</span><p><code>systemctl mask</code> lie les unités à <code>/dev/null</code>, puis <code>ss -tulpn</code> vérifie qu'aucun port n'est resté ouvert.</p></div>
+                </div>
+                <div class="issue">
+                    <div><span class="k">Risque</span><p>Couper l'authentification par mot de passe ou activer UFW sans exception peut bloquer l'administrateur hors de la machine.</p></div>
+                    <div><span class="k">Solution</span><p>La clé est testée avant de désactiver les mots de passe, et la règle <code>ufw allow ssh</code> est posée avant <code>ufw enable</code>.</p></div>
+                </div>
+            </section>
+
+            <section class="block" id="resultat">
+                <h2><span class="n">05</span>Résultat</h2>
+                <div class="kpis">
+                    <div class="kpi"><b>63 → 70</b><span>indice Lynis / 100</span></div>
+                    <div class="kpi"><b>1</b><span>port TCP exposé (22)</span></div>
+                    <div class="kpi"><b>121</b><span>profils AppArmor en enforce</span></div>
+                </div>
+                <p>Un second audit Lynis confirme, chiffres à l'appui, l'effet des mesures : authentification forte, filtrage réseau, défense active, contrôle d'accès obligatoire et réduction du périmètre de services.</p>
+            </section>
+
+            <section class="block" id="competences">
+                <h2><span class="n">06</span>Compétences du référentiel mobilisées</h2>
+                <ul class="skills-ref">
+                    <li><span class="code-ref">B1.1</span><div><strong>Gérer le patrimoine informatique</strong><span>Recenser les ressources exposées · Mettre en place les niveaux d'habilitation (accès SSH par clé)</span></div></li>
+                    <li><span class="code-ref">B1.5</span><div><strong>Mettre à disposition un service informatique</strong><span>Tester chaque mesure et mesurer le résultat (Lynis)</span></div></li>
+                </ul>
+            </section>
+
+            <nav class="case-nav" aria-label="Projets voisins">
+                <a href="durcissement-windows.html"><small>← Précédent</small><strong>Durcissement Windows</strong></a>
+                <a href="vlanne.html"><small>Suivant →</small><strong>VLANNE</strong></a>
+            </nav>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <button class="copy-mail" data-copy-email>ahmedfaouzi55@gmail.com <span class="copy-hint">Cliquer pour copier</span></button>
+            <ul class="footer-links">
+                <li><a href="../projects.html">Tous les projets</a></li>
+                <li><a href="../e5.html">Tableau E5</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/projects.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/case.js"></script>
+</body>
+</html>

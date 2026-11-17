@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GLPI NovaServices — Recette et déploiement · Ahmed Faouzi</title>
+    <meta name="description" content="Projet fil rouge GLPI NovaServices : instance de recette GLPI 11 scriptée sur Debian 13, 13 tests d'intégration, anomalies qualifiées et stratégie de déploiement par vagues.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body data-base="../">
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="../index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi</span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="../projects.html" aria-current="page">Projets</a></li>
+                <li><a href="../competences.html">Compétences</a></li>
+                <li><a href="../e5.html">E5</a></li>
+                <li><a href="../veille.html">Veille</a></li>
+                <li><a href="../about.html">Parcours</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn" data-theme-toggle aria-label="Changer de thème">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="case-head">
+        <div class="wrap">
+            <p class="crumbs"><a href="../projects.html">Projets</a><span>/</span><span>Support &amp; ITSM</span><span>/</span><span>Projet fil rouge</span></p>
+            <h1><span class="idx">03</span>GLPI NovaServices</h1>
+            <p class="lead">Mettre à disposition un portail de support pour 120 collaborateurs : une instance de recette GLPI 11 entièrement scriptée, une campagne de tests, puis une stratégie de déploiement argumentée.</p>
+            <dl class="case-meta">
+                <div><dt>Cadre</dt><dd>Projet fil rouge, BTS SIO 2e année</dd></div>
+                <div><dt>Équipe</dt><dd>Binôme</dd></div>
+                <div><dt>Mon rôle</dt><dd>Toutes les étapes, à parts égales</dd></div>
+                <div><dt>Période</dt><dd>Oct. – nov. 2026</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <div class="wrap case">
+        <ul class="toc" aria-label="Sommaire">
+            <li><a href="#contexte"><span>01</span>Contexte</a></li>
+            <li><a href="#environnement"><span>02</span>Environnement</a></li>
+            <li><a href="#realisation"><span>03</span>Réalisation</a></li>
+            <li><a href="#difficultes"><span>04</span>Anomalies</a></li>
+            <li><a href="#resultat"><span>05</span>Résultat</a></li>
+            <li><a href="#competences"><span>06</span>Compétences</a></li>
+            <li><a href="#documents"><span>07</span>Documents</a></li>
+        </ul>
+
+        <article class="case-body">
+            <section class="block" id="contexte">
+                <h2><span class="n">01</span>Contexte et objectifs</h2>
+                <p>NovaServices (entreprise fictive d'environ 120 collaborateurs) gère son support par téléphone, e-mail, messagerie ou en direct. Avec la hausse du volume, cela produit quatre dysfonctionnements :</p>
+                <ul>
+                    <li>des demandes oubliées ou traitées deux fois ;</li>
+                    <li>aucune visibilité pour l'utilisateur sur l'avancement de sa demande ;</li>
+                    <li>une priorisation difficile des urgences ;</li>
+                    <li>aucun historique fiable des interventions.</li>
+                </ul>
+                <p>La direction choisit GLPI comme <strong>point de contact unique</strong> (centre de services, au sens ITIL). L'enjeu n'est pas l'installation du logiciel, mais une <strong>mise en service maîtrisée et adoptée</strong> par les utilisateurs.</p>
+            </section>
+
+            <section class="block" id="environnement">
+                <h2><span class="n">02</span>Environnement de recette</h2>
+                <div class="table-scroll"><table class="data-table">
+                    <tbody>
+                        <tr><td>Virtualisation</td><td>VirtualBox, VM Debian 13 (2 vCPU, 2 Go, 30 Go), NAT 127.0.0.1:8080 → 80</td></tr>
+                        <tr><td>Pile logicielle</td><td>Apache 2, PHP 8.4.27, MariaDB 11.8.6</td></tr>
+                        <tr><td>Application</td><td>GLPI 11.0.8, base <code>glpi_rec</code></td></tr>
+                        <tr><td>Comptes de test</td><td>pilote1, pilote2 (Self-Service) · tech1, tech2 (Technicien)</td></tr>
+                    </tbody>
+                </table></div>
+
+                <div class="diagram" aria-label="Schéma interactif de l'environnement de recette GLPI">
+                    <div class="dg-head"><span>SCHÉMA INTERACTIF · ENVIRONNEMENT DE RECETTE</span><span>survol ou Tab = détail</span></div>
+                    <div class="dg-body">
+                        <svg viewBox="0 0 660 330" role="group" aria-label="Du poste hôte à la base de données GLPI">
+                            <g font-family="JetBrains Mono, monospace" font-size="11" fill="#E6EDF3">
+                                <rect x="420" y="12" width="225" height="300" fill="rgba(63,185,80,.05)" stroke="#3FB950" stroke-dasharray="5 4"/>
+                                <text x="432" y="30" fill="#3FB950" font-size="10">VM Debian 13 · VirtualBox</text>
+
+                                <line class="dg-link" data-a="host" data-b="nat" x1="200" y1="62" x2="240" y2="62" stroke="#58A6FF" stroke-width="2"/>
+                                <line class="dg-link" data-a="nat" data-b="apache" x1="390" y1="62" x2="440" y2="65" stroke="#58A6FF" stroke-width="2"/>
+                                <line class="dg-link" data-a="apache" data-b="php" x1="532" y1="85" x2="532" y2="100" stroke="#34475F" stroke-width="2"/>
+                                <line class="dg-link" data-a="php" data-b="glpi" x1="532" y1="140" x2="532" y2="155" stroke="#34475F" stroke-width="2"/>
+                                <line class="dg-link" data-a="glpi" data-b="db" x1="532" y1="195" x2="532" y2="210" stroke="#34475F" stroke-width="2"/>
+                                <path class="dg-link" data-a="script" data-b="glpi" d="M200,175 L440,175" fill="none" stroke="#D29922" stroke-width="1.5" stroke-dasharray="4 3"/>
+                                <path class="dg-link" data-a="script" data-b="db" d="M200,190 Q320,230 440,230" fill="none" stroke="#D29922" stroke-width="1.5" stroke-dasharray="4 3"/>
+                                <line class="dg-link" data-a="users" data-b="host" x1="110" y1="245" x2="110" y2="92" stroke="#7D8B9C" stroke-width="1.5"/>
+
+                                <g class="dg-node" data-id="host"><rect class="box" x="20" y="32" width="180" height="60" fill="#111821" stroke="#7D8B9C"/><text x="110" y="56" text-anchor="middle" font-weight="700">PC hôte Windows</text><text x="110" y="73" text-anchor="middle" font-size="9" fill="#7D8B9C">localhost:8080</text></g>
+                                <g class="dg-node" data-id="nat"><rect class="box" x="240" y="42" width="150" height="40" fill="#10233D" stroke="#58A6FF"/><text x="315" y="59" text-anchor="middle" font-weight="700">NAT VirtualBox</text><text x="315" y="74" text-anchor="middle" font-size="9" fill="#7D8B9C">:8080 → :80</text></g>
+                                <g class="dg-node" data-id="apache"><rect class="box" x="440" y="45" width="185" height="40" fill="#111821" stroke="#34475F"/><text x="532" y="62" text-anchor="middle" font-weight="700">Apache 2</text><text x="532" y="77" text-anchor="middle" font-size="9" fill="#7D8B9C">vhost glpi · /public</text></g>
+                                <g class="dg-node" data-id="php"><rect class="box" x="440" y="100" width="185" height="40" fill="#111821" stroke="#34475F"/><text x="532" y="125" text-anchor="middle" font-weight="700">PHP 8.4</text></g>
+                                <g class="dg-node" data-id="glpi"><rect class="box" x="440" y="155" width="185" height="40" fill="#0F2620" stroke="#3FB950"/><text x="532" y="180" text-anchor="middle" font-weight="700">GLPI 11.0.8</text></g>
+                                <g class="dg-node" data-id="db"><rect class="box" x="440" y="210" width="185" height="40" fill="#111821" stroke="#34475F"/><text x="532" y="227" text-anchor="middle" font-weight="700">MariaDB 11.8</text><text x="532" y="242" text-anchor="middle" font-size="9" fill="#7D8B9C">base glpi_rec</text></g>
+                                <g class="dg-node" data-id="script"><rect class="box" x="20" y="155" width="180" height="50" fill="#2A2110" stroke="#D29922"/><text x="110" y="176" text-anchor="middle" font-weight="700">install_glpi_rec.sh</text><text x="110" y="192" text-anchor="middle" font-size="9" fill="#D29922">8 étapes · idempotent</text></g>
+                                <g class="dg-node" data-id="users"><rect class="box" x="20" y="245" width="180" height="60" fill="#111821" stroke="#7D8B9C"/><text x="110" y="268" text-anchor="middle" font-weight="700">Comptes de test</text><text x="110" y="285" text-anchor="middle" font-size="9" fill="#7D8B9C">pilote1-2 · tech1-2</text></g>
+                            </g>
+                        </svg>
+                        <div class="dg-info" aria-live="polite"></div>
+                    </div>
+                    <div class="dg-legend"><span><i style="background:#58A6FF"></i>accès HTTP</span><span><i style="background:#D29922"></i>déploiement scripté</span><span><i style="background:#3FB950"></i>VM de recette</span></div>
+                    <script type="application/json" class="dg-data">{
+                        "_default": { "k": "Recette", "title": "Instance GLPI REC", "text": "Une VM Debian isolée, joignable depuis le poste hôte par redirection de port, entièrement construite par script.", "facts": [["URL", "http://localhost:8080"], ["Tests", "13 + 3 scénarios UAT"]] },
+                        "host": { "k": "Poste", "title": "PC hôte Windows", "text": "Navigateur du testeur : les 13 tests sont exécutés depuis http://localhost:8080 avec les comptes de laboratoire.", "facts": [["Hyperviseur", "VirtualBox"]] },
+                        "nat": { "k": "Réseau", "title": "Redirection NAT", "text": "La VM est en NAT : une règle de redirection expose son port 80 sur le port 8080 du poste hôte, uniquement en local.", "facts": [["Règle", "127.0.0.1:8080 → VM:80"]] },
+                        "apache": { "k": "Web", "title": "Apache 2", "text": "VirtualHost dédié avec DocumentRoot sur /var/www/glpi/public et réécriture d'URL (mod_rewrite). Le site par défaut est désactivé.", "facts": [["Vhost", "glpi-rec.novaservices.test"], ["Cookies", "session.cookie_httponly = On"]] },
+                        "php": { "k": "Langage", "title": "PHP 8.4", "text": "Modules nécessaires à GLPI : mysql, curl, gd, intl, xml, mbstring, zip, bz2, ldap, bcmath, apcu.", "facts": [["Version", "8.4.27"]] },
+                        "glpi": { "k": "Application", "title": "GLPI 11.0.8", "text": "Installé en ligne de commande (bin/console db:install), installeur web supprimé, jeu de données NovaServices importé.", "facts": [["Langue", "fr_FR"], ["Tickets initiaux", "6"]] },
+                        "db": { "k": "Données", "title": "MariaDB 11.8", "text": "Base et utilisateur dédiés. Le mot de passe est généré aléatoirement et stocké dans un fichier lisible par root uniquement.", "facts": [["Base", "glpi_rec"], ["Secret", "openssl rand · chmod 600"]] },
+                        "script": { "k": "Déploiement", "title": "install_glpi_rec.sh", "text": "Script Bash en 8 étapes, relançable sans risque : chaque étape vérifie l'existant. Journal complet dans /root/install_glpi_rec.log.", "facts": [["Étapes", "8"], ["Mode", "set -e · trap ERR"]] },
+                        "users": { "k": "Recette", "title": "Comptes de laboratoire", "text": "Deux profils testés : Self-Service pour les utilisateurs pilotes, Technicien pour le support. L'anomalie A-01 vient d'un mauvais profil sur pilote2.", "facts": [["Self-Service", "pilote1, pilote2"], ["Technicien", "tech1, tech2"]] }
+                    }</script>
+                </div>
+                <div class="fig-row">
+                    <figure class="fig">
+                        <a href="../assets/img/glpi/01-vm-debian.jpg" target="_blank" rel="noopener"><img src="../assets/img/glpi/01-vm-debian.jpg" alt="VirtualBox : VM Debian 64 bits, 2048 Mo de RAM, 2 processeurs, disque de 30 Go" loading="lazy"></a>
+                        <figcaption><b>FIG. 1</b>VM Debian importée dans VirtualBox.</figcaption>
+                    </figure>
+                    <figure class="fig">
+                        <a href="../assets/img/glpi/02-installation-ok.jpg" target="_blank" rel="noopener"><img src="../assets/img/glpi/02-installation-ok.jpg" alt="Terminal : étape 8/8 vérifications, Apache et MariaDB actifs, GLPI 11.0.8, comptes de laboratoire présents, 6 tickets initiaux" loading="lazy"></a>
+                        <figcaption><b>FIG. 2</b>Fin du script : services actifs, comptes et tickets importés.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="block" id="realisation">
+                <h2><span class="n">03</span>Étapes de réalisation</h2>
+                <ol class="steps">
+                    <li><div>
+                        <strong>Script d'installation idempotent</strong>
+                        <p>L'instance de recette est construite par un script Bash en 8 étapes. Chaque étape vérifie l'existant : on peut <strong>relancer le script sans risque</strong>. Le mot de passe de la base est généré aléatoirement et stocké dans un fichier lisible par root uniquement : il n'apparaît jamais dans le script.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Bash</b> · install_glpi_rec.sh (extrait)</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="bash">LOG=/root/install_glpi_rec.log
+exec > >(tee -a "$LOG") 2>&1
+set -e
+step() { echo; echo "===== [$1] $2 ====="; }
+trap 'echo "##### ECHEC - voir le journal $LOG #####"' ERR
+
+step 4/8 "Creation de la base de donnees"
+if [ ! -f "$CRED" ]; then
+  DBPASS=$(openssl rand -hex 12)          # mot de passe aléatoire
+  printf 'base=%s\nutilisateur=%s\nmot_de_passe=%s\n' "$DB" "$DBUSER" "$DBPASS" > "$CRED"
+  chmod 600 "$CRED"                       # lisible par root uniquement
+else
+  DBPASS=$(sed -n 's/^mot_de_passe=//p' "$CRED")
+fi
+
+step 5/8 "Installation de GLPI en ligne de commande"
+if [ -f /var/www/glpi/config/config_db.php ]; then
+  echo "GLPI deja installe : etape ignoree."
+else
+  runuser -u www-data -- php bin/console db:install \
+    -H localhost -d "$DB" -u "$DBUSER" -p "$DBPASS" -L fr_FR --no-interaction
+fi
+
+step 7/8 "Finitions"
+rm -f /var/www/glpi/install/install.php   # suppression de l'installeur web</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Import du jeu de données NovaServices</strong>
+                        <p>Comptes pilotes et techniciens, groupes de support, 7 catégories (Compte, Logiciel, Matériel, Réseau…) et 6 tickets initiaux importés par script SQL.</p>
+                    </div></li>
+                    <li><div>
+                        <strong>Campagne de 13 tests d'intégration et 3 scénarios d'acceptation</strong>
+                        <p>Chaque test est tracé dans un journal de recette, avec une capture à l'appui : portail Self-Service, création de tickets, pièces jointes, échanges utilisateur/technicien, résolution, approbation de la solution, cas d'erreur.</p>
+                        <div class="fig-row">
+                            <figure class="fig">
+                                <a href="../assets/img/glpi/03-portail-self-service.jpg" target="_blank" rel="noopener"><img src="../assets/img/glpi/03-portail-self-service.jpg" alt="Portail Self-Service GLPI vu par l'utilisateur pilote1" loading="lazy"></a>
+                                <figcaption><b>T-01</b>Portail Self-Service de pilote1 : accès aux pages d'administration refusé (403).</figcaption>
+                            </figure>
+                            <figure class="fig">
+                                <a href="../assets/img/glpi/04-ticket-resolu.jpg" target="_blank" rel="noopener"><img src="../assets/img/glpi/04-ticket-resolu.jpg" alt="Ticket 7 « Imprimante du service RH bloquée » passé au statut Résolu avec la solution du technicien" loading="lazy"></a>
+                                <figcaption><b>T-10</b>Solution ajoutée par tech1 : le ticket passe en « Résolu ».</figcaption>
+                            </figure>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Stratégie de déploiement</strong>
+                        <p>Trois stratégies comparées au regard des risques identifiés en recette :</p>
+                        <div class="table-scroll"><table class="data-table">
+                            <thead><tr><th>Stratégie</th><th>Point fort</th><th>Limite pour NovaServices</th><th>Décision</th></tr></thead>
+                            <tbody>
+                                <tr><td>Big Bang</td><td>Transition courte</td><td>Impact global en cas d'erreur de droits ; pic de charge sur une petite équipe</td><td class="ko">Écartée</td></tr>
+                                <tr><td>Progressif par vagues</td><td>Risque étalé, corrections entre deux vagues</td><td>Coexistence temporaire de l'ancien et du nouveau canal</td><td class="ok">Retenue</td></tr>
+                                <tr><td>Blue-Green</td><td>Bascule et retour rapides</td><td>Aucune ancienne version à conserver ; coût d'un second environnement</td><td class="ko">Écartée</td></tr>
+                            </tbody>
+                        </table></div>
+                        <p>Une erreur d'habilitation non détectée ne touche alors qu'une dizaine d'utilisateurs pilotes : elle est corrigée et retestée avant l'ouverture de la vague suivante.</p>
+                    </div></li>
+                </ol>
+            </section>
+
+            <section class="block" id="difficultes">
+                <h2><span class="n">04</span>Anomalies et traitement</h2>
+                <p>La recette a révélé cinq anomalies, chacune qualifiée par sa criticité et associée à un traitement proposé :</p>
+                <div class="table-scroll"><table class="data-table">
+                    <thead><tr><th>ID</th><th>Constat</th><th>Criticité</th><th>Traitement proposé</th></tr></thead>
+                    <tbody>
+                        <tr><td class="mono">A-01</td><td>pilote2 a le profil Technicien : il lit les tickets de ses collègues et accède à l'administration (T-12)</td><td class="ko">Bloquante</td><td>Corriger le profil et l'habilitation, rejouer T-12 et T-02</td></tr>
+                        <tr><td class="mono">A-02</td><td>Aucun groupe affecté automatiquement aux nouveaux tickets (T-06)</td><td>Majeure</td><td>Créer les règles d'affectation par catégorie (ex. Réseau → Support Réseau)</td></tr>
+                        <tr><td class="mono">A-03</td><td>Catégorie « Compte &gt; Accès applicatif » absente du formulaire (T-04)</td><td>Mineure</td><td>Rendre la catégorie visible dans l'interface simplifiée</td></tr>
+                        <tr><td class="mono">A-04</td><td>Libellés du portail restés en anglais</td><td>Mineure</td><td>Compléter la traduction</td></tr>
+                        <tr><td class="mono">A-05</td><td>Horodatage décalé d'une heure (fuseau non configuré)</td><td>Mineure</td><td>Régler le fuseau de PHP et de GLPI avant la production</td></tr>
+                    </tbody>
+                </table></div>
+                <div class="fig-row">
+                    <figure class="fig">
+                        <a href="../assets/img/glpi/06-anomalie-profil.jpg" target="_blank" rel="noopener"><img src="../assets/img/glpi/06-anomalie-profil.jpg" alt="Interface standard GLPI affichée pour pilote2 avec le profil Technician" loading="lazy"></a>
+                        <figcaption><b>A-01</b>pilote2 arrive sur l'interface standard avec le profil Technician.</figcaption>
+                    </figure>
+                    <figure class="fig">
+                        <a href="../assets/img/glpi/05-anomalie-affectation.jpg" target="_blank" rel="noopener"><img src="../assets/img/glpi/05-anomalie-affectation.jpg" alt="Ticket 10 Wi-Fi instable : champ Attribué à vide" loading="lazy"></a>
+                        <figcaption><b>A-02</b>Ticket Wi-Fi n° 10 : aucun groupe attribué.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="block" id="resultat">
+                <h2><span class="n">05</span>Résultat</h2>
+                <div class="kpis">
+                    <div class="kpi"><b>13 / 13</b><span>tests exécutés</span></div>
+                    <div class="kpi"><b>10 · 3 · 0</b><span>réussis · échoués · bloqués</span></div>
+                    <div class="kpi"><b>5</b><span>anomalies qualifiées</span></div>
+                </div>
+                <p>Le procès-verbal de recette conclut « <strong>Refusé en l'état</strong> » à cause de l'anomalie bloquante A-01, avec la liste des réserves à lever avant une nouvelle recette partielle. Refuser une mise en production sur des preuves, plutôt que de valider par défaut, est une conclusion assumée de la recette.</p>
+                <figure class="fig">
+                    <a href="../assets/img/glpi/07-uat-solution-approuvee.jpg" target="_blank" rel="noopener"><img src="../assets/img/glpi/07-uat-solution-approuvee.jpg" alt="Scénario UAT-03 : solution du ticket 7 approuvée par l'utilisateur pilote1" loading="lazy"></a>
+                    <figcaption><b>UAT-03</b>L'utilisateur approuve la solution : le ticket est clos.</figcaption>
+                </figure>
+            </section>
+
+            <section class="block" id="competences">
+                <h2><span class="n">06</span>Compétences du référentiel mobilisées</h2>
+                <ul class="skills-ref">
+                    <li><span class="code-ref">B1.1</span><div><strong>Gérer le patrimoine informatique</strong><span>Mettre en place et vérifier les niveaux d'habilitation associés à un service (profils Self-Service / Technicien)</span></div></li>
+                    <li><span class="code-ref">B1.2</span><div><strong>Répondre aux incidents et aux demandes</strong><span>Collecter, suivre et orienter des demandes · Traiter des demandes concernant les applications</span></div></li>
+                    <li><span class="code-ref">B1.4</span><div><strong>Travailler en mode projet</strong><span>Analyser les objectifs et l'organisation d'un projet · Planifier les vagues de déploiement</span></div></li>
+                    <li><span class="code-ref">B1.5</span><div><strong>Mettre à disposition un service informatique</strong><span>Réaliser les tests d'intégration et d'acceptation · Déployer un service · Accompagner les utilisateurs</span></div></li>
+                </ul>
+            </section>
+
+            <section class="block" id="documents">
+                <h2><span class="n">07</span>Documents et scripts</h2>
+                <ul class="downloads">
+                    <li><a href="../assets/docs/GLPI-NovaServices-strategie-deploiement.pdf" target="_blank" rel="noopener">Livrable 1 : dossier de stratégie de déploiement <small>PDF · 1 Mo</small></a></li>
+                    <li><a href="../assets/code/install_glpi_rec.sh" download>Script d'installation de l'instance de recette <small>.sh</small></a></li>
+                </ul>
+            </section>
+
+            <nav class="case-nav" aria-label="Projets voisins">
+                <a href="superviz.html"><small>← Précédent</small><strong>SUPERVIZ</strong></a>
+                <a href="infra-proxmox.html"><small>Suivant →</small><strong>Infrastructure Proxmox</strong></a>
+            </nav>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <button class="copy-mail" data-copy-email>ahmedfaouzi55@gmail.com <span class="copy-hint">Cliquer pour copier</span></button>
+            <ul class="footer-links">
+                <li><a href="../projects.html">Tous les projets</a></li>
+                <li><a href="../e5.html">Tableau E5</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/projects.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/case.js"></script>
+</body>
+</html>

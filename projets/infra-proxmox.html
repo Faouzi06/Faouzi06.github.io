@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Infrastructure Proxmox — AD DS et DNS · Ahmed Faouzi</title>
+    <meta name="description" content="Projet d'infrastructure : virtualisation d'un contrôleur de domaine Windows Server 2025 (AD DS, DNS) sur Proxmox VE, pilotes VirtIO, snapshots et pfSense.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body data-base="../">
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="../index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi</span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="../projects.html" aria-current="page">Projets</a></li>
+                <li><a href="../competences.html">Compétences</a></li>
+                <li><a href="../e5.html">E5</a></li>
+                <li><a href="../veille.html">Veille</a></li>
+                <li><a href="../about.html">Parcours</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn" data-theme-toggle aria-label="Changer de thème">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="case-head">
+        <div class="wrap">
+            <p class="crumbs"><a href="../projects.html">Projets</a><span>/</span><span>Systèmes</span><span>/</span><span>En cours</span></p>
+            <h1><span class="idx">04</span>Infrastructure Proxmox</h1>
+            <p class="lead">Construire une infrastructure virtualisée sur l'hyperviseur Proxmox VE. Première brique : un contrôleur de domaine Windows Server 2025 avec Active Directory et DNS.</p>
+            <dl class="case-meta">
+                <div><dt>Cadre</dt><dd>Projet d'infrastructure, BTS SIO 2e année</dd></div>
+                <div><dt>Équipe</dt><dd>4 personnes</dd></div>
+                <div><dt>Statut</dt><dd>En cours : AD DS et DNS opérationnels</dd></div>
+                <div><dt>Période</dt><dd>Oct. 2026 → en cours</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <div class="wrap case">
+        <ul class="toc" aria-label="Sommaire">
+            <li><a href="#contexte"><span>01</span>Contexte</a></li>
+            <li><a href="#environnement"><span>02</span>Environnement</a></li>
+            <li><a href="#realisation"><span>03</span>Réalisation</a></li>
+            <li><a href="#difficultes"><span>04</span>Difficultés</a></li>
+            <li><a href="#resultat"><span>05</span>Résultat</a></li>
+            <li><a href="#competences"><span>06</span>Compétences</a></li>
+        </ul>
+
+        <article class="case-body">
+            <section class="block" id="contexte">
+                <h2><span class="n">01</span>Contexte et objectifs</h2>
+                <p>Le projet consiste à monter, sur un cluster Proxmox, l'ensemble des services d'une petite infrastructure d'entreprise : annuaire, DNS, DHCP, routeur pare-feu, supervision, partage de fichiers, serveur web, Wi-Fi et ticketing.</p>
+                <p>Cette fiche couvre la <strong>première brique</strong> : un contrôleur de domaine Windows Server 2025, base de la gestion des utilisateurs, des groupes et des postes.</p>
+            </section>
+
+            <section class="block" id="environnement">
+                <h2><span class="n">02</span>Environnement technique</h2>
+                <div class="table-scroll"><table class="data-table">
+                    <tbody>
+                        <tr><td>Hyperviseur</td><td>Proxmox VE 9.2, nœud <code>pve1</code>, stockage local-zfs</td></tr>
+                        <tr><td>VM 103</td><td>SRV-AD01 : 2 cœurs, 8 Go de RAM, disque de 60 Go, UEFI + TPM 2.0</td></tr>
+                        <tr><td>Système</td><td>Windows Server 2025 (évaluation 180 jours), Expérience de bureau</td></tr>
+                        <tr><td>Pilotes</td><td>ISO VirtIO (contrôleur SCSI, carte réseau, agent invité)</td></tr>
+                        <tr><td>Domaine</td><td><code>Projet.lan</code>, nom NetBIOS <code>PROJET</code></td></tr>
+                    </tbody>
+                </table></div>
+                <figure class="fig">
+                    <a href="../assets/img/proxmox/01-proxmox-iso.png" target="_blank" rel="noopener"><img src="../assets/img/proxmox/01-proxmox-iso.png" alt="Interface Proxmox VE 9.2 : nœud pve1, VM 101 et 102, images ISO Windows Server, Debian, pfSense, TrueNAS et VirtIO" loading="lazy"></a>
+                    <figcaption><b>FIG. 1</b>Nœud pve1 et bibliothèque d'ISO du projet (Windows Server, Debian, pfSense, TrueNAS, VirtIO).</figcaption>
+                </figure>
+            </section>
+
+            <section class="block" id="realisation">
+                <h2><span class="n">03</span>Étapes de réalisation</h2>
+                <ol class="steps">
+                    <li><div>
+                        <strong>Création de la VM</strong>
+                        <p>VM 103 en machine <code>q35</code>, firmware UEFI avec TPM 2.0 (exigé par Windows Server 2025), contrôleur <code>virtio-scsi-single</code> et carte réseau VirtIO sur le pont <code>vmbr0</code>.</p>
+                        <figure class="fig">
+                            <a href="../assets/img/proxmox/02-vm-srv-ad01.png" target="_blank" rel="noopener"><img src="../assets/img/proxmox/02-vm-srv-ad01.png" alt="Récapitulatif de création de la VM 103 SRV-AD01 dans Proxmox" loading="lazy"></a>
+                            <figcaption><b>FIG. 2</b>Récapitulatif de la VM 103 avant création.</figcaption>
+                        </figure>
+                    </div></li>
+                    <li><div>
+                        <strong>Installation de Windows Server et des pilotes VirtIO</strong>
+                        <p>Installation en mode « Expérience de bureau », chargement du pilote VirtIO SCSI pendant l'installation, puis <code>virtio-win-guest-tools</code> pour la carte réseau et l'agent Proxmox.</p>
+                    </div></li>
+                    <li><div>
+                        <strong>Préparation du serveur</strong>
+                        <p>Fuseau horaire Paris (l'heure doit être juste pour Kerberos), nom <code>SRV-AD01</code>, mises à jour, Bureau à distance. Avant de fixer l'adresse IP, j'ai vérifié le réseau : passerelle identifiée comme un équipement Cisco (adresse MAC), et <strong>aucun serveur DHCP existant</strong> détecté avec nmap. Le futur DHCP du serveur n'entrera donc pas en conflit.</p>
+                        <p>Une fois l'IP fixe testée (ipconfig, ping), j'ai pris un <strong>snapshot Proxmox</strong> pour pouvoir revenir en arrière.</p>
+                    </div></li>
+                    <li><div>
+                        <strong>Rôle AD DS et promotion en contrôleur de domaine</strong>
+                        <p>Nouvelle forêt <code>Projet.lan</code>, niveau fonctionnel Windows Server 2025, DNS installé en même temps et mot de passe de restauration (DSRM) défini.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>PowerShell</b> · SRV-AD01</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="powershell"># 1. Installation du rôle AD DS et des outils d'administration
+Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+
+# 2. Promotion : nouvelle forêt avec DNS intégré
+Install-ADDSForest -DomainName "Projet.lan" -InstallDns
+
+# 3. Vérifications après redémarrage
+Get-ADDomain
+Get-ADDomainController
+dcdiag
+Resolve-DnsName Projet.lan</code></pre>
+                        </div>
+                        <div class="fig-row">
+                            <figure class="fig">
+                                <a href="../assets/img/proxmox/03-role-adds.png" target="_blank" rel="noopener"><img src="../assets/img/proxmox/03-role-adds.png" alt="PowerShell : Get-WindowsFeature AD-Domain-Services affiche Installed" loading="lazy"></a>
+                                <figcaption><b>FIG. 3</b>Rôle AD DS installé.</figcaption>
+                            </figure>
+                            <figure class="fig">
+                                <a href="../assets/img/proxmox/04-nouvelle-foret.png" target="_blank" rel="noopener"><img src="../assets/img/proxmox/04-nouvelle-foret.png" alt="Assistant de configuration AD DS : premier contrôleur de domaine d'une nouvelle forêt Projet.lan" loading="lazy"></a>
+                                <figcaption><b>FIG. 4</b>Récapitulatif : nouvelle forêt, DNS, catalogue global.</figcaption>
+                            </figure>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>DNS</strong>
+                        <p>La zone <code>Projet.lan</code> est créée automatiquement. Le serveur utilise désormais son propre DNS (127.0.0.1) : <code>Resolve-DnsName Projet.lan</code> renvoie bien l'adresse du contrôleur.</p>
+                        <figure class="fig">
+                            <a href="../assets/img/proxmox/05-connexion-domaine.jpg" target="_blank" rel="noopener"><img src="../assets/img/proxmox/05-connexion-domaine.jpg" alt="Écran de connexion Windows avec le compte PROJET\Administrateur" loading="lazy"></a>
+                            <figcaption><b>FIG. 5</b>Connexion avec un compte du domaine : PROJET\Administrateur.</figcaption>
+                        </figure>
+                    </div></li>
+                </ol>
+            </section>
+
+            <section class="block" id="difficultes">
+                <h2><span class="n">04</span>Difficultés et solutions</h2>
+                <div class="issue">
+                    <div><span class="k">Difficulté</span><p>La VM ne démarrait pas sur l'installateur.</p></div>
+                    <div><span class="k">Solution</span><p>L'ISO n'était pas montée sur le lecteur CD : ajout de l'ISO et correction de l'ordre de démarrage.</p></div>
+                </div>
+                <div class="issue">
+                    <div><span class="k">Difficulté</span><p>Aucun disque n'apparaissait dans l'installateur Windows.</p></div>
+                    <div><span class="k">Solution</span><p>Windows n'embarque pas le pilote VirtIO SCSI : chargement du pilote depuis l'ISO <code>virtio-win</code>, puis le disque est apparu.</p></div>
+                </div>
+                <p class="note">Leçon retenue : le nom du serveur, son IP et le nom de domaine se choisissent <strong>avant</strong> la promotion. Ils sont difficiles à changer une fois l'AD en place.</p>
+            </section>
+
+            <section class="block" id="resultat">
+                <h2><span class="n">05</span>Résultat et suite</h2>
+                <p>SRV-AD01 est opérationnel : IP fixe, domaine <code>Projet.lan</code>, DNS intégré, et les contrôles (<code>dcdiag</code>, <code>Get-ADDomain</code>) sont valides.</p>
+                <p><strong>Prochaines étapes :</strong> zone de recherche inversée et redirecteurs DNS, DHCP, unités d'organisation et utilisateurs, partages, GPO. Ensuite, le routeur pfSense et les autres services du projet.</p>
+            </section>
+
+            <section class="block" id="competences">
+                <h2><span class="n">06</span>Compétences du référentiel mobilisées</h2>
+                <ul class="skills-ref">
+                    <li><span class="code-ref">B1.1</span><div><strong>Gérer le patrimoine informatique</strong><span>Recenser les ressources · Vérifier les conditions de la continuité d'un service (snapshots avant chaque étape)</span></div></li>
+                    <li><span class="code-ref">B1.4</span><div><strong>Travailler en mode projet</strong><span>Projet en équipe découpé en briques successives</span></div></li>
+                    <li><span class="code-ref">B1.5</span><div><strong>Mettre à disposition un service informatique</strong><span>Déployer un service (AD DS, DNS) · Réaliser les tests d'intégration</span></div></li>
+                </ul>
+            </section>
+
+            <nav class="case-nav" aria-label="Projets voisins">
+                <a href="glpi-novaservices.html"><small>← Précédent</small><strong>GLPI NovaServices</strong></a>
+                <a href="borne-wifi-cisco.html"><small>Suivant →</small><strong>Borne Wi-Fi Cisco</strong></a>
+            </nav>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <button class="copy-mail" data-copy-email>ahmedfaouzi55@gmail.com <span class="copy-hint">Cliquer pour copier</span></button>
+            <ul class="footer-links">
+                <li><a href="../projects.html">Tous les projets</a></li>
+                <li><a href="../e5.html">Tableau E5</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/projects.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/case.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projets — SW-01 · Ahmed Faouzi</title>
+    <meta name="description" content="Les projets d'Ahmed Faouzi en BTS SIO SISR présentés comme les serveurs d'une baie : réseau, supervision, systèmes, support et cybersécurité, filtrables par technologie et par compétence.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi <span class="mono muted">/ rack-01</span></span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="projects.html" aria-current="page">Projets</a></li>
+                <li><a href="competences.html">Compétences</a></li>
+                <li><a href="e5.html">E5</a></li>
+                <li><a href="veille.html">Veille</a></li>
+                <li><a href="about.html">Parcours</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="page-head">
+        <div class="wrap">
+            <p class="crumbs"><a href="index.html">rack-01</a><span>/</span><span>U41 · SW-01</span></p>
+            <h1>Projets.</h1>
+            <p>Sept serveurs, un par projet : atelier de professionnalisation, fil rouge et TP du BTS SIO SISR. Filtrez par technologie ou par compétence du référentiel, puis ouvrez une fiche pour voir le contexte, les étapes, les preuves et les schémas.</p>
+        </div>
+    </section>
+
+    <section class="section" style="border-top:0;padding-top:0">
+        <div class="wrap">
+            <div class="filter-panel" role="group" aria-label="Filtres des projets">
+                <div class="filter-row"><span>Domaine</span><div class="filters" id="f-domain"></div></div>
+                <div class="filter-row"><span>Technologie</span><div class="filters" id="f-tech"></div></div>
+                <div class="filter-row"><span>Compétence</span><div class="filters" id="f-skill"></div></div>
+                <div class="filter-foot"><span id="f-count" aria-live="polite">7 / 7 serveurs affichés</span><button type="button" id="f-reset">Réinitialiser</button></div>
+            </div>
+
+            <div class="srv-rack" id="srv-rack">
+                <noscript><p class="srv-empty">La liste des projets nécessite JavaScript. <a class="accent" href="projets/vlanne.html">Commencer par VLANNE</a>.</p></noscript>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <button class="copy-mail" data-copy-email>ahmedfaouzi55@gmail.com <span class="copy-hint">Cliquer pour copier</span></button>
+            <ul class="footer-links">
+                <li><a href="index.html">Retour à la baie</a></li>
+                <li><a href="e5.html">Tableau E5</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/projects.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/projects-page.js"></script>
+</body>
+</html>

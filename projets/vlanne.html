@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VLANNE — Segmentation réseau M2L · Ahmed Faouzi</title>
+    <meta name="description" content="AP-2 VLANNE : segmentation du réseau de la Maison des Ligues en 6 VLAN, routage inter-VLAN Router-on-a-Stick et ACL étendues sous Cisco IOS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body data-base="../">
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="../index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi</span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="../projects.html" aria-current="page">Projets</a></li>
+                <li><a href="../competences.html">Compétences</a></li>
+                <li><a href="../e5.html">E5</a></li>
+                <li><a href="../veille.html">Veille</a></li>
+                <li><a href="../about.html">Parcours</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn" data-theme-toggle aria-label="Changer de thème">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="case-head">
+        <div class="wrap">
+            <p class="crumbs"><a href="../projects.html">Projets</a><span>/</span><span>Réseau</span><span>/</span><span>AP-2 · M2L</span></p>
+            <h1><span class="idx">01</span>VLANNE</h1>
+            <p class="lead">Segmenter et sécuriser le réseau de la Maison des Ligues de Lorraine : six VLAN, un routage inter-VLAN en Router-on-a-Stick et des ACL étendues pour protéger l'administration.</p>
+            <dl class="case-meta">
+                <div><dt>Cadre</dt><dd>Atelier de professionnalisation AP-2</dd></div>
+                <div><dt>Équipe</dt><dd>OSTIA, 4 personnes</dd></div>
+                <div><dt>Mon rôle</dt><dd>Ingénieur réseau &amp; supervision : plan d'adressage, routage, ACL</dd></div>
+                <div><dt>Période</dt><dd>1re année · soutenance juin 2026</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <div class="wrap case">
+        <ul class="toc" aria-label="Sommaire">
+            <li><a href="#contexte"><span>01</span>Contexte</a></li>
+            <li><a href="#environnement"><span>02</span>Environnement</a></li>
+            <li><a href="#realisation"><span>03</span>Réalisation</a></li>
+            <li><a href="#difficultes"><span>04</span>Difficultés</a></li>
+            <li><a href="#resultat"><span>05</span>Résultat</a></li>
+            <li><a href="#competences"><span>06</span>Compétences</a></li>
+            <li><a href="#documents"><span>07</span>Documents</a></li>
+        </ul>
+
+        <article class="case-body">
+            <section class="block" id="contexte">
+                <h2><span class="n">01</span>Contexte et objectifs</h2>
+                <p>La M2L (client fictif) dispose d'un <strong>réseau plat</strong> : tous les postes partagent le même domaine de diffusion. Les ordinateurs portables non maîtrisés, branchés dans les salles ressources, peuvent propager un virus jusqu'aux postes administratifs.</p>
+                <p>Le cahier des charges demande d'<strong>isoler les flux logiques</strong> sans changer l'infrastructure physique :</p>
+                <ul>
+                    <li>séparer l'administration, les ligues, le Wi-Fi public, les salles ressources et l'affichage ;</li>
+                    <li>garder l'accès Internet pour tous les réseaux ;</li>
+                    <li>interdire aux réseaux non fiables (Wi-Fi public, salles ressources) d'atteindre l'administration.</li>
+                </ul>
+            </section>
+
+            <section class="block" id="environnement">
+                <h2><span class="n">02</span>Environnement technique</h2>
+                <ul>
+                    <li><strong>Simulation :</strong> Cisco Packet Tracer</li>
+                    <li><strong>Équipements :</strong> un routeur <code>routeurM2L</code>, deux commutateurs <code>SwitchIntra</code> et <code>SwitchLigues</code></li>
+                    <li><strong>Protocoles :</strong> VLAN, 802.1Q, Router-on-a-Stick, ACL étendues</li>
+                    <li><strong>DMZ :</strong> adressage existant 10.54.0.0/24 conservé sur une interface dédiée</li>
+                </ul>
+
+                <div class="diagram" aria-label="Schéma interactif de la topologie VLANNE">
+                    <div class="dg-head"><span>SCHÉMA INTERACTIF · TOPOLOGIE M2L</span><span>survol ou Tab = détail</span></div>
+                    <div class="dg-body">
+                        <svg viewBox="0 0 660 400" role="group" aria-label="Topologie : routeur, deux commutateurs et six VLAN">
+                            <g font-family="JetBrains Mono, monospace" font-size="11" fill="#E6EDF3">
+                                <!-- liens -->
+                                <line class="dg-link" data-a="internet" data-b="router" x1="330" y1="50" x2="330" y2="86" stroke="#7D8B9C" stroke-width="1.5"/>
+                                <line class="dg-link" data-a="router" data-b="dmz" x1="250" y1="109" x2="190" y2="109" stroke="#7D8B9C" stroke-width="1.5"/>
+                                <line class="dg-link" data-a="router" data-b="acl" x1="410" y1="109" x2="430" y2="109" stroke="#F85149" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                <line class="dg-link" data-a="router" data-b="swintra" x1="300" y1="132" x2="180" y2="180" stroke="#58A6FF" stroke-width="2.5"/>
+                                <line class="dg-link" data-a="router" data-b="swligues" x1="360" y1="132" x2="480" y2="180" stroke="#58A6FF" stroke-width="2.5"/>
+                                <line class="dg-link" data-a="swintra" data-b="v10" x1="180" y1="220" x2="68" y2="290" stroke="#34475F" stroke-width="1.5"/>
+                                <line class="dg-link" data-a="swintra" data-b="v30" x1="180" y1="220" x2="173" y2="290" stroke="#34475F" stroke-width="1.5"/>
+                                <line class="dg-link" data-a="swintra" data-b="v99" x1="180" y1="220" x2="278" y2="290" stroke="#34475F" stroke-width="1.5"/>
+                                <line class="dg-link" data-a="swligues" data-b="v20" x1="480" y1="220" x2="388" y2="290" stroke="#34475F" stroke-width="1.5"/>
+                                <line class="dg-link" data-a="swligues" data-b="v40" x1="480" y1="220" x2="493" y2="290" stroke="#34475F" stroke-width="1.5"/>
+                                <line class="dg-link" data-a="swligues" data-b="v50" x1="480" y1="220" x2="598" y2="290" stroke="#34475F" stroke-width="1.5"/>
+                                <path class="dg-link" data-a="v30" data-b="v10" d="M173,334 Q120,366 68,334" fill="none" stroke="#F85149" stroke-width="1.5" stroke-dasharray="4 3"/>
+                                <path class="dg-link" data-a="v40" data-b="v10" d="M493,334 Q280,398 68,334" fill="none" stroke="#F85149" stroke-width="1.5" stroke-dasharray="4 3"/>
+                                <text x="112" y="372" fill="#F85149" font-size="10">✕ ACL 102</text>
+                                <text x="300" y="384" fill="#F85149" font-size="10">✕ ACL 101</text>
+                                <text x="214" y="150" fill="#58A6FF" font-size="9">trunk 802.1Q</text>
+                                <text x="420" y="150" fill="#58A6FF" font-size="9">trunk 802.1Q</text>
+
+                                <!-- équipements -->
+                                <g class="dg-node" data-id="internet"><rect class="box" x="260" y="14" width="140" height="36" rx="18" fill="#111821" stroke="#7D8B9C" stroke-dasharray="4 3"/><text x="330" y="36" text-anchor="middle">Internet</text></g>
+                                <g class="dg-node" data-id="router"><rect class="box" x="250" y="86" width="160" height="46" fill="#10233D" stroke="#58A6FF"/><text x="330" y="105" text-anchor="middle" font-weight="700">routeurM2L</text><text x="330" y="121" text-anchor="middle" fill="#7D8B9C" font-size="9">Router-on-a-Stick</text></g>
+                                <g class="dg-node" data-id="acl"><rect class="box" x="430" y="93" width="92" height="32" fill="#2A1215" stroke="#F85149"/><text x="476" y="113" text-anchor="middle" fill="#F85149">ACL 101/102</text></g>
+                                <g class="dg-node" data-id="dmz"><rect class="box" x="80" y="93" width="110" height="32" fill="#111821" stroke="#34475F"/><text x="135" y="113" text-anchor="middle" font-size="10">DMZ 10.54.0.0/24</text></g>
+                                <g class="dg-node" data-id="swintra"><rect class="box" x="95" y="180" width="170" height="40" fill="#1A1630" stroke="#8B7CF6"/><text x="180" y="197" text-anchor="middle" font-weight="700">SwitchIntra</text><text x="180" y="212" text-anchor="middle" fill="#7D8B9C" font-size="9">VLAN 10 · 30 · 99</text></g>
+                                <g class="dg-node" data-id="swligues"><rect class="box" x="395" y="180" width="170" height="40" fill="#0F2620" stroke="#3FB950"/><text x="480" y="197" text-anchor="middle" font-weight="700">SwitchLigues</text><text x="480" y="212" text-anchor="middle" fill="#7D8B9C" font-size="9">VLAN 20 · 40 · 50</text></g>
+                                <g class="dg-node" data-id="v10"><rect class="box" x="20" y="290" width="96" height="44" fill="rgba(210,153,34,.15)" stroke="#D29922"/><text x="68" y="308" text-anchor="middle" font-weight="700">VLAN 10</text><text x="68" y="323" text-anchor="middle" font-size="9" fill="#D29922">ADMIN_M2L</text></g>
+                                <g class="dg-node" data-id="v30"><rect class="box" x="125" y="290" width="96" height="44" fill="rgba(248,81,73,.13)" stroke="#F85149"/><text x="173" y="308" text-anchor="middle" font-weight="700">VLAN 30</text><text x="173" y="323" text-anchor="middle" font-size="9" fill="#F85149">WIFI_PUBLIC</text></g>
+                                <g class="dg-node" data-id="v99"><rect class="box" x="230" y="290" width="96" height="44" fill="rgba(125,139,156,.12)" stroke="#7D8B9C"/><text x="278" y="308" text-anchor="middle" font-weight="700">VLAN 99</text><text x="278" y="323" text-anchor="middle" font-size="9" fill="#A7B3C2">MGT_RESEAU</text></g>
+                                <g class="dg-node" data-id="v20"><rect class="box" x="340" y="290" width="96" height="44" fill="rgba(63,185,80,.13)" stroke="#3FB950"/><text x="388" y="308" text-anchor="middle" font-weight="700">VLAN 20</text><text x="388" y="323" text-anchor="middle" font-size="9" fill="#3FB950">LIGUES_DATA</text></g>
+                                <g class="dg-node" data-id="v40"><rect class="box" x="445" y="290" width="96" height="44" fill="rgba(248,81,73,.13)" stroke="#F85149"/><text x="493" y="308" text-anchor="middle" font-weight="700">VLAN 40</text><text x="493" y="323" text-anchor="middle" font-size="9" fill="#F85149">RES_FILAIRE</text></g>
+                                <g class="dg-node" data-id="v50"><rect class="box" x="550" y="290" width="96" height="44" fill="rgba(125,139,156,.12)" stroke="#7D8B9C"/><text x="598" y="308" text-anchor="middle" font-weight="700">VLAN 50</text><text x="598" y="323" text-anchor="middle" font-size="9" fill="#A7B3C2">AFFICHAGE</text></g>
+                            </g>
+                        </svg>
+                        <div class="dg-info" aria-live="polite"></div>
+                    </div>
+                    <div class="dg-legend"><span><i style="background:#58A6FF"></i>trunk 802.1Q</span><span><i style="background:#D29922"></i>VLAN Admin protégé</span><span><i style="background:#F85149"></i>VLAN bloqué vers l'Admin (ACL)</span><span><i style="background:#3FB950"></i>VLAN Ligues</span><span><i style="background:#7D8B9C"></i>VLAN isolé</span></div>
+                    <script type="application/json" class="dg-data">{
+                        "_default": { "k": "Topologie", "title": "Réseau M2L segmenté", "text": "Survolez ou parcourez au clavier un équipement ou un VLAN pour voir son rôle, son adressage et les règles qui le concernent.", "facts": [["VLAN", "6"], ["Trunks", "2 · nonegotiate"], ["ACL", "101 et 102"]] },
+                        "internet": { "k": "Sortie", "title": "Accès Internet", "text": "Tous les VLAN gardent leur accès Internet : chaque ACL se termine par une règle permit … any.", "facts": [["Via", "routeurM2L"]] },
+                        "router": { "k": "Couche 3", "title": "routeurM2L · Router-on-a-Stick", "text": "Une seule interface physique, découpée en sous-interfaces encapsulées en 802.1Q : une par VLAN.", "facts": [["Interface", "FastEthernet0/0"], ["Sous-interfaces", ".10 .20 .30 .40 .50 .99"], ["Passerelles", "172.16.x.254"]] },
+                        "acl": { "k": "Sécurité", "title": "ACL étendues 101 / 102", "text": "Appliquées en entrée sur les sous-interfaces des réseaux non fiables, au plus près de la source.", "facts": [["ACL 101", "VLAN 40 ✕ VLAN 10"], ["ACL 102", "VLAN 30 ✕ VLAN 10"], ["Fin", "permit any (Internet)"]] },
+                        "dmz": { "k": "Existant", "title": "DMZ", "text": "L'adressage physique existant de la DMZ est conservé, sur une interface dédiée du routeur.", "facts": [["Réseau", "10.54.0.0/24"]] },
+                        "swintra": { "k": "Couche 2", "title": "SwitchIntra", "text": "Commutateur des réseaux internes : administration, Wi-Fi public et management.", "facts": [["VLAN", "10, 30, 99"], ["Uplink", "trunk · nonegotiate"]] },
+                        "swligues": { "k": "Couche 2", "title": "SwitchLigues", "text": "Commutateur des ligues, des salles ressources et de l'affichage. DTP désactivé sur le port montant.", "facts": [["VLAN", "20, 40, 50"], ["Gi0/1", "trunk allowed 10,20,30,40,50,99"]] },
+                        "v10": { "k": "VLAN 10", "title": "ADMIN_M2L", "text": "Bureaux administratifs, reprographie, salle multimédia. Réseau protégé : inaccessible depuis le Wi-Fi public et les salles ressources.", "facts": [["Réseau", "172.16.10.0/24"], ["Passerelle", "172.16.10.254"], ["Test", "Ligues → Admin : ping OK"]] },
+                        "v20": { "k": "VLAN 20", "title": "LIGUES_DATA", "text": "Postes fixes des différentes ligues.", "facts": [["Réseau", "172.16.20.0/24"], ["Passerelle", "172.16.20.254"], ["Vers Admin", "autorisé"]] },
+                        "v30": { "k": "VLAN 30", "title": "WIFI_PUBLIC", "text": "Points d'accès sans fil pour les visiteurs : réseau non fiable.", "facts": [["Réseau", "172.16.30.0/24"], ["Vers Admin", "bloqué · ACL 102"], ["Test", "timeout ✓"]] },
+                        "v40": { "k": "VLAN 40", "title": "RES_FILAIRE", "text": "Prises Ethernet des salles ressources, où se branchent des portables non maîtrisés.", "facts": [["Réseau", "172.16.40.0/24"], ["Vers Admin", "bloqué · ACL 101"], ["Test", "timeout ✓"]] },
+                        "v50": { "k": "VLAN 50", "title": "AFFICHAGE", "text": "Réseau isolé pour les écrans d'affichage dynamique.", "facts": [["Réseau", "172.16.50.0/24"]] },
+                        "v99": { "k": "VLAN 99", "title": "MGT_RESEAU", "text": "Administration des commutateurs et supervision.", "facts": [["Réseau", "172.16.99.0/24"], ["Passerelle", "172.16.99.254"]] }
+                    }</script>
+                </div>
+
+                <figure class="fig">
+                    <a href="../assets/img/vlanne/schema-vlan.png" target="_blank" rel="noopener"><img src="../assets/img/vlanne/schema-vlan.png" alt="Schéma : routeur M2L en Router-on-a-Stick relié en trunk à SwitchIntra (VLAN 10, 30, 99) et SwitchLigues (VLAN 20, 40, 50)" loading="lazy"></a>
+                    <figcaption><b>FIG. 1</b>Topologie cible : deux trunks 802.1Q, six VLAN et les ACL 101/102 sur le routeur.</figcaption>
+                </figure>
+            </section>
+
+            <section class="block" id="realisation">
+                <h2><span class="n">03</span>Étapes de réalisation</h2>
+                <ol class="steps">
+                    <li><div>
+                        <strong>Plan d'adressage et cartographie</strong>
+                        <p>Un sous-réseau /24 par VLAN. La passerelle de chaque VLAN est en <code>.254</code>.</p>
+                        <div class="table-scroll"><table class="data-table">
+                            <thead><tr><th>VLAN</th><th>Nom</th><th>Périmètre</th><th>Sous-réseau</th></tr></thead>
+                            <tbody>
+                                <tr><td class="mono">10</td><td>ADMIN_M2L</td><td>Bureaux administratifs, reprographie</td><td class="mono">172.16.10.0/24</td></tr>
+                                <tr><td class="mono">20</td><td>LIGUES_DATA</td><td>Postes fixes des ligues</td><td class="mono">172.16.20.0/24</td></tr>
+                                <tr><td class="mono">30</td><td>WIFI_PUBLIC</td><td>Points d'accès visiteurs</td><td class="mono">172.16.30.0/24</td></tr>
+                                <tr><td class="mono">40</td><td>RES_FILAIRE</td><td>Salles ressources (matériel non maîtrisé)</td><td class="mono">172.16.40.0/24</td></tr>
+                                <tr><td class="mono">50</td><td>AFFICHAGE</td><td>Écrans d'affichage dynamique</td><td class="mono">172.16.50.0/24</td></tr>
+                                <tr><td class="mono">99</td><td>MGT_RESEAU</td><td>Administration des commutateurs</td><td class="mono">172.16.99.0/24</td></tr>
+                            </tbody>
+                        </table></div>
+                    </div></li>
+                    <li><div>
+                        <strong>Couche 2 : VLAN, ports d'accès et trunks</strong>
+                        <p>Déclaration des VLAN sur chaque commutateur, puis affectation des ports. Sur les trunks, DTP est désactivé avec <code>switchport nonegotiate</code> pour empêcher le VLAN hopping.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Cisco IOS</b> · SwitchLigues</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="ios">! Port d'accès affecté au VLAN Administration
+Switch(config)# interface FastEthernet0/1
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 10
+
+! Port montant vers le routeur : trunk 802.1Q
+Switch(config)# interface GigabitEthernet0/1
+Switch(config-if)# switchport mode trunk
+Switch(config-if)# switchport trunk allowed vlan 10,20,30,40,50,99
+Switch(config-if)# switchport nonegotiate</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Couche 3 : routage inter-VLAN (Router-on-a-Stick)</strong>
+                        <p>L'interface physique du routeur n'a plus d'adresse : elle est découpée en sous-interfaces, une par VLAN, chacune encapsulée en 802.1Q.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Cisco IOS</b> · routeurM2L</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="ios">Router(config)# interface FastEthernet0/0
+Router(config-if)# no ip address
+Router(config-if)# no shutdown
+
+! Sous-interface VLAN 10 - Administration
+Router(config)# interface FastEthernet0/0.10
+Router(config-subif)# encapsulation dot1Q 10
+Router(config-subif)# ip address 172.16.10.254 255.255.255.0
+
+! Sous-interface VLAN 40 - Salles ressources
+Router(config)# interface FastEthernet0/0.40
+Router(config-subif)# encapsulation dot1Q 40
+Router(config-subif)# ip address 172.16.40.254 255.255.255.0
+! (même principe pour les VLAN 20, 30, 50 et 99)</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Sécurisation par ACL étendues</strong>
+                        <p>Par défaut, le routeur laisse passer tout le trafic inter-VLAN. Des ACL étendues sont appliquées <strong>en entrée</strong> sur les sous-interfaces des réseaux non fiables, au plus près de la source.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Cisco IOS</b> · ACL 101 et 102</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="ios">! ACL 101 : salles ressources (VLAN 40) interdites vers l'Admin
+Router(config)# access-list 101 deny ip 172.16.40.0 0.0.0.255 172.16.10.0 0.0.0.255
+Router(config)# access-list 101 permit ip 172.16.40.0 0.0.0.255 any
+Router(config)# interface FastEthernet0/0.40
+Router(config-subif)# ip access-group 101 in
+
+! ACL 102 : Wi-Fi public (VLAN 30) interdit vers l'Admin
+Router(config)# access-list 102 deny ip 172.16.30.0 0.0.0.255 172.16.10.0 0.0.0.255
+Router(config)# access-list 102 permit ip 172.16.30.0 0.0.0.255 any
+Router(config)# interface FastEthernet0/0.30
+Router(config-subif)# ip access-group 102 in</code></pre>
+                        </div>
+                    </div></li>
+                </ol>
+            </section>
+
+            <section class="block" id="difficultes">
+                <h2><span class="n">04</span>Difficultés et solutions</h2>
+                <div class="issue">
+                    <div><span class="k">Difficulté</span><p>Toute ACL Cisco se termine par un <code>deny ip any any</code> implicite. Avec seulement la règle d'interdiction, le VLAN perdait aussi son accès à Internet.</p></div>
+                    <div><span class="k">Solution</span><p>Ajouter une règle <code>permit … any</code> <strong>après</strong> le <code>deny</code>, car les règles sont lues de haut en bas. L'ordre est critique.</p></div>
+                </div>
+                <div class="issue">
+                    <div><span class="k">Difficulté</span><p>Les trunks négociés automatiquement (DTP) permettent une attaque de type VLAN hopping depuis un poste malveillant.</p></div>
+                    <div><span class="k">Solution</span><p>Trunks forcés en dur avec <code>switchport mode trunk</code> + <code>switchport nonegotiate</code>, et liste explicite des VLAN autorisés.</p></div>
+                </div>
+            </section>
+
+            <section class="block" id="resultat">
+                <h2><span class="n">05</span>Résultat</h2>
+                <p>Des tests de connectivité entre VLAN ont validé la segmentation : les réseaux non fiables sont bloqués vers l'administration, et les flux légitimes passent.</p>
+                <div class="table-scroll"><table class="data-table">
+                    <thead><tr><th>Source</th><th>Destination</th><th>Attendu</th><th>Obtenu</th><th>État</th></tr></thead>
+                    <tbody>
+                        <tr><td>Admin (V10)</td><td>Ligues (V20)</td><td>Succès</td><td>Ping OK</td><td class="ok">✓ conforme</td></tr>
+                        <tr><td>Wi-Fi (V30)</td><td>Admin (V10)</td><td>Bloqué (ACL 102)</td><td>Timeout</td><td class="ok">✓ conforme</td></tr>
+                        <tr><td>Ressources (V40)</td><td>Admin (V10)</td><td>Bloqué (ACL 101)</td><td>Timeout</td><td class="ok">✓ conforme</td></tr>
+                        <tr><td>Ligues (V20)</td><td>Admin (V10)</td><td>Succès</td><td>Ping OK</td><td class="ok">✓ conforme</td></tr>
+                    </tbody>
+                </table></div>
+                <p>Ce cloisonnement sert de base au projet <a class="accent" href="superviz.html">SUPERVIZ</a> : les outils de supervision sont placés dans le VLAN Administration protégé.</p>
+            </section>
+
+            <section class="block" id="competences">
+                <h2><span class="n">06</span>Compétences du référentiel mobilisées</h2>
+                <ul class="skills-ref">
+                    <li><span class="code-ref">B1.1</span><div><strong>Gérer le patrimoine informatique</strong><span>Recenser et identifier les ressources numériques · Vérifier les règles d'utilisation des ressources (ACL)</span></div></li>
+                    <li><span class="code-ref">B1.4</span><div><strong>Travailler en mode projet</strong><span>Analyser les objectifs d'un projet en équipe · Planifier les activités jusqu'à la soutenance</span></div></li>
+                    <li><span class="code-ref">B1.5</span><div><strong>Mettre à disposition un service informatique</strong><span>Déployer un service · Réaliser les tests d'intégration</span></div></li>
+                </ul>
+            </section>
+
+            <section class="block" id="documents">
+                <h2><span class="n">07</span>Documents</h2>
+                <ul class="downloads">
+                    <li><a href="../assets/docs/AP2-VLANNE-SUPERVIZ-dossier-technique.pdf" target="_blank" rel="noopener">Dossier technique AP-2 (VLANNE + SUPERVIZ) <small>PDF · 19 Ko</small></a></li>
+                </ul>
+            </section>
+
+            <nav class="case-nav" aria-label="Projets voisins">
+                <a href="securisation-debian.html"><small>← Précédent</small><strong>Sécurisation Debian</strong></a>
+                <a href="superviz.html"><small>Suivant →</small><strong>SUPERVIZ</strong></a>
+            </nav>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <button class="copy-mail" data-copy-email>ahmedfaouzi55@gmail.com <span class="copy-hint">Cliquer pour copier</span></button>
+            <ul class="footer-links">
+                <li><a href="../projects.html">Tous les projets</a></li>
+                <li><a href="../e5.html">Tableau E5</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/projects.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/case.js"></script>
+</body>
+</html>

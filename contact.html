@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact — Ahmed Faouzi</title>
+    <meta name="description" content="Contacter Ahmed Faouzi, alternant en BTS SIO option SISR à Montpellier.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body data-base="">
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi</span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="projects.html">Projets</a></li>
+                <li><a href="competences.html">Compétences</a></li>
+                <li><a href="e5.html">E5</a></li>
+                <li><a href="veille.html">Veille</a></li>
+                <li><a href="about.html">Parcours</a></li>
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn" data-theme-toggle aria-label="Changer de thème">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="page-head">
+        <div class="wrap">
+            <p class="crumbs"><a href="index.html">rack-01</a><span>/</span><span>U22 · KVM-01 · port console</span></p>
+            <h1>Discutons.</h1>
+            <p>Une question sur un projet, une opportunité, un échange technique : le plus simple reste l'e-mail. Je réponds rapidement.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="wrap">
+            <div class="console-port">
+                <div class="cp-bar"><span>KVM-01 · port console · 9600 bauds · 8N1</span><span><span class="status-led" aria-hidden="true"></span> connecté</span></div>
+                <div class="cp-body">
+                    <div class="m">Connexion établie avec rack-01. En alternance · ouvert aux échanges.</div>
+                    <div><span class="p">rack-01#</span> show contact</div>
+                    <div class="cp-line"><span>e-mail</span><a href="mailto:ahmedfaouzi55@gmail.com">ahmedfaouzi55@gmail.com</a><button type="button" class="cp-copy" data-copy="ahmedfaouzi55@gmail.com">copier</button></div>
+                    <div class="cp-line"><span>téléphone</span><a href="tel:+33749027565">07 49 02 75 65</a><button type="button" class="cp-copy" data-copy="07 49 02 75 65">copier</button></div>
+                    <div class="cp-line"><span>localisation</span><span>Montpellier · permis B</span><span></span></div>
+                    <div class="cp-line"><span>cv</span><a href="assets/docs/CV-Ahmed-Faouzi-BTS-SIO-SISR.pdf" target="_blank" rel="noopener">CV-Ahmed-Faouzi-BTS-SIO-SISR.pdf</a><span></span></div>
+                    <div class="cp-line"><span>réponse</span><span>rapide, par e-mail de préférence</span><span></span></div>
+                    <div style="margin-top:8px"><span class="p">rack-01#</span> <span class="ok">▌</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <div>
+                    <p class="label"><b>→</b> Message</p>
+                    <h2>Écrire directement.</h2>
+                </div>
+            </div>
+            <form class="form reveal" id="contact-form">
+                <label><span>Nom</span><input type="text" id="name" required autocomplete="name"></label>
+                <label><span>Objet</span><input type="text" id="subject" required placeholder="Projet, opportunité, question…"></label>
+                <label class="full"><span>Message</span><textarea id="message" rows="5" required></textarea></label>
+                <div class="full form-foot">
+                    <button type="submit" class="btn btn-primary">Ouvrir dans ma messagerie
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                    <span class="muted mono">Le message est préparé dans votre client e-mail : rien n'est envoyé par ce site.</span>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-bottom" style="margin-top:0">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/projects.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("name").value;
+        var subject = document.getElementById("subject").value;
+        var body = document.getElementById("message").value + "\n\n— " + name;
+        window.location.href = "mailto:ahmedfaouzi55@gmail.com?subject=" +
+            encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+    document.querySelectorAll(".cp-copy").forEach(function (b) {
+        b.addEventListener("click", function () {
+            var done = function () { b.textContent = "copié ✓"; setTimeout(function () { b.textContent = "copier"; }, 1600); };
+            if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, function () { b.textContent = "échec"; });
+        });
+    });
+</script>
+</body>
+</html>

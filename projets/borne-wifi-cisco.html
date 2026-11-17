@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Borne Wi-Fi Cisco — Portail captif · Ahmed Faouzi</title>
+    <meta name="description" content="Mise en service d'une borne Cisco AIR-AP2802I en Mobility Express : configuration en console, IP de management, WPA2-PSK et réseau invité à portail captif.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body data-base="../">
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="../index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi</span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="../projects.html" aria-current="page">Projets</a></li>
+                <li><a href="../competences.html">Compétences</a></li>
+                <li><a href="../e5.html">E5</a></li>
+                <li><a href="../veille.html">Veille</a></li>
+                <li><a href="../about.html">Parcours</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn" data-theme-toggle aria-label="Changer de thème">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="case-head">
+        <div class="wrap">
+            <p class="crumbs"><a href="../projects.html">Projets</a><span>/</span><span>Réseau</span><span>/</span><span>TP</span></p>
+            <h1><span class="idx">05</span>Borne Wi-Fi Cisco</h1>
+            <p class="lead">Mettre en service un point d'accès Cisco AIR-AP2802I en mode Mobility Express, depuis la console série jusqu'à un réseau invité protégé par un portail captif.</p>
+            <dl class="case-meta">
+                <div><dt>Cadre</dt><dd>TP en salle réseau</dd></div>
+                <div><dt>Équipe</dt><dd>4 personnes</dd></div>
+                <div><dt>Matériel</dt><dd>Cisco AIR-AP2802I (Aironet 2800)</dd></div>
+                <div><dt>Période</dt><dd>Oct. 2026</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <div class="wrap case">
+        <ul class="toc" aria-label="Sommaire">
+            <li><a href="#contexte"><span>01</span>Contexte</a></li>
+            <li><a href="#realisation"><span>02</span>Réalisation</a></li>
+            <li><a href="#difficultes"><span>03</span>Difficultés</a></li>
+            <li><a href="#resultat"><span>04</span>Résultat</a></li>
+            <li><a href="#competences"><span>05</span>Compétences</a></li>
+            <li><a href="#documents"><span>06</span>Documents</a></li>
+        </ul>
+
+        <article class="case-body">
+            <section class="block" id="contexte">
+                <h2><span class="n">01</span>Contexte et objectifs</h2>
+                <p>Le but : déployer un accès Wi-Fi pour les collaborateurs et un <strong>réseau invité isolé</strong>, où chaque visiteur doit s'authentifier sur une page web avant d'accéder à Internet.</p>
+                <ul>
+                    <li>réinitialiser la borne et la configurer depuis zéro ;</li>
+                    <li>lui donner une IP de management fixe, sans perturber le DHCP existant ;</li>
+                    <li>créer un SSID sécurisé, puis un réseau invité <code>AP-INVITE</code> avec portail captif ;</li>
+                    <li>rédiger une procédure réutilisable.</li>
+                </ul>
+            </section>
+
+            <section class="block" id="realisation">
+                <h2><span class="n">02</span>Étapes de réalisation</h2>
+                <ol class="steps">
+                    <li><div>
+                        <strong>Réinitialisation d'usine</strong>
+                        <p>Bouton MODE maintenu pendant la remise sous tension, puis 5 à 10 minutes de redémarrage. La borne diffuse ensuite le SSID temporaire <code>CiscoAirProvision</code>.</p>
+                    </div></li>
+                    <li><div>
+                        <strong>Assistant de configuration en console série (PuTTY)</strong>
+                        <p>Connexion sur le port console (COM3), puis l'assistant Mobility Express : compte administrateur, nom du système, fuseau horaire, adressage de management.</p>
+                        <figure class="fig">
+                            <a href="../assets/img/wifi/01-assistant-console.png" target="_blank" rel="noopener"><img src="../assets/img/wifi/01-assistant-console.png" alt="PuTTY COM3 : assistant Cisco Mobility Express, saisie du compte administrateur (masquée)" loading="lazy"></a>
+                            <figcaption><b>FIG. 1</b>Assistant Mobility Express en console (identifiant administrateur masqué pour la publication).</figcaption>
+                        </figure>
+                    </div></li>
+                    <li><div>
+                        <strong>IP de management fixe, DHCP de la borne désactivé</strong>
+                        <p>Adresse statique, masque /24 et passerelle du réseau local. L'option « Create Management DHCP Scope » est refusée : le routeur assure déjà le DHCP.</p>
+                    </div></li>
+                    <li><div>
+                        <strong>Réseau principal en WPA2-PSK</strong>
+                        <p>SSID et clé pré-partagée définis dans l'assistant. La borne redémarre et devient administrable par son interface web.</p>
+                    </div></li>
+                    <li><div>
+                        <strong>Réseau invité et portail captif</strong>
+                        <p>Dans <em>Wireless Settings &gt; WLANs</em> : WLAN <code>AP-INVITE</code>, <em>Guest Network</em> activé, <em>Captive Portal</em> sur <em>Internal Splash Page</em> et <em>Access Type</em> sur <em>Local User Account</em>. Les comptes invités sont créés dans <em>WLAN Users</em>, avec une <strong>durée de vie limitée</strong>. Ils ne donnent aucun droit d'administration.</p>
+                    </div></li>
+                </ol>
+            </section>
+
+            <section class="block" id="difficultes">
+                <h2><span class="n">03</span>Difficultés et solutions</h2>
+                <div class="issue">
+                    <div><span class="k">Difficulté</span><p>L'assistant refusait la configuration : <code>Err: Default Gateway must be on network interface IP subnet</code>. La passerelle saisie n'appartenait pas au sous-réseau de l'IP de management.</p></div>
+                    <div><span class="k">Solution</span><p>Recalcul du sous-réseau : la passerelle a été corrigée pour être dans le même /24 que l'adresse de la borne, et l'assistant a continué.</p></div>
+                </div>
+                <figure class="fig">
+                    <a href="../assets/img/wifi/02-erreur-passerelle.png" target="_blank" rel="noopener"><img src="../assets/img/wifi/02-erreur-passerelle.png" alt="PuTTY : erreur Default Gateway must be on network interface IP subnet, puis passerelle corrigée" loading="lazy"></a>
+                    <figcaption><b>FIG. 2</b>L'erreur de passerelle, puis la saisie corrigée. Clés et mots de passe masqués par la console.</figcaption>
+                </figure>
+                <div class="issue">
+                    <div><span class="k">Risque</span><p>Activer le serveur DHCP de la borne aurait créé deux serveurs DHCP sur le même réseau, avec des conflits d'adresses pour tout le LAN.</p></div>
+                    <div><span class="k">Solution</span><p>DHCP de la borne laissé désactivé, et le point est consigné dans la procédure comme point de vigilance.</p></div>
+                </div>
+            </section>
+
+            <section class="block" id="resultat">
+                <h2><span class="n">04</span>Résultat</h2>
+                <p>Un client connecté à <code>AP-INVITE</code> est redirigé vers la page « Welcome to the Cisco wireless network ». L'accès Internet n'est ouvert qu'avec un compte invité valide.</p>
+                <p>La procédure rédigée (5 pages) se termine par une liste de points de vigilance : délai de réinitialisation, ne pas choisir « mesh », ne pas activer le DHCP, rattacher les comptes au profil AP-INVITE, définir leur durée de vie.</p>
+            </section>
+
+            <section class="block" id="competences">
+                <h2><span class="n">05</span>Compétences du référentiel mobilisées</h2>
+                <ul class="skills-ref">
+                    <li><span class="code-ref">B1.1</span><div><strong>Gérer le patrimoine informatique</strong><span>Mettre en place et vérifier les niveaux d'habilitation (comptes invités sans droit d'administration)</span></div></li>
+                    <li><span class="code-ref">B1.5</span><div><strong>Mettre à disposition un service informatique</strong><span>Déployer un service · Tester côté client · Documenter pour les utilisateurs</span></div></li>
+                </ul>
+            </section>
+
+            <section class="block" id="documents">
+                <h2><span class="n">06</span>Documents</h2>
+                <ul class="downloads">
+                    <li><a href="../assets/docs/Cisco-AP2802I-procedure-portail-captif.pdf" target="_blank" rel="noopener">Procédure : installation, paramétrage et portail captif <small>PDF · 180 Ko</small></a></li>
+                </ul>
+                <p class="note">Dans la procédure publiée, les identifiants réels sont remplacés par des valeurs d'exemple.</p>
+            </section>
+
+            <nav class="case-nav" aria-label="Projets voisins">
+                <a href="infra-proxmox.html"><small>← Précédent</small><strong>Infrastructure Proxmox</strong></a>
+                <a href="durcissement-windows.html"><small>Suivant →</small><strong>Durcissement Windows</strong></a>
+            </nav>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <button class="copy-mail" data-copy-email>ahmedfaouzi55@gmail.com <span class="copy-hint">Cliquer pour copier</span></button>
+            <ul class="footer-links">
+                <li><a href="../projects.html">Tous les projets</a></li>
+                <li><a href="../e5.html">Tableau E5</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/projects.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/case.js"></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ahmed Faouzi — Rack-01 · Systèmes, réseaux & cybersécurité</title>
+    <meta name="description" content="Portfolio d'Ahmed Faouzi, alternant en BTS SIO option SISR à Montpellier, présenté comme une baie informatique : projets, compétences, veille et tableau E5.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rack.css">
+</head>
+<body data-base="">
+
+<a class="sr-only" href="#plan">Aller au plan du site</a>
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi <span class="mono muted">/ rack-01</span></span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="projects.html">Projets</a></li>
+                <li><a href="competences.html">Compétences</a></li>
+                <li><a href="e5.html">E5</a></li>
+                <li><a href="veille.html">Veille</a></li>
+                <li><a href="about.html">Parcours</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="home">
+    <div class="wrap">
+        <div class="home-grid">
+
+            <!-- ===== Colonne gauche : présentation + console ===== -->
+            <section aria-labelledby="titre">
+                <span class="kicker">Documentation d'infrastructure · v2</span>
+                <h1 id="titre">Ahmed Faouzi.</h1>
+                <p class="lead">Alternant en BTS SIO option SISR. Ce portfolio est documenté comme une baie : chaque équipement est une section, chaque serveur un projet.</p>
+                <dl class="spec-mini">
+                    <div><dt>Site</dt><dd>Montpellier</dd></div>
+                    <div><dt>Statut</dt><dd>En alternance · support informatique <span class="led blink" aria-hidden="true"></span></dd></div>
+                    <div><dt>Équipements</dt><dd>14 · 23U / 42U</dd></div>
+                    <div><dt>Veille</dt><dd id="spec-veille">mise à jour automatique</dd></div>
+                </dl>
+
+                <div class="cli" id="cli">
+                    <div class="cli-bar"><span>COM1 · rack-01 · 9600 bauds</span><span>tapez <b>help</b></span></div>
+                    <div class="cli-out" id="cli-out" role="log" aria-live="polite" aria-label="Sortie de la console">
+                        <div class="m">RACK-01 · console d'administration</div>
+                        <div><span class="ok">[ OK ]</span> 7 projets montés · 6 compétences B1</div>
+                        <div class="m">Tapez <b>help</b> ou cliquez une commande ci-dessous.</div>
+                    </div>
+                    <form class="cli-in" id="cli-form" autocomplete="off">
+                        <label for="cli-input">rack-01#</label>
+                        <input id="cli-input" type="text" spellcheck="false" autocapitalize="off" aria-describedby="cli-help">
+                    </form>
+                    <div class="cli-chips" id="cli-help" aria-label="Commandes suggérées">
+                        <button type="button" data-cmd="help">help</button>
+                        <button type="button" data-cmd="show projects">show projects</button>
+                        <button type="button" data-cmd="show skills">show skills</button>
+                        <button type="button" data-cmd="whoami">whoami</button>
+                        <button type="button" data-cmd="contact">contact</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== Colonne centrale : la baie ===== -->
+            <section aria-label="Baie RACK-01 : chaque équipement mène à une section du portfolio">
+                <div class="rack" id="rack">
+                    <span class="rack-title">RACK-01 · ÉLÉVATION FACE AVANT · 42U</span>
+
+                    <div class="ru h1"><div class="u">42</div><div class="slot">
+                        <div class="dev patch" data-key="patch">
+                            <span class="name">PP-01 · brassage</span>
+                            <nav class="patch-ports" aria-label="Panneau de brassage : un port par page">
+                                <a class="pp-port" href="projects.html" data-target="sw" style="--c:#3FB950" title="Port 01 · Projets" aria-label="Port 01 : Projets">01</a>
+                                <a class="pp-port" href="competences.html" data-target="rt" style="--c:#D29922" title="Port 02 · Compétences" aria-label="Port 02 : Compétences">02</a>
+                                <a class="pp-port" href="e5.html" data-target="nas" style="--c:#BC8CFF" title="Port 03 · Tableau E5" aria-label="Port 03 : Tableau E5">03</a>
+                                <a class="pp-port" href="veille.html" data-target="fw" style="--c:#F85149" title="Port 04 · Veille" aria-label="Port 04 : Veille">04</a>
+                                <a class="pp-port" href="about.html" data-target="ups" style="--c:#39C5CF" title="Port 05 · Parcours" aria-label="Port 05 : Parcours">05</a>
+                                <a class="pp-port" href="contact.html" data-target="kvm" style="--c:#F778BA" title="Port 06 · Contact" aria-label="Port 06 : Contact">06</a>
+                            </nav>
+                        </div>
+                    </div><div class="u r">42</div></div>
+
+                    <div class="ru h1"><div class="u">41</div><div class="slot">
+                        <a class="dev" href="projects.html" data-key="sw">
+                            <span class="name"><b>SW-01</b> <span>· projets</span></span>
+                            <span class="portrow" aria-hidden="true"><i class="up"></i><i class="up"></i><i class="up"></i><i class="up"></i><i class="up"></i><i class="up"></i><i class="up"></i><i></i><i></i><i></i></span>
+                            <span class="meta">7 ports actifs <span class="led" aria-hidden="true"></span></span>
+                        </a>
+                    </div><div class="u r">41</div></div>
+
+                    <div class="ru h2"><div class="u"><span>40</span><span>39</span></div><div class="slot">
+                        <a class="dev" href="projets/vlanne.html" data-slug="vlanne"><span class="name"><b>SRV-01</b> <span>· VLANNE</span></span><span class="bays" aria-hidden="true"><i></i><i></i></span><span class="vent" aria-hidden="true"></span><span class="meta">réseau <span class="led" aria-hidden="true"></span></span></a>
+                    </div><div class="u r"><span>40</span><span>39</span></div></div>
+
+                    <div class="ru h2"><div class="u"><span>38</span><span>37</span></div><div class="slot">
+                        <a class="dev" href="projets/superviz.html" data-slug="superviz"><span class="name"><b>SRV-02</b> <span>· SUPERVIZ</span></span><span class="bays" aria-hidden="true"><i></i><i></i></span><span class="vent" aria-hidden="true"></span><span class="meta">supervision <span class="led blink" aria-hidden="true"></span></span></a>
+                    </div><div class="u r"><span>38</span><span>37</span></div></div>
+
+                    <div class="ru h2"><div class="u"><span>36</span><span>35</span></div><div class="slot">
+                        <a class="dev" href="projets/glpi-novaservices.html" data-slug="glpi-novaservices"><span class="name"><b>SRV-03</b> <span>· GLPI NovaServices</span></span><span class="bays" aria-hidden="true"><i></i><i></i></span><span class="vent" aria-hidden="true"></span><span class="meta">support <span class="led" aria-hidden="true"></span></span></a>
+                    </div><div class="u r"><span>36</span><span>35</span></div></div>
+
+                    <div class="ru h2"><div class="u"><span>34</span><span>33</span></div><div class="slot">
+                        <a class="dev" href="projets/infra-proxmox.html" data-slug="infra-proxmox"><span class="name"><b>SRV-04</b> <span>· Proxmox</span></span><span class="bays" aria-hidden="true"><i></i><i></i></span><span class="vent" aria-hidden="true"></span><span class="meta">en cours <span class="led warn blink" aria-hidden="true"></span></span></a>
+                    </div><div class="u r"><span>34</span><span>33</span></div></div>
+
+                    <div class="ru h2"><div class="u"><span>32</span><span>31</span></div><div class="slot">
+                        <a class="dev" href="projets/borne-wifi-cisco.html" data-slug="borne-wifi-cisco"><span class="name"><b>SRV-05</b> <span>· Borne Wi-Fi</span></span><span class="bays" aria-hidden="true"><i></i><i></i></span><span class="vent" aria-hidden="true"></span><span class="meta">réseau <span class="led" aria-hidden="true"></span></span></a>
+                    </div><div class="u r"><span>32</span><span>31</span></div></div>
+
+                    <div class="ru h2"><div class="u"><span>30</span><span>29</span></div><div class="slot">
+                        <a class="dev" href="projets/durcissement-windows.html" data-slug="durcissement-windows"><span class="name"><b>SRV-06</b> <span>· Durcissement Windows</span></span><span class="bays" aria-hidden="true"><i></i><i></i></span><span class="vent" aria-hidden="true"></span><span class="meta">sécurité <span class="led" aria-hidden="true"></span></span></a>
+                    </div><div class="u r"><span>30</span><span>29</span></div></div>
+
+                    <div class="ru h2"><div class="u"><span>28</span><span>27</span></div><div class="slot">
+                        <a class="dev" href="projets/securisation-debian.html" data-slug="securisation-debian"><span class="name"><b>SRV-07</b> <span>· Sécurisation Debian</span></span><span class="bays" aria-hidden="true"><i></i><i></i></span><span class="vent" aria-hidden="true"></span><span class="meta">sécurité <span class="led" aria-hidden="true"></span></span></a>
+                    </div><div class="u r"><span>28</span><span>27</span></div></div>
+
+                    <div class="ru h1"><div class="u">26</div><div class="slot">
+                        <a class="dev" href="veille.html" data-key="fw"><span class="name"><b>FW-01</b> <span>· veille</span></span><span class="vent" aria-hidden="true"></span><span class="lcd" id="fw-lcd">flux actifs</span><span class="meta"><span class="led warn blink-fast" aria-hidden="true"></span></span></a>
+                    </div><div class="u r">26</div></div>
+
+                    <div class="ru h1"><div class="u">25</div><div class="slot">
+                        <a class="dev" href="competences.html" data-key="rt"><span class="name"><b>RT-01</b> <span>· compétences</span></span><span class="portrow" aria-hidden="true"><i class="up"></i><i class="up"></i><i class="up"></i><i class="up"></i><i class="up"></i><i class="up"></i></span><span class="meta">B1.1 → B1.6 <span class="led" aria-hidden="true"></span></span></a>
+                    </div><div class="u r">25</div></div>
+
+                    <div class="ru h2"><div class="u"><span>24</span><span>23</span></div><div class="slot">
+                        <a class="dev" href="e5.html" data-key="nas"><span class="name"><b>NAS-01</b> <span>· tableau E5</span></span><span class="bays" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="vent" aria-hidden="true"></span><span class="meta">archives <span class="led info" aria-hidden="true"></span></span></a>
+                    </div><div class="u r"><span>24</span><span>23</span></div></div>
+
+                    <div class="ru h1"><div class="u">22</div><div class="slot">
+                        <a class="dev" href="contact.html" data-key="kvm"><span class="name"><b>KVM-01</b> <span>· contact</span></span><span class="vent" aria-hidden="true"></span><span class="meta">port console <span class="led" aria-hidden="true"></span></span></a>
+                    </div><div class="u r">22</div></div>
+
+                    <div class="ru free"><div class="u"><span>21</span><span>3</span></div><div class="slot">U21 → U3 · 19U libres · évolutions futures</div><div class="u r"><span>21</span><span>3</span></div></div>
+
+                    <div class="ru h2"><div class="u"><span>2</span><span>1</span></div><div class="slot">
+                        <a class="dev" href="about.html" data-key="ups"><span class="name"><b>UPS-01</b> <span>· parcours</span></span><span class="lcd" id="ups-lcd">uptime alternance</span><span class="vent" aria-hidden="true"></span><span class="meta"><span class="led" aria-hidden="true"></span></span></a>
+                    </div><div class="u r"><span>2</span><span>1</span></div></div>
+
+                    <div class="rack-foot"><span>14 équipements · 23U occupés</span><span>survol = détail · clic = ouvrir</span></div>
+                    <svg class="cables" id="cables" aria-hidden="true"></svg>
+                </div>
+            </section>
+
+            <!-- ===== Colonne droite : détail de l'équipement ===== -->
+            <aside class="col-detail" aria-label="Détail de l'équipement survolé">
+                <div class="detail" id="detail" aria-live="polite">
+                    <span class="kicker" id="d-kicker">RACK-01 · vue d'ensemble</span>
+                    <h2 id="d-title">Survolez un équipement.</h2>
+                    <p id="d-text">Le panneau de brassage en haut de la baie mène aux pages ; chaque serveur 2U est un projet documenté. Tout est aussi accessible depuis le menu.</p>
+                    <dl class="callout" id="d-callout">
+                        <dt>Projets</dt><dd>7 serveurs · SRV-01 → SRV-07</dd>
+                        <dt>Compétences</dt><dd>RT-01 · référentiel bloc 1</dd>
+                        <dt>Épreuve E5</dt><dd>NAS-01 · tableau de synthèse</dd>
+                    </dl>
+                    <ul class="tags" id="d-tags"></ul>
+                    <a class="btn btn-primary" id="d-link" href="projects.html">Voir tous les projets →</a>
+                </div>
+                <div class="legend">
+                    <span><span class="led" aria-hidden="true"></span>en service</span>
+                    <span><span class="led warn" aria-hidden="true"></span>activité / en cours</span>
+                    <span><span class="led info" aria-hidden="true"></span>archives</span>
+                </div>
+            </aside>
+        </div>
+
+        <!-- ===== Supervision ===== -->
+        <section class="mon-strip" aria-label="Supervision de la baie">
+            <div>Uptime alternance<b><span class="led" aria-hidden="true"></span><span id="m-uptime">455 j</span></b><small>depuis le 18/08/2025</small></div>
+            <div>Projets en service<b>7</b><small>6 validés · 1 en cours</small></div>
+            <div>Compétences B1<b>6 / 6</b><div class="gauge"><i style="width:100%"></i></div></div>
+            <div>Veille<b id="m-veille">—</b><small id="m-veille-sub">8 sources · MAJ toutes les 6 h</small></div>
+            <div>Température baie<b>21 °C</b><small>valeur fictive</small></div>
+        </section>
+
+        <!-- ===== Plan du site (accès classique, sans animation) ===== -->
+        <nav class="section" id="plan" aria-label="Plan du site" style="padding-bottom:0">
+            <p class="label"><b>Plan</b> Accès direct</p>
+            <ul class="tags" style="margin-top:14px">
+                <li><a class="tag" href="projects.html">Projets</a></li>
+                <li><a class="tag" href="competences.html">Compétences</a></li>
+                <li><a class="tag" href="e5.html">Tableau E5</a></li>
+                <li><a class="tag" href="veille.html">Veille</a></li>
+                <li><a class="tag" href="about.html">Parcours &amp; CV</a></li>
+                <li><a class="tag" href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <button class="copy-mail" data-copy-email>ahmedfaouzi55@gmail.com <span class="copy-hint">Cliquer pour copier</span></button>
+            <ul class="footer-links">
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="assets/docs/CV-Ahmed-Faouzi-BTS-SIO-SISR.pdf" target="_blank" rel="noopener">CV</a></li>
+                <li><a href="e5.html">Tableau E5</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/projects.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/rack.js"></script>
+<script src="assets/js/console.js"></script>
+</body>
+</html>

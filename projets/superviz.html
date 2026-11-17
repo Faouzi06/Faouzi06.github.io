@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SUPERVIZ — Supervision et incidents M2L · Ahmed Faouzi</title>
+    <meta name="description" content="AP-2 SUPERVIZ : supervision SNMPv3 sous Zabbix, Syslog, audit Active Directory en PowerShell et ticketing GLPI pour la Maison des Ligues.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body data-base="../">
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="../index.html" class="brand" aria-label="Accueil"><span class="brand-mark">AF</span><span>Ahmed Faouzi</span></a>
+        <nav aria-label="Navigation principale">
+            <ul class="nav-links">
+                <li><a href="../projects.html" aria-current="page">Projets</a></li>
+                <li><a href="../competences.html">Compétences</a></li>
+                <li><a href="../e5.html">E5</a></li>
+                <li><a href="../veille.html">Veille</a></li>
+                <li><a href="../about.html">Parcours</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-tools">
+            <button class="kbd-btn" data-palette aria-label="Ouvrir la palette de commandes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span class="kbd-label">Rechercher</span><kbd data-kbd-mod>Ctrl K</kbd>
+            </button>
+            <button class="icon-btn" data-theme-toggle aria-label="Changer de thème">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+            </button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="case-head">
+        <div class="wrap">
+            <p class="crumbs"><a href="../projects.html">Projets</a><span>/</span><span>Supervision</span><span>/</span><span>AP-2 · M2L</span></p>
+            <h1><span class="idx">02</span>SUPERVIZ</h1>
+            <p class="lead">Passer d'une gestion réseau réactive à une supervision proactive : collecte SNMPv3 chiffrée, centralisation des journaux, scripts d'automatisation et remontée des incidents dans GLPI.</p>
+            <dl class="case-meta">
+                <div><dt>Cadre</dt><dd>Atelier de professionnalisation AP-2</dd></div>
+                <div><dt>Équipe</dt><dd>OSTIA, 4 personnes</dd></div>
+                <div><dt>Mon rôle</dt><dd>Script PowerShell d'audit AD, intégration GLPI</dd></div>
+                <div><dt>Période</dt><dd>1re année · soutenance juin 2026</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <div class="wrap case">
+        <ul class="toc" aria-label="Sommaire">
+            <li><a href="#contexte"><span>01</span>Contexte</a></li>
+            <li><a href="#environnement"><span>02</span>Architecture</a></li>
+            <li><a href="#realisation"><span>03</span>Réalisation</a></li>
+            <li><a href="#difficultes"><span>04</span>Difficultés</a></li>
+            <li><a href="#resultat"><span>05</span>Résultat</a></li>
+            <li><a href="#competences"><span>06</span>Compétences</a></li>
+            <li><a href="#documents"><span>07</span>Documents</a></li>
+        </ul>
+
+        <article class="case-body">
+            <section class="block" id="contexte">
+                <h2><span class="n">01</span>Contexte et objectifs</h2>
+                <p>À la M2L, les pannes étaient découvertes par les utilisateurs, et les incidents n'étaient pas tracés. Après la segmentation du réseau (<a class="accent" href="vlanne.html">VLANNE</a>), le second volet de l'AP-2 visait à :</p>
+                <ul>
+                    <li>surveiller l'état des équipements actifs (CPU, ports, bande passante) ;</li>
+                    <li>centraliser les journaux pour détecter pannes et tentatives d'intrusion ;</li>
+                    <li>traiter automatiquement les incidents de niveau 1 et les tracer dans un outil de ticketing.</li>
+                </ul>
+            </section>
+
+            <section class="block" id="environnement">
+                <h2><span class="n">02</span>Architecture et environnement</h2>
+                <p>Tous les outils sont hébergés dans le <strong>VLAN 10 Administration</strong> (172.16.10.0/24), protégé par les ACL de VLANNE.</p>
+
+                <div class="diagram" aria-label="Schéma interactif de l'architecture SUPERVIZ">
+                    <div class="dg-head"><span>SCHÉMA INTERACTIF · ARCHITECTURE DE SUPERVISION</span><span>survol ou Tab = détail · ★ = ma partie</span></div>
+                    <div class="dg-body">
+                        <svg viewBox="0 0 660 390" role="group" aria-label="Architecture : outils dans le VLAN 10, équipements supervisés en dessous">
+                            <g font-family="JetBrains Mono, monospace" font-size="11" fill="#E6EDF3">
+                                <rect x="10" y="70" width="640" height="186" fill="rgba(88,166,255,.05)" stroke="#58A6FF" stroke-dasharray="5 4"/>
+                                <text x="22" y="88" fill="#58A6FF" font-size="10">VLAN 10 · Administration · 172.16.10.0/24</text>
+                                <text x="22" y="292" fill="#7D8B9C" font-size="10">Infrastructure supervisée</text>
+
+                                <line class="dg-link" data-a="switch" data-b="zabbix" x1="115" y1="304" x2="115" y2="152" stroke="#58A6FF" stroke-width="2.5"/>
+                                <line class="dg-link" data-a="switch" data-b="syslog" x1="190" y1="304" x2="300" y2="152" stroke="#A7B3C2" stroke-width="1.5" stroke-dasharray="5 4"/>
+                                <line class="dg-link" data-a="winsrv" data-b="ps" x1="330" y1="304" x2="250" y2="237" stroke="#34475F" stroke-width="1.5"/>
+                                <line class="dg-link" data-a="ps" data-b="zabbix" x1="170" y1="190" x2="125" y2="152" stroke="#58A6FF" stroke-width="1.5" stroke-dasharray="4 3"/>
+                                <path class="dg-link" data-a="ps" data-b="glpi" d="M320,205 Q440,160 520,152" fill="none" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="4 3"/>
+                                <line class="dg-link" data-a="linux" data-b="bash" x1="545" y1="304" x2="470" y2="237" stroke="#34475F" stroke-width="1.5"/>
+                                <line class="dg-link" data-a="bash" data-b="glpi" x1="480" y1="187" x2="560" y2="152" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="4 3"/>
+                                <line class="dg-link" data-a="users" data-b="glpi" x1="575" y1="52" x2="575" y2="100" stroke="#7D8B9C" stroke-width="1.5"/>
+
+                                <g class="dg-node" data-id="users"><rect class="box" x="490" y="12" width="150" height="40" fill="#111821" stroke="#7D8B9C"/><text x="565" y="29" text-anchor="middle" font-weight="700">Utilisateurs</text><text x="565" y="44" text-anchor="middle" font-size="9" fill="#7D8B9C">ligues M2L</text></g>
+                                <g class="dg-node" data-id="zabbix"><rect class="box" x="30" y="100" width="170" height="52" fill="#10233D" stroke="#58A6FF"/><text x="115" y="122" text-anchor="middle" font-weight="700">Zabbix 6.4</text><text x="115" y="138" text-anchor="middle" font-size="9" fill="#7D8B9C">supervision · SNMPv3</text></g>
+                                <g class="dg-node" data-id="syslog"><rect class="box" x="245" y="100" width="170" height="52" fill="#2A2110" stroke="#D29922"/><text x="330" y="122" text-anchor="middle" font-weight="700">Serveur Syslog</text><text x="330" y="138" text-anchor="middle" font-size="9" fill="#D29922">172.16.10.10</text></g>
+                                <g class="dg-node" data-id="glpi"><rect class="box" x="460" y="100" width="170" height="52" fill="#0F2620" stroke="#3FB950"/><text x="545" y="122" text-anchor="middle" font-weight="700">GLPI 10.0 ★</text><text x="545" y="138" text-anchor="middle" font-size="9" fill="#3FB950">ticketing · API REST</text></g>
+                                <g class="dg-node" data-id="ps"><rect class="box" x="150" y="187" width="170" height="50" fill="#1A1630" stroke="#8B7CF6"/><text x="235" y="208" text-anchor="middle" font-weight="700">Script PowerShell ★</text><text x="235" y="224" text-anchor="middle" font-size="9" fill="#A7B3C2">audit réplication AD</text></g>
+                                <g class="dg-node" data-id="bash"><rect class="box" x="370" y="187" width="170" height="50" fill="#0F2620" stroke="#3FB950"/><text x="455" y="208" text-anchor="middle" font-weight="700">Script Bash</text><text x="455" y="224" text-anchor="middle" font-size="9" fill="#A7B3C2">Shadow IT · cron</text></g>
+                                <g class="dg-node" data-id="switch"><rect class="box" x="30" y="304" width="170" height="50" fill="#111821" stroke="#7D8B9C"/><text x="115" y="325" text-anchor="middle" font-weight="700">Switch / Routeur</text><text x="115" y="341" text-anchor="middle" font-size="9" fill="#7D8B9C">SNMPv3 · Syslog</text></g>
+                                <g class="dg-node" data-id="winsrv"><rect class="box" x="245" y="304" width="170" height="50" fill="#1A1630" stroke="#8B7CF6"/><text x="330" y="325" text-anchor="middle" font-weight="700">Windows Server</text><text x="330" y="341" text-anchor="middle" font-size="9" fill="#A7B3C2">Active Directory 2025</text></g>
+                                <g class="dg-node" data-id="linux"><rect class="box" x="460" y="304" width="170" height="50" fill="#0F2620" stroke="#3FB950"/><text x="545" y="325" text-anchor="middle" font-weight="700">Machine Linux</text><text x="545" y="341" text-anchor="middle" font-size="9" fill="#A7B3C2">administration · cron</text></g>
+                            </g>
+                        </svg>
+                        <div class="dg-info" aria-live="polite"></div>
+                    </div>
+                    <div class="dg-legend"><span><i style="background:#58A6FF"></i>SNMPv3 (chiffré)</span><span><i style="background:#A7B3C2"></i>Syslog / journaux</span><span><i style="background:#3FB950"></i>alerte → ticket GLPI (API REST)</span><span>★ partie que j'ai réalisée</span></div>
+                    <script type="application/json" class="dg-data">{
+                        "_default": { "k": "Architecture", "title": "Supervision proactive", "text": "Trois piliers dans le VLAN Administration : Zabbix surveille, Syslog centralise, GLPI trace. Les scripts automatisent le niveau 1.", "facts": [["Collecte", "SNMPv3 authPriv"], ["Journaux", "Syslog warnings"], ["Tickets", "API REST GLPI"]] },
+                        "users": { "k": "Utilisateurs", "title": "Membres des ligues", "text": "Déclarent leurs pannes (imprimante, mot de passe, réseau) dans le portail unifié de GLPI." },
+                        "zabbix": { "k": "Pilier 1", "title": "Zabbix", "text": "Interroge les équipements réseau en SNMPv3 : charge CPU, état des ports, bande passante. Génère des alertes en cas d'anomalie.", "facts": [["Version", "6.4"], ["Protocole", "SNMPv3 · SHA + AES-128"]] },
+                        "syslog": { "k": "Pilier 2", "title": "Serveur Syslog", "text": "Reçoit les journaux d'événements de tous les équipements réseau pour détecter pannes matérielles et tentatives d'intrusion.", "facts": [["Hôte", "Serveur Intra"], ["Adresse", "172.16.10.10"], ["Niveau", "logging trap warnings"]] },
+                        "glpi": { "k": "Pilier 3 · ma partie", "title": "GLPI · ticketing et inventaire", "text": "Portail unique de déclaration, inventaire des actifs liés aux tickets, profils (admin, technicien, post-only), entités par ligue, comptes par défaut désactivés.", "facts": [["Version", "10.0"], ["Entrées", "utilisateurs + scripts (API REST)"]] },
+                        "ps": { "k": "Automatisation · ma partie", "title": "Audit de la réplication AD", "text": "Vérifie la réplication Active Directory et écrit une alerte critique (ID 1001) dans le journal Application avant qu'un utilisateur ne soit bloqué.", "facts": [["Cmdlet", "Get-ADReplicationPartnerMetadata"], ["Alerte", "Write-EventLog · ID 1001"]] },
+                        "bash": { "k": "Automatisation", "title": "Détection du Shadow IT", "text": "Balaye le VLAN des ligues toutes les heures et signale tout hôte absent de la liste des équipements connus.", "facts": [["Plage", "172.16.20.0/24"], ["Cron", "0 * * * *"], ["Journal", "/var/log/m2l_scan.log"]] },
+                        "switch": { "k": "Supervisé", "title": "Switch / Routeur", "text": "Équipements Cisco configurés en SNMPv3 (groupe AdminGroup, mode priv) et en envoi Syslog vers le Serveur Intra.", "facts": [["SNMP", "v3 authPriv"], ["Syslog", "→ 172.16.10.10"]] },
+                        "winsrv": { "k": "Supervisé", "title": "Windows Server 2025", "text": "Contrôleur de domaine Active Directory, audité par le script PowerShell." },
+                        "linux": { "k": "Supervisé", "title": "Machine Linux d'administration", "text": "Exécute les scripts Bash planifiés par cron." }
+                    }</script>
+                </div>
+
+                <figure class="fig">
+                    <a href="../assets/img/superviz/architecture.png" target="_blank" rel="noopener"><img src="../assets/img/superviz/architecture.png" alt="Architecture SUPERVIZ : Zabbix, serveur Syslog et GLPI dans le VLAN 10, alimentés par SNMPv3, Syslog et des scripts PowerShell et Bash" loading="lazy"></a>
+                    <figcaption><b>FIG. 1</b>Flux SNMPv3, Syslog et alertes vers GLPI via l'API REST.</figcaption>
+                </figure>
+                <div class="table-scroll"><table class="data-table">
+                    <thead><tr><th>Brique</th><th>Rôle</th></tr></thead>
+                    <tbody>
+                        <tr><td>Zabbix 6.4</td><td>Interroge les équipements en SNMPv3 et génère des alertes en cas d'anomalie</td></tr>
+                        <tr><td>Serveur Syslog</td><td>Serveur Intra 172.16.10.10 : reçoit les journaux de tous les équipements réseau</td></tr>
+                        <tr><td>GLPI 10.0</td><td>Portail unique de déclaration des incidents, inventaire, historique des interventions</td></tr>
+                        <tr><td>Scripts</td><td>PowerShell (Windows Server 2025) et Bash/cron (Linux) pour l'automatisation de niveau 1</td></tr>
+                    </tbody>
+                </table></div>
+            </section>
+
+            <section class="block" id="realisation">
+                <h2><span class="n">03</span>Étapes de réalisation</h2>
+                <ol class="steps">
+                    <li><div>
+                        <strong>Supervision SNMPv3 et envoi Syslog</strong>
+                        <p>SNMPv2c transmet la communauté <strong>en clair</strong>. SNMPv3 en niveau <code>authPriv</code> ajoute l'authentification (SHA) et le chiffrement (AES-128). Zabbix utilise ces mêmes identifiants pour interroger les équipements.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Cisco IOS</b> · SNMPv3 + Syslog</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="ios">! Groupe SNMPv3 avec authentification + chiffrement
+Switch(config)# snmp-server group AdminGroup v3 priv
+! Utilisateur superviseur (secrets remplacés pour la publication)
+Switch(config)# snmp-server user SuperAdmin AdminGroup v3 auth sha &lt;MDP_AUTH&gt; priv aes 128 &lt;MDP_PRIV&gt;
+
+! Envoi des journaux vers le Serveur Intra
+Router(config)# logging 172.16.10.10
+Router(config)# logging trap warnings</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Audit de la réplication Active Directory (PowerShell), ma partie</strong>
+                        <p>Les problèmes d'authentification représentent une grande partie des tickets de niveau 1. Le script vérifie l'état de la réplication AD et écrit une <strong>alerte critique</strong> dans le journal Windows en cas d'échec, avant même qu'un utilisateur ne s'en plaigne.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>PowerShell</b> · audit_replication_ad.ps1</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="powershell"># Récupération du statut de réplication AD sur le contrôleur local
+$ReplicationStatus = Get-ADReplicationPartnerMetadata -Target "$env:computername"
+
+# Filtrage des réplications en échec (code résultat différent de 0)
+$FailedReplications = $ReplicationStatus | Where-Object { $_.LastReplicationResult -ne 0 }
+
+if ($FailedReplications) {
+    # Alerte visible dans l'Observateur d'événements, reprise par la supervision
+    Write-EventLog -LogName "Application" -Source "M2L-Supervision" `
+        -EventId 1001 -EntryType Error `
+        -Message "Alerte : Echec de la replication Active Directory detecte."
+} else {
+    Write-Output "Replication AD saine - aucune action requise."
+}</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Détection du Shadow IT (Bash + cron)</strong>
+                        <p>Toutes les heures, un script balaie le VLAN des ligues et compare chaque hôte qui répond à la liste des équipements connus.</p>
+                        <div class="code">
+                            <div class="code-head"><span><b>Bash</b> · scan_ligues.sh (extrait)</span><button class="code-copy" type="button">Copier</button></div>
+<pre><code data-lang="bash"># Cron : 0 * * * * root /opt/scripts/scan_ligues.sh
+SUBNET="172.16.20"
+KNOWN_HOSTS="/opt/scripts/known_hosts.txt"
+LOG="/var/log/m2l_scan.log"
+
+for ip in {1..254}; do
+    ping -c 1 -W 1 "$SUBNET.$ip" > /dev/null 2>&1
+    if [ $? -eq 0 ] && ! grep -q "$SUBNET.$ip" "$KNOWN_HOSTS"; then
+        echo "[ALERTE] Equipement non autorise detecte : $SUBNET.$ip" | tee -a "$LOG"
+    fi
+done</code></pre>
+                        </div>
+                    </div></li>
+                    <li><div>
+                        <strong>Intégration GLPI, ma partie</strong>
+                        <p>GLPI ferme la boucle entre la supervision technique et les utilisateurs :</p>
+                        <ul>
+                            <li><strong>Inventaire :</strong> centralisation des actifs (PC, switchs, routeur), liés aux tickets d'incident ;</li>
+                            <li><strong>Profils :</strong> administrateur, technicien, et post-only pour les membres des ligues ;</li>
+                            <li><strong>Entités :</strong> organisation hiérarchique par ligue sportive ;</li>
+                            <li><strong>Sécurité :</strong> désactivation des comptes par défaut et changement des mots de passe ;</li>
+                            <li><strong>Automatisation :</strong> les scripts PowerShell et Bash peuvent appeler l'API REST de GLPI pour ouvrir un ticket dès qu'une anomalie est détectée.</li>
+                        </ul>
+                    </div></li>
+                </ol>
+            </section>
+
+            <section class="block" id="difficultes">
+                <h2><span class="n">04</span>Difficultés et solutions</h2>
+                <div class="issue">
+                    <div><span class="k">Difficulté</span><p>SNMPv2c, souvent configuré par défaut, expose la communauté en clair sur le réseau : n'importe quel poste peut la capturer.</p></div>
+                    <div><span class="k">Solution</span><p>Passage à SNMPv3 <code>authPriv</code> : SHA pour l'authentification, AES-128 pour la confidentialité.</p></div>
+                </div>
+                <div class="issue">
+                    <div><span class="k">Difficulté</span><p>Un incident AD n'était visible qu'au moment où un utilisateur ne pouvait plus se connecter.</p></div>
+                    <div><span class="k">Solution</span><p>Un audit PowerShell planifié écrit un événement d'erreur (ID 1001), repris par la supervision et transformable en ticket.</p></div>
+                </div>
+            </section>
+
+            <section class="block" id="resultat">
+                <h2><span class="n">05</span>Résultat</h2>
+                <p>Associé à VLANNE, SUPERVIZ fournit une infrastructure <strong>segmentée, surveillée et réactive</strong>. Le cycle de vie de l'incident est automatisé : détection (scan ou supervision), authentification à l'API GLPI, création du ticket, puis notification du technicien.</p>
+                <p><strong>Perspectives</strong> présentées à la soutenance : VPN client-to-site sécurisé, IDS/IPS (Suricata), supervision cloud hybride.</p>
+            </section>
+
+            <section class="block" id="competences">
+                <h2><span class="n">06</span>Compétences du référentiel mobilisées</h2>
+                <ul class="skills-ref">
+                    <li><span class="code-ref">B1.1</span><div><strong>Gérer le patrimoine informatique</strong><span>Vérifier les conditions de la continuité d'un service · Mettre en place les niveaux d'habilitation (profils GLPI)</span></div></li>
+                    <li><span class="code-ref">B1.2</span><div><strong>Répondre aux incidents et aux demandes</strong><span>Collecter, suivre et orienter des demandes · Traiter des demandes sur les services réseau et système</span></div></li>
+                    <li><span class="code-ref">B1.4</span><div><strong>Travailler en mode projet</strong><span>Projet en équipe de 4, livrables : devis, dossier technique, soutenance</span></div></li>
+                    <li><span class="code-ref">B1.5</span><div><strong>Mettre à disposition un service informatique</strong><span>Déployer un service de supervision et de ticketing</span></div></li>
+                </ul>
+            </section>
+
+            <section class="block" id="documents">
+                <h2><span class="n">07</span>Documents et scripts</h2>
+                <ul class="downloads">
+                    <li><a href="../assets/code/audit_replication_ad.ps1" download>Script PowerShell : audit de la réplication AD <small>.ps1</small></a></li>
+                    <li><a href="../assets/code/scan_ligues.sh" download>Script Bash : détection du Shadow IT <small>.sh</small></a></li>
+                    <li><a href="../assets/docs/AP2-VLANNE-SUPERVIZ-dossier-technique.pdf" target="_blank" rel="noopener">Dossier technique AP-2 (VLANNE + SUPERVIZ) <small>PDF · 19 Ko</small></a></li>
+                </ul>
+            </section>
+
+            <nav class="case-nav" aria-label="Projets voisins">
+                <a href="vlanne.html"><small>← Précédent</small><strong>VLANNE</strong></a>
+                <a href="glpi-novaservices.html"><small>Suivant →</small><strong>GLPI NovaServices</strong></a>
+            </nav>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <button class="copy-mail" data-copy-email>ahmedfaouzi55@gmail.com <span class="copy-hint">Cliquer pour copier</span></button>
+            <ul class="footer-links">
+                <li><a href="../projects.html">Tous les projets</a></li>
+                <li><a href="../e5.html">Tableau E5</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> Ahmed Faouzi · BTS SIO SISR</span>
+            <span>Astuce : <kbd data-kbd-mod>Ctrl K</kbd> pour naviguer</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/projects.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/case.js"></script>
+</body>
+</html>
