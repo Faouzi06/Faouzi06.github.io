@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T15:23:35Z",
+  "updated": "2026-11-20T23:58:13Z",
   "sources": [
     {
       "source": "CERT-FR",
@@ -44,6 +44,117 @@
   ],
   "items": [
     {
+      "title": "Bell Canada says 'agentic' hacker stole enterprise customer data",
+      "link": "https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/",
+      "date": "2026-11-20T18:51:43Z",
+      "source": "BleepingComputer",
+      "lang": "en",
+      "summary": "Bell Canada has confirmed that an \"agentic\" threat actor breached its systems on November 17, 2026, and stole enterprise customer data, including information from a system used to order and provision telecommunications circuits. [...]",
+      "themes": [
+        "donnees"
+      ],
+      "image": "https://www.bleepstatic.com/content/hl-images/2026/11/20/bell-canada.jpg"
+    },
+    {
+      "title": "WhatsApp Patches 3 Security Flaws, Including Android Bug Suspected of Use in Scams",
+      "link": "https://thehackernews.com/2026/11/whatsapp-patches-3-security-flaws.html",
+      "date": "2026-11-20T17:57:20Z",
+      "source": "The Hacker News",
+      "lang": "en",
+      "summary": "Meta-owned WhatsApp has addressed security vulnerabilities, including one impacting its Android app that it suspects may have been exploited in connection with scam messages. The vulnerability, tracked as CVE-2026-23871, has been described…",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUSbYUJJkBlZsaH90SXIaxYAv5iJN7ZEus7Q24A_Z9fDNNlnOjFnNZ3SnA6er-iuMgQnE6k73nwVwAEPPk1AjRT12N9o8cJft3_dPqMZKeJbpq6QIcGbN1z1UbE_Q3fXTyp1c0XmqynQu2lJPeIYoraqXFcgM-wQH4b1rIBrOKF221CIKLldJIZVJ4g7cr/s1600/whatsapp.jpg"
+    },
+    {
+      "title": "Hackers use autonomous AI tool Cairn to find zero-day, take over server",
+      "link": "https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/",
+      "date": "2026-11-20T17:30:00Z",
+      "source": "BleepingComputer",
+      "lang": "en",
+      "summary": "Threat actors used the open-source AI penetration-testing framework Cairn to find a previously unknown vulnerability in a medical imaging application. [...]",
+      "themes": [
+        "vulnerabilites",
+        "systemes",
+        "ia"
+      ],
+      "image": "https://www.bleepstatic.com/content/hl-images/2022/05/12/evil-hacker-ai.jpg"
+    },
+    {
+      "title": "Bazuka Android Malware Uses Fake Screen Overlays to Hide Credential Theft and Device Control",
+      "link": "https://thehackernews.com/2026/11/bazuka-android-malware-uses-fake-screen.html",
+      "date": "2026-11-20T16:58:16Z",
+      "source": "The Hacker News",
+      "lang": "en",
+      "summary": "Cybersecurity researchers have disclosed details of a previously unknown Android malware framework called Bazuka that offers large language model (LLM) integration for victim management and control at scale. Dutch mobile security company Th…",
+      "themes": [
+        "ia"
+      ],
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMs4vBdivbF3Y-4yd3PWqjSTuG2PPDvCemM211pzVl2Jhkus9d14_2MzRgdrlNhRxaHa_2rlIN34kUGHAlV_Y2dMnfmYGlUEzUcab0c_s3N8Zoe8P3rcJ-RJmo2luVci9bVqmwtFhpL4rfR2Uo-ZwvqfqFMwRb_3WwoOvFIaunPd7WMOJ4yW9rjbHEKDwf/s1600/android-malware.jpg"
+    },
+    {
+      "title": "Actualités cybersécurité de la semaine du 16 novembre 2026",
+      "link": "https://www.zataz.com/actualites-cybersecurite-de-la-semaine-du-16-novembre-2026/",
+      "date": "2026-11-20T16:09:30Z",
+      "source": "ZATAZ",
+      "lang": "fr",
+      "summary": "Retrouvez les actualités cybersécurité ZATAZ de la semaine du 16 novembre 2026 : fuite de données chez Maileva, amende de la CNIL et faux coursiers bancaires.",
+      "themes": [
+        "donnees"
+      ],
+      "image": "https://www.zataz.com/wp-content/uploads/recap-news-zataz-1.jpg"
+    },
+    {
+      "title": "Vendor data breach exposes Chase, Visa, Mastercard customer info",
+      "link": "https://www.bleepingcomputer.com/news/security/vendor-data-breach-exposes-chase-visa-mastercard-customer-info/",
+      "date": "2026-11-20T15:58:06Z",
+      "source": "BleepingComputer",
+      "lang": "en",
+      "summary": "J.P. Morgan Chase warned it suffered a data breach after a cyberattack at a third-party service provider exposed customers' personal information and marketing data. [...]",
+      "themes": [
+        "donnees"
+      ],
+      "image": "https://www.bleepstatic.com/content/hl-images/2022/10/28/hand-sifting-data.jpg"
+    },
+    {
+      "title": "NON, c’est NON. Sauf quand il réclame une rançon.",
+      "link": "https://www.zataz.com/non-cest-non-sauf-quand-il-reclame-une-rancon/",
+      "date": "2026-11-20T15:53:02Z",
+      "source": "ZATAZ",
+      "lang": "fr",
+      "summary": "n0n revendique 179 fuites de données. Le maritime arrive en tête et un groupe pharmaceutique français est cité.",
+      "themes": [
+        "rancongiciels",
+        "donnees"
+      ],
+      "image": "https://www.zataz.com/wp-content/uploads/n0n_n0n.jpg"
+    },
+    {
+      "title": "Windows 11 KB5132057 : la nouvelle fonction de recherche exécute des actions !",
+      "link": "https://www.it-connect.fr/windows-11-kb5132057-nouvelle-recherche-connexion-web/",
+      "date": "2026-11-20T15:34:06Z",
+      "source": "IT-Connect",
+      "lang": "fr",
+      "summary": "KB5132057 : nouvelle recherche Windows 11, boîte Exécuter modernisée et connexion web sur les postes hybrides. Voici l'essentiel à savoir sur cette mise à jour. Le post Windows 11 KB5132057 : la nouvelle fonction de recherche exécute des ac…",
+      "themes": [
+        "systemes"
+      ],
+      "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/windows-11-kb5132057.png"
+    },
+    {
+      "title": "Intune : les fenêtres de maintenance pour Windows Update arrivent enfin !",
+      "link": "https://www.it-connect.fr/intune-fenetres-de-maintenance-windows-update/",
+      "date": "2026-11-20T15:30:00Z",
+      "source": "IT-Connect",
+      "lang": "fr",
+      "summary": "Intune prend enfin en charge les fenêtres de maintenance pour Windows Update, un an après leur annonce à Ignite 2025. Voici ce qu'il faut savoir. Le post Intune : les fenêtres de maintenance pour Windows Update arrivent enfin ! a été publié…",
+      "themes": [
+        "systemes"
+      ],
+      "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/configurer-fenetre-de-maintenance-windows-dans-intune.jpg"
+    },
+    {
       "title": "Still tracking company passwords in spreadsheets? You’re flying blind.",
       "link": "https://www.bleepingcomputer.com/news/security/still-tracking-company-passwords-in-spreadsheets-youre-flying-blind/",
       "date": "2026-11-20T15:00:10Z",
@@ -74,6 +185,18 @@
         "reseau"
       ],
       "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/tuto-nmap-top-5-commandes-a-connaitre.jpg"
+    },
+    {
+      "title": "DBaaS : Microsoft repeint HorizonDB aux couleurs de l’IA agentique",
+      "link": "https://www.lemagit.fr/actualites/366655115/DBaaS-Microsoft-repeint-HorizonDB-aux-couleurs-de-lIA-agentique",
+      "date": "2026-11-20T13:57:00Z",
+      "source": "LeMagIT",
+      "lang": "fr",
+      "summary": "Microsoft profite de la disponibilité d’HorizonDB pour adapter sa distribution managée de PostgreSQL à l’IA agentique, et plus particulièrement aux usages analytiques. Selon les analystes, la DBaaS pensée pour accueillir les systèmes des cl…",
+      "themes": [
+        "ia"
+      ],
+      "image": "https://www.lemagit.fr/visuals/German/article/Cloud-painting-adobe.jpg"
     },
     {
       "title": "NoName revendique un accès aux caméras d’une salle de jeux",
@@ -146,6 +269,18 @@
       "image": "https://www.bleepstatic.com/content/hl-images/2026/11/12/Windows-11-blue.jpg"
     },
     {
+      "title": "Ransomware : le FBI piège un arnaqueur qui prétendait pouvoir déchiffrer",
+      "link": "https://www.lemagit.fr/actualites/366655114/Ransomware-le-FBI-piege-un-arnaqueur-qui-pretendait-pouvoir-dechiffrer",
+      "date": "2026-11-20T12:13:00Z",
+      "source": "LeMagIT",
+      "lang": "fr",
+      "summary": "Le piège s’est refermé avec l’intervention de deux agents, l’un se faisant passer pour une victime de rançongiciel et l’autre… pour le cybercriminel ayant conduit la prétendue attaque.",
+      "themes": [
+        "rancongiciels"
+      ],
+      "image": "https://www.lemagit.fr/visuals/ComputerWeekly/Hero Images/cryptocurrency-bitcoin-cat-sonsedskaya-adobe.jpg"
+    },
+    {
       "title": "Hell’s r00ts 2.0 : les vieux hackers n’ont pas dit leur dernier mot",
       "link": "https://www.zataz.com/hells-r00ts-2-0-les-vieux-hackers-nont-pas-dit-leur-dernier-mot/",
       "date": "2026-11-20T12:05:59Z",
@@ -154,6 +289,18 @@
       "summary": "Avec Hell’s r00ts 2.0, Antoine Champagne ressuscite les pionniers du hacking dans un thriller cyber passionnant.",
       "themes": [],
       "image": "https://www.zataz.com/wp-content/uploads/Hell_root.jpg"
+    },
+    {
+      "title": "Puces IA : AMD consolide son offre avec les puces de Taalas",
+      "link": "https://www.lemagit.fr/actualites/366655133/Puces-IA-AMD-consolide-son-offre-avec-les-puces-de-Taalas",
+      "date": "2026-11-20T12:01:00Z",
+      "source": "LeMagIT",
+      "lang": "fr",
+      "summary": "Le numéro 2 des GPU rachète la startup canadienne qui a mis au point une puce d’accélération HC1 pour l’inférence. Si ce rapprochement rappelle celui de Nvidia avec Groq, on ignore encore comment AMD entend conjuguer cette technologie avec…",
+      "themes": [
+        "ia"
+      ],
+      "image": "https://www.lemagit.fr/visuals/LeMagIT/hero_article/hero-AMD-Taalas.jpg"
     },
     {
       "title": "The Path to AI Autonomy in the SOC",
@@ -166,6 +313,18 @@
         "ia"
       ],
       "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGn0ym0Vqfakc2h3h2W6AT6gf5qd6RPkfrgV-Z2UgwDErad91v-nJoIu3OYwEC3IvLQ6rVGm6FIQypMcoTahAgL5_62ipKE1aQsZvqGsdJzu_4ZGaiFlCYKEpg1N5z3FRSk7O5n4uRlfDuNz7i99Ls9z1Ysee3iV4OCMTxG2rF8YLgCtfTOL2KA-hSQXY/s1600/INT.png"
+    },
+    {
+      "title": "Sanofi nettoie son SIRH pour y lâcher ses agents IA",
+      "link": "https://www.lemagit.fr/etude/Sanofi-nettoie-son-SIRH-avant-dy-lacher-ses-agents-IA",
+      "date": "2026-11-20T11:17:00Z",
+      "source": "LeMagIT",
+      "lang": "fr",
+      "summary": "Du recrutement au coaching, le groupe pharmaceutique déploie des agents IA dans les RH. Des projets qui mettent au jour plusieurs bonnes pratiques, comme la coordination avec l’IT.",
+      "themes": [
+        "ia"
+      ],
+      "image": "https://www.lemagit.fr/rms/onlineimages/pharma_g657051696.jpg"
     },
     {
       "title": "FastUnlock : une faille zero-day Windows 11 contourne l’écran de verrouillage et menace BitLocker",
@@ -191,6 +350,18 @@
         "vulnerabilites"
       ],
       "image": "https://www.bleepstatic.com/content/hl-images/2026/10/19/F5-headpic.jpg"
+    },
+    {
+      "title": "OVHai Workspace : la suite collaborative nourrit la feuille de route IA d’OVHcloud",
+      "link": "https://www.lemagit.fr/actualites/366655152/OVHai-Workspace-la-suite-collaborative-nourrit-la-feuille-de-route-IA-dOVHcloud",
+      "date": "2026-11-20T10:54:00Z",
+      "source": "LeMagIT",
+      "lang": "fr",
+      "summary": "La suite collaborative infusée à l’IA du fournisseur français débarque en accès anticipé. Elle doit encore faire ses preuves. En attendant, les fonctionnalités d’IA agentique conçues pour l’occasion sont converties en services managés pour…",
+      "themes": [
+        "ia"
+      ],
+      "image": "https://www.lemagit.fr/visuals/LeMagIT/hero_article/ovhai workspace.jpg"
     },
     {
       "title": "SonicWall Warns Gen 6 Firewalls Won't Get Security Patches, Even for Critical Flaws",
@@ -462,29 +633,6 @@
       "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/phpaftershell-cve-2026-126714-php-failles-critiques.png"
     },
     {
-      "title": "Infoblox : des configurations réseau dérobées",
-      "link": "https://www.zataz.com/infoblox-des-configurations-reseau-derobees/",
-      "date": "2026-11-19T16:03:36Z",
-      "source": "ZATAZ",
-      "lang": "fr",
-      "summary": "Infoblox confirme une fuite via un prestataire compromis, exposant des configurations réseau et des données de salariés.",
-      "themes": [
-        "reseau",
-        "donnees"
-      ],
-      "image": "https://www.zataz.com/wp-content/uploads/infoblox_leak.jpg"
-    },
-    {
-      "title": "Scattered Spider : six ans de prison pour un pirate",
-      "link": "https://www.zataz.com/scattered-spider-six-ans-de-prison-pour-un-pirate/",
-      "date": "2026-11-19T15:52:51Z",
-      "source": "ZATAZ",
-      "lang": "fr",
-      "summary": "Scattered Spider : six ans de prison pour un pirate impliqué dans des attaques par SMS et des vols de cryptomonnaies.",
-      "themes": [],
-      "image": "https://www.zataz.com/wp-content/uploads/6_ans_scattered.jpg"
-    },
-    {
       "title": "PHP Fixes 7 Critical Flaws, Including Bugs That Could Allow Remote Code Execution",
       "link": "https://thehackernews.com/2026/11/php-fixes-7-critical-flaws-including.html",
       "date": "2026-11-19T15:18:07Z",
@@ -549,18 +697,6 @@
       "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4kxIzi1B-GPdS7pbaOI823BHxteL-8FbODKnAoDkr8tGhhjGYuRU9KIEAvOQ6kBZFQPCly3BIhQo6vkjxJy13zL7CxlRXsez_G_otFVaja2H5ObmzNMMilbewaweqqO5Paa0H49yaZdWB09xAIqeo7YLG0uyd05qjdbh2aLIRZd73_jwVGH26YexA3l8/s1600/drupal-flaws.jpg"
     },
     {
-      "title": "Drupal patches critical RCE flaw, warns exploits may surface quickly",
-      "link": "https://www.bleepingcomputer.com/news/security/drupal-patches-critical-rce-flaw-warns-exploits-may-surface-quickly/",
-      "date": "2026-11-19T13:08:08Z",
-      "source": "BleepingComputer",
-      "lang": "en",
-      "summary": "The Drupal Security Team has patched a critical remote code execution vulnerability that can let attackers take over vulnerable sites. [...]",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": "https://www.bleepstatic.com/content/hl-images/2026/11/19/Drupal-headpic-red.jpg"
-    },
-    {
       "title": "Everything Is a Web Application, Including Your Firewall",
       "link": "https://thehackernews.com/2026/11/everything-is-web-application-including.html",
       "date": "2026-11-19T11:52:23Z",
@@ -574,16 +710,6 @@
       "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiC0roCfV92el2-gLSGwmumyjXgCjHookzwGjft2a6UWPZA1QvyrazDNLTvlZrF1F5iagg74JxnPEXbnK60OEeJuFNo2Fc2xcNSnJCeNw9BLu_y-lsRhrpO6s1End2gdDDlRU_r4wysTiiJS4ZKPDTmWK152psFdhxRizlSJZFCjnYr6nnamRsUciEJui4/s1600/php-app.jpg"
     },
     {
-      "title": "Microsoft tests new Edge Lockdown Mode that disables GPU APIs",
-      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-tests-new-edge-lockdown-mode-that-disables-gpu-apis/",
-      "date": "2026-11-19T11:46:00Z",
-      "source": "BleepingComputer",
-      "lang": "en",
-      "summary": "Microsoft is developing a new Edge security feature to reduce the attack surface by disabling the WebGL, WebGL2, and WebGPU APIs. [...]",
-      "themes": [],
-      "image": "https://www.bleepstatic.com/content/hl-images/2026/11/19/Microsoft_Edge.jpg"
-    },
-    {
       "title": "La Commission européenne frappée par une lourde cyberattaque",
       "link": "https://www.lemagit.fr/actualites/366654993/La-Commission-Europeenne-frappee-par-une-lourde-cyberattaque",
       "date": "2026-11-19T11:30:00Z",
@@ -592,19 +718,6 @@
       "summary": "Dans le sillage de nombreuses autres organisations dans le monde entier, la Commission se serait bien involontairement confrontée aux frameworks offensifs agentiques.",
       "themes": [],
       "image": "https://www.lemagit.fr/visuals/German/article/Hero-europe-geopolitics-Waran-Photographic-AdobeStock_33341551.jpg"
-    },
-    {
-      "title": "Microsoft confirms app installation, launch issues after hotpatch",
-      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-app-installation-launch-issues-after-hotpatch/",
-      "date": "2026-11-19T10:35:05Z",
-      "source": "BleepingComputer",
-      "lang": "en",
-      "summary": "Microsoft has shared a workaround for installation and launch issues affecting Office and third-party applications after installing this month's Windows 11 hotpatch. [...]",
-      "themes": [
-        "vulnerabilites",
-        "systemes"
-      ],
-      "image": "https://www.bleepstatic.com/content/hl-images/2026/11/17/Windows-11_headpic.jpg"
     },
     {
       "title": "Victime d’une cybermalveillance ? Le réflexe 17Cyber s’affiche désormais sur les sites internet des mairies de l’Oise",
@@ -757,66 +870,6 @@
       "image": "https://www.lemagit.fr/visuals/ComputerWeekly/Hero Images/cloud-computing-13-fotolia.jpg"
     },
     {
-      "title": "Multiples vulnérabilités dans PHP (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1580/",
-      "date": "2026-11-19T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans PHP. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à distance.",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
-      "title": "Vulnérabilité dans les produits Elastic (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1578/",
-      "date": "2026-11-19T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "Une vulnérabilité a été découverte dans les produits Elastic. Elle permet à un attaquant de provoquer une exécution de code arbitraire à distance et un déni de service à distance.",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
-      "title": "Multiples vulnérabilités dans les produits Splunk (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1576/",
-      "date": "2026-11-19T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans les produits Splunk. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et une atteinte à la confident…",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
-      "title": "Multiples vulnérabilités dans Wireshark (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1575/",
-      "date": "2026-11-19T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans Wireshark. Elles permettent à un attaquant de provoquer un déni de service à distance.",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
-      "title": "Multiples vulnérabilités dans WordPress (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1574/",
-      "date": "2026-11-19T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans WordPress. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à distance.",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
       "title": "Multiples vulnérabilités dans les produits Cisco (19 novembre 2026)",
       "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1573/",
       "date": "2026-11-19T00:00:00Z",
@@ -830,12 +883,12 @@
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans ClamAV (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1572/",
+      "title": "Multiples vulnérabilités dans Wireshark (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1575/",
       "date": "2026-11-19T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans ClamAV. Certaines d'entre elles permettent à un attaquant de provoquer un déni de service à distance, une atteinte à la confidentialité des données et un contournement de la politique de…",
+      "summary": "De multiples vulnérabilités ont été découvertes dans Wireshark. Elles permettent à un attaquant de provoquer un déni de service à distance.",
       "themes": [
         "vulnerabilites"
       ],
@@ -854,25 +907,48 @@
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans Progress WS_FTP Server (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1570/",
+      "title": "Multiples vulnérabilités dans WordPress (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1574/",
       "date": "2026-11-19T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans Progress WS_FTP Server. Certaines d'entre elles permettent à un attaquant de provoquer un déni de service à distance, une atteinte à la confidentialité des données et une atteinte à l'int…",
+      "summary": "De multiples vulnérabilités ont été découvertes dans WordPress. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à distance.",
       "themes": [
-        "vulnerabilites",
-        "systemes"
+        "vulnerabilites"
       ],
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans les produits Mitel (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1569/",
+      "title": "Multiples vulnérabilités dans les produits Splunk (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1576/",
       "date": "2026-11-19T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans les produits Mitel. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confiden…",
+      "summary": "De multiples vulnérabilités ont été découvertes dans les produits Splunk. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et une atteinte à la confident…",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Vulnérabilité dans les produits Elastic (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1578/",
+      "date": "2026-11-19T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "Une vulnérabilité a été découverte dans les produits Elastic. Elle permet à un attaquant de provoquer une exécution de code arbitraire à distance et un déni de service à distance.",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Multiples vulnérabilités dans Drupal (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1579/",
+      "date": "2026-11-19T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "De multiples vulnérabilités ont été découvertes dans Drupal. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance.",
       "themes": [
         "vulnerabilites"
       ],
@@ -892,12 +968,49 @@
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans Drupal (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1579/",
+      "title": "Multiples vulnérabilités dans les produits Mitel (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1569/",
       "date": "2026-11-19T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans Drupal. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance.",
+      "summary": "De multiples vulnérabilités ont été découvertes dans les produits Mitel. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confiden…",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Multiples vulnérabilités dans PHP (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1580/",
+      "date": "2026-11-19T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "De multiples vulnérabilités ont été découvertes dans PHP. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à distance.",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Multiples vulnérabilités dans Progress WS_FTP Server (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1570/",
+      "date": "2026-11-19T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "De multiples vulnérabilités ont été découvertes dans Progress WS_FTP Server. Certaines d'entre elles permettent à un attaquant de provoquer un déni de service à distance, une atteinte à la confidentialité des données et une atteinte à l'int…",
+      "themes": [
+        "vulnerabilites",
+        "systemes"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Multiples vulnérabilités dans ClamAV (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1572/",
+      "date": "2026-11-19T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "De multiples vulnérabilités ont été découvertes dans ClamAV. Certaines d'entre elles permettent à un attaquant de provoquer un déni de service à distance, une atteinte à la confidentialité des données et un contournement de la politique de…",
       "themes": [
         "vulnerabilites"
       ],
@@ -915,56 +1028,6 @@
         "systemes"
       ],
       "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/failles-nginx2root.png"
-    },
-    {
-      "title": "10-Year-Old NGINX HTTP/2 Flaw Lets Unauthenticated Attackers Execute Code on Servers",
-      "link": "https://thehackernews.com/2026/11/10-year-old-nginx-http2-flaw-lets.html",
-      "date": "2026-11-18T18:31:17Z",
-      "source": "The Hacker News",
-      "lang": "en",
-      "summary": "A flaw in NGINX's HTTP/2 support can allow an attacker to run code on servers with HTTP/2 enabled, without needing to log in. The decade-old flaw, CVE-2026-123007, dubbed \"nginx2root,\" has been present in NGINX's open-source code since vers…",
-      "themes": [
-        "vulnerabilites",
-        "systemes"
-      ],
-      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7_qqPophooIauX16fMWm3KB24tzQ3Fd7rCuseCXfMkDPPGpIgmHqWvZjn_jffDqHwNWKu8Zf57QeKb4qsRFgdgisSAn0sMj59CscimR16RLXI1kspH0w7VYQgrsM_hPcePQOFL8QUyDC2p9W7AV0UjH3sW7oOvdWPWAZW6DITDvqIHaC_696e5kHTieY/s1600/nginx-rce.jpg"
-    },
-    {
-      "title": "F5 Warns 6 Critical BIG-IP Flaws Can Crash Traffic in Specific Setups, May Allow RCE",
-      "link": "https://thehackernews.com/2026/11/f5-warns-6-critical-big-ip-flaws-can.html",
-      "date": "2026-11-18T18:15:39Z",
-      "source": "The Hacker News",
-      "lang": "en",
-      "summary": "Six critical vulnerabilities in F5 BIG-IP allow an attacker to crash the Traffic Management Microkernel (TMM) without logging in, disrupting traffic until the TMM restarts. Each flaw needs a specific setup on a virtual server: an iRule that…",
-      "themes": [
-        "vulnerabilites",
-        "systemes"
-      ],
-      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizE3X3tUSPpxIYnNyM91hyphenhyphenzZOS6jjdHnCLmubn4upOYKZn3MdjUqJQGEjIBGtZ2JHK6yggH6RxSQCANhtF7-zIWJ0EfGqA7iY2KQWM7vtoiCsc-_KeFZeHeDm-TOpM_oL_EVzOvPru_cMVzx3wJL8kaLEgXuzPzxm3iYnTiyu57quhgBgMY1Nb7V_sXG4/s1600/f5.png"
-    },
-    {
-      "title": "Microsoft Ignite 2026 : les nouveautés Intune autour du poste de travail Windows",
-      "link": "https://www.it-connect.fr/ignite-nouveautes-intune-windows-poste-de-travail/",
-      "date": "2026-11-18T16:36:42Z",
-      "source": "IT-Connect",
-      "lang": "fr",
-      "summary": "Ignite 2026 : Microsoft dévoile des nouveautés Intune et Windows pour le poste de travail, mais presque toutes sont en préversion. Voici ce qu'il faut retenir. Le post Microsoft Ignite 2026 : les nouveautés Intune autour du poste de travail…",
-      "themes": [
-        "systemes"
-      ],
-      "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/Ignite-2026-Intune-nouveautes-postes-de-travail-Windows.jpg"
-    },
-    {
-      "title": "Windows Server 2028 : Microsoft durcit Server Core par défaut, pour plus de sécurité",
-      "link": "https://www.it-connect.fr/windows-server-2028-server-core-durci-par-defaut/",
-      "date": "2026-11-18T15:59:12Z",
-      "source": "IT-Connect",
-      "lang": "fr",
-      "summary": "Avec Windows Server 2028, Server Core est durci dès l'installation (SMB, TLS, WinRM, RDP, etc.). Ce qui change et comment le gérer, voici ce qu'il faut savoir. Le post Windows Server 2028 : Microsoft durcit Server Core par défaut, pour plus…",
-      "themes": [
-        "systemes"
-      ],
-      "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/Windows-Server-2028-Hardened-Server-Core.jpg"
     },
     {
       "title": "Cloud « souverain » : en Europe, Google s’en remet à Thales, S3NS et ses partenaires",
@@ -1036,12 +1099,12 @@
       "image": "https://www.lemagit.fr/visuals/ComputerWeekly/HeroImages/ChatGPT-AI-GenAI-Ascannio-adobe.jpg"
     },
     {
-      "title": "Multiples vulnérabilités dans Oracle Weblogic (18 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1565/",
+      "title": "Vulnérabilité dans Oracle Java SE (18 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-016/",
       "date": "2026-11-18T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans Oracle Weblogic. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confidentia…",
+      "summary": "Le 17 novembre 2026, Oracle a publié un avis de sécurité concernant la vulnérabilité CVE-2026-114938, surnommée *java4shell*, qui affecte le décodeur Base64 de OpenJDK sur les processeurs x86-64 supportant AVX-512 VBMI. Celle-ci permet à un…",
       "themes": [
         "vulnerabilites"
       ],
@@ -1084,24 +1147,24 @@
       "image": ""
     },
     {
-      "title": "Vulnérabilité dans Oracle Java SE (18 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-016/",
-      "date": "2026-11-18T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "Le 17 novembre 2026, Oracle a publié un avis de sécurité concernant la vulnérabilité CVE-2026-114938, surnommée *java4shell*, qui affecte le décodeur Base64 de OpenJDK sur les processeurs x86-64 supportant AVX-512 VBMI. Celle-ci permet à un…",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
       "title": "Multiples vulnérabilités dans les produits F5 (18 novembre 2026)",
       "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1567/",
       "date": "2026-11-18T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
       "summary": "De multiples vulnérabilités ont été découvertes dans les produits F5. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et un contournement de la politique de sécurité.",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Multiples vulnérabilités dans Oracle Weblogic (18 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1565/",
+      "date": "2026-11-18T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "De multiples vulnérabilités ont été découvertes dans Oracle Weblogic. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confidentia…",
       "themes": [
         "vulnerabilites"
       ],
@@ -1150,64 +1213,6 @@
       "summary": "Air France-KLM, Zoom, la BBC, CNN, Salesforce, ou encore Ikea, pour ne citer que quelques exemples, ont vu leurs sites Web temporairement infectés par un dangereux script malveillant.",
       "themes": [],
       "image": "https://www.lemagit.fr/visuals/German/article/url_website_fotolia.jpg"
-    },
-    {
-      "title": "INC Ransom : un ressortissant kazakh extradé vers les États-Unis",
-      "link": "https://www.lemagit.fr/actualites/366654838/INC-Ransom-un-ressortissant-Kazakh-extrade-vers-les-Etats-Unis",
-      "date": "2026-11-17T12:02:00Z",
-      "source": "LeMagIT",
-      "lang": "fr",
-      "summary": "Roman Khlynovskiy vient de comparaître devant une cour fédérale de Knoxville au Tennessee. Il est accusé de faire partie d’un groupe affilié aux enseignes de rançongiciel INC et Lynx.",
-      "themes": [
-        "rancongiciels"
-      ],
-      "image": "https://www.lemagit.fr/visuals/ComputerWeekly/HeroImages/police-emergency-response-zef-art-adobe.jpg"
-    },
-    {
-      "title": "Gouvernance des agents IA : Axway destine Amplify aux secteurs régulés",
-      "link": "https://www.lemagit.fr/actualites/366654671/Gouvernance-des-agents-IA-Axway-destine-Amplify-aux-secteurs-regules",
-      "date": "2026-11-17T01:41:00Z",
-      "source": "LeMagIT",
-      "lang": "fr",
-      "summary": "Axway infuse la gestion des agents et des applications agentiques au sein de sa plateforme Amplify. Chahuté par la concurrence, le spécialiste de l’intégration se concentre sur les enjeux des entreprises régulées. En premier lieu, les banqu…",
-      "themes": [
-        "ia"
-      ],
-      "image": "https://www.lemagit.fr/visuals/German/article/HERO-KI-Governance-By-Krittamet-Adobe-02.jpg"
-    },
-    {
-      "title": "Sauvegarde : Commvault étend ses fonctions de souveraineté pour mieux vendre en Europe",
-      "link": "https://www.lemagit.fr/actualites/366654670/Sauvegarde-Commvault-etend-ses-fonctions-de-souverainete-pour-mieux-vendre-en-Europe",
-      "date": "2026-11-17T01:30:00Z",
-      "source": "LeMagIT",
-      "lang": "fr",
-      "summary": "L’éditeur cherche à se rendre indispensable auprès des entreprises en leur vendant une expertise de la restauration au-delà des fonctions de sauvegarde sur étagère. Et, en Europe, cela passe par des modules qui n’ont plus besoin d’un cloud…",
-      "themes": [],
-      "image": "https://www.lemagit.fr/visuals/LeMagIT/hero_article/Hero-Commvault-DarrenThomson.jpg"
-    },
-    {
-      "title": "IA : les États-Unis veulent laisser les modèles jouer en paix",
-      "link": "https://www.lemagit.fr/actualites/366654711/IA-les-Etats-Unis-veulent-laisser-les-modeles-jouer-en-paix",
-      "date": "2026-11-16T11:14:00Z",
-      "source": "LeMagIT",
-      "lang": "fr",
-      "summary": "Le groupe de travail sur l’IA de l’administration Trump encourage les agences réglementaires à ne pas sévir contre les entreprises d’IA dont les modèles conduisent des cyberattaques.",
-      "themes": [
-        "ia"
-      ],
-      "image": "https://www.lemagit.fr/visuals/ComputerWeekly/Hero Images/US-capitol-washington-congress-3-adobe.jpeg"
-    },
-    {
-      "title": "IA : la dépendance en accéléré (étude)",
-      "link": "https://www.lemagit.fr/actualites/366654834/IA-la-dependance-en-accelere-etude",
-      "date": "2026-11-16T10:23:00Z",
-      "source": "LeMagIT",
-      "lang": "fr",
-      "summary": "Le baromètre de la résilience numérique du bureau d’étude Tercio estime que de nouvelles lignes de faiblesses, semblables à celles du cloud, mais liées à l’IA, apparaissent dans les organisations. Pour les colmater, les stratégies d’indépen…",
-      "themes": [
-        "ia"
-      ],
-      "image": "https://www.lemagit.fr/visuals/German/Hero-data-governance-europe-AI-tanaonte-AdobeStock_724998550.jpg"
     },
     {
       "title": "Cursor : une clé volée chez Fireworks AI à l’origine d’une cyberattaque",
