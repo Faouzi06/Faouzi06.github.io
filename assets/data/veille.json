@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T19:10:40Z",
+  "updated": "2026-11-22T06:41:38Z",
   "sources": [
     {
       "source": "CERT-FR",
@@ -43,6 +43,45 @@
     }
   ],
   "items": [
+    {
+      "title": "OpenRouter Drops 3 Providers After Researchers Catch Months of Prompt Theft at AI Hosting Firms",
+      "link": "https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html",
+      "date": "2026-11-22T05:06:55Z",
+      "source": "The Hacker News",
+      "lang": "en",
+      "summary": "Attackers stole data from inside three AI inference providers for months, and none of the three knew until researchers told them, the industrial cybersecurity company Dragos said this week. Some of the stolen requests were flagged as Zero D…",
+      "themes": [
+        "reseau",
+        "ia"
+      ],
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEGP3P_elvK4C-QnSx5onZ67viDXCIgPCUYqtTF_RDNcLJfyQ4QMbegUmn8AJy5nEmnXfN4ACr6hHztG_DdqXlj54S21toacPQaZgRx2rgqZltN3lvREpZR2xlvgXF_iZ7zW0XT0b91mMiRDVaEB6TUvMFlWwaSa3_C7gwpxdKcNhLtIq15KqwaZrR3VI/s1600/openrouter.png"
+    },
+    {
+      "title": "Researchers Demonstrate Ghostscript Sandbox-Escape RCE via Crafted File Uploads in Popular Apps",
+      "link": "https://thehackernews.com/2026/11/researchers-demonstrate-ghostscript.html",
+      "date": "2026-11-22T05:03:41Z",
+      "source": "The Hacker News",
+      "lang": "en",
+      "summary": "A now-patched flaw in Ghostscript allows a crafted file to escape the program's security sandbox and run commands on the server that processes it. Ghostscript is the interpreter that many Linux servers use to convert uploaded PDFs, PostScri…",
+      "themes": [
+        "vulnerabilites",
+        "systemes"
+      ],
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1BiCJUIrSJXNfKPZEkM46ynK6Rs7gba2xMaTUdoJ7yOK6Y8kcKMqJ_6PhbUIog_U1E8gRCpbj2HrkQ9UEpbPi1HOvkxdxCE5Afa5LbkNhUPvgU7Sa60IVHAWqSvgJaX1p6frMAN335QncL5UTZ3a4v1-agyb8ZXIlMGZTOtzsC0Gll2qRI0NJNMHTsf8/s1600/ghostscript.jpg"
+    },
+    {
+      "title": "Rackspace Spot breach let hackers access customer Kubernetes secrets",
+      "link": "https://www.bleepingcomputer.com/news/security/rackspace-spot-breach-let-hackers-access-customer-kubernetes-secrets/",
+      "date": "2026-11-21T22:59:58Z",
+      "source": "BleepingComputer",
+      "lang": "en",
+      "summary": "Rackspace warned customers that hackers breached its Rackspace Spot cloud platform using compromised credentials, allowing them to deploy unauthorized workloads and access Kubernetes secrets in customer clusters. [...]",
+      "themes": [
+        "systemes",
+        "donnees"
+      ],
+      "image": "https://www.bleepstatic.com/content/hl-images/2022/12/09/Rackspace.jpg"
+    },
     {
       "title": "Microsoft Entra Connect Health flaw exploited to steal tenant data",
       "link": "https://www.bleepingcomputer.com/news/security/microsoft-entra-connect-health-flaw-exploited-to-steal-tenant-data/",
@@ -654,18 +693,6 @@
       "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgTqUIWPjGeycl6xafh8Hx8n2UN3UCUgjhTpxUul68DHi7Y_IoHVYBvjDd5DpFg15sKI767hVEq-8CbGhK69JNusMh0OBBXfVMwJlZiKT2gNnTPAL9DyvTY85SB68WkvBxFCMF2_rNS9rUgYkQN8sKssDMBS8gO6YpMudQohf_JWnPztX_h8TdbSX6Vtfi/s1600/td.jpg"
     },
     {
-      "title": "Transport for London breach exposes 265,000 Oyster card users' data",
-      "link": "https://www.bleepingcomputer.com/news/security/transport-for-london-breach-exposes-265-000-oyster-card-users-data/",
-      "date": "2026-11-19T18:20:01Z",
-      "source": "BleepingComputer",
-      "lang": "en",
-      "summary": "Transport for London (TfL) has announced that around 265,000 Oyster photocard customers may have had their account details exposed in a data breach. [...]",
-      "themes": [
-        "donnees"
-      ],
-      "image": "https://www.bleepstatic.com/content/hl-images/2026/11/19/transportforlondon.jpg"
-    },
-    {
       "title": "Mots de passe Active Directory : un attaquant les casse, un outil gratuit les repère avant lui",
       "link": "https://www.it-connect.fr/specops-password-auditor-audit-active-directory/",
       "date": "2026-11-19T17:00:00Z",
@@ -754,31 +781,6 @@
         "systemes"
       ],
       "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZ5IDT81eb7KUE0LzwGJAzuAETft3pD5sOz2dJxnQin_-zR_hH8tDKFTsLNBNoe35KM4DhFJjP7K-0YwaMoVwz7xUhTiP2vKeNqmN3kenPgwflENu35qx-QlFj-rDFdyXx1HMz6ykegw6nlnPDXppYbotjoRj-ammlyUZ-Cr0JYLS5iyZXkJXkaIO5UAc/s1600/vmware.jpg"
-    },
-    {
-      "title": "Drupal Patches Critical Installer Flaw That Could Give Unauthenticated Attackers Control of Sites",
-      "link": "https://thehackernews.com/2026/11/drupal-patches-critical-installer-flaw.html",
-      "date": "2026-11-19T14:33:06Z",
-      "source": "The Hacker News",
-      "lang": "en",
-      "summary": "Under specific conditions, a critical vulnerability in Drupal core can allow an attacker without login credentials to use the built-in installer to attempt to reinstall a site. That can lead to a site takeover or remote code execution, and…",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4kxIzi1B-GPdS7pbaOI823BHxteL-8FbODKnAoDkr8tGhhjGYuRU9KIEAvOQ6kBZFQPCly3BIhQo6vkjxJy13zL7CxlRXsez_G_otFVaja2H5ObmzNMMilbewaweqqO5Paa0H49yaZdWB09xAIqeo7YLG0uyd05qjdbh2aLIRZd73_jwVGH26YexA3l8/s1600/drupal-flaws.jpg"
-    },
-    {
-      "title": "Everything Is a Web Application, Including Your Firewall",
-      "link": "https://thehackernews.com/2026/11/everything-is-web-application-including.html",
-      "date": "2026-11-19T11:52:23Z",
-      "source": "The Hacker News",
-      "lang": "en",
-      "summary": "One of the early targets of PHP2Shell exploitation was the firewall. On October 28, Palo Alto Networks confirmed that attackers were exploiting the two PHP vulnerabilities, CVE-2026-109618 and CVE-2026-109619, against PAN-OS management inte…",
-      "themes": [
-        "vulnerabilites",
-        "reseau"
-      ],
-      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiC0roCfV92el2-gLSGwmumyjXgCjHookzwGjft2a6UWPZA1QvyrazDNLTvlZrF1F5iagg74JxnPEXbnK60OEeJuFNo2Fc2xcNSnJCeNw9BLu_y-lsRhrpO6s1End2gdDDlRU_r4wysTiiJS4ZKPDTmWK152psFdhxRizlSJZFCjnYr6nnamRsUciEJui4/s1600/php-app.jpg"
     },
     {
       "title": "La Commission européenne frappée par une lourde cyberattaque",
@@ -879,14 +881,15 @@
       "image": "https://www.lemagit.fr/visuals/ComputerWeekly/Hero Images/cloud-computing-13-fotolia.jpg"
     },
     {
-      "title": "Multiples vulnérabilités dans les produits Mitel (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1569/",
+      "title": "Vulnérabilité dans VMware Tanzu (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1568/",
       "date": "2026-11-19T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans les produits Mitel. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confiden…",
+      "summary": "Une vulnérabilité a été découverte dans VMware Tanzu. Elle permet à un attaquant de provoquer une exécution de code arbitraire à distance.",
       "themes": [
-        "vulnerabilites"
+        "vulnerabilites",
+        "systemes"
       ],
       "image": ""
     },
@@ -904,15 +907,38 @@
       "image": ""
     },
     {
-      "title": "Vulnérabilité dans VMware Tanzu (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1568/",
+      "title": "Multiples vulnérabilités dans Laravel (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1571/",
       "date": "2026-11-19T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "Une vulnérabilité a été découverte dans VMware Tanzu. Elle permet à un attaquant de provoquer une exécution de code arbitraire à distance.",
+      "summary": "De multiples vulnérabilités ont été découvertes dans Laravel. Certaines d'entre elles permettent à un attaquant de provoquer un déni de service à distance, une injection de code indirecte à distance (XSS) et un contournement de la politique…",
       "themes": [
-        "vulnerabilites",
-        "systemes"
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Multiples vulnérabilités dans ClamAV (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1572/",
+      "date": "2026-11-19T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "De multiples vulnérabilités ont été découvertes dans ClamAV. Certaines d'entre elles permettent à un attaquant de provoquer un déni de service à distance, une atteinte à la confidentialité des données et un contournement de la politique de…",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Multiples vulnérabilités dans les produits Mitel (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1569/",
+      "date": "2026-11-19T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "De multiples vulnérabilités ont été découvertes dans les produits Mitel. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confiden…",
+      "themes": [
+        "vulnerabilites"
       ],
       "image": ""
     },
@@ -930,24 +956,12 @@
       "image": ""
     },
     {
-      "title": "Vulnérabilité dans les produits Elastic (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1578/",
+      "title": "Multiples vulnérabilités dans WordPress (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1574/",
       "date": "2026-11-19T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "Une vulnérabilité a été découverte dans les produits Elastic. Elle permet à un attaquant de provoquer une exécution de code arbitraire à distance et un déni de service à distance.",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
-      "title": "Multiples vulnérabilités dans les produits Splunk (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1576/",
-      "date": "2026-11-19T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans les produits Splunk. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et une atteinte à la confident…",
+      "summary": "De multiples vulnérabilités ont été découvertes dans WordPress. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à distance.",
       "themes": [
         "vulnerabilites"
       ],
@@ -978,24 +992,24 @@
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans WordPress (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1574/",
+      "title": "Multiples vulnérabilités dans les produits Splunk (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1576/",
       "date": "2026-11-19T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans WordPress. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à distance.",
+      "summary": "De multiples vulnérabilités ont été découvertes dans les produits Splunk. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et une atteinte à la confident…",
       "themes": [
         "vulnerabilites"
       ],
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans ClamAV (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1572/",
+      "title": "Vulnérabilité dans les produits Elastic (19 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1578/",
       "date": "2026-11-19T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans ClamAV. Certaines d'entre elles permettent à un attaquant de provoquer un déni de service à distance, une atteinte à la confidentialité des données et un contournement de la politique de…",
+      "summary": "Une vulnérabilité a été découverte dans les produits Elastic. Elle permet à un attaquant de provoquer une exécution de code arbitraire à distance et un déni de service à distance.",
       "themes": [
         "vulnerabilites"
       ],
@@ -1008,18 +1022,6 @@
       "source": "CERT-FR",
       "lang": "fr",
       "summary": "De multiples vulnérabilités ont été découvertes dans Drupal. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance.",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
-      "title": "Multiples vulnérabilités dans Laravel (19 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1571/",
-      "date": "2026-11-19T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans Laravel. Certaines d'entre elles permettent à un attaquant de provoquer un déni de service à distance, une injection de code indirecte à distance (XSS) et un contournement de la politique…",
       "themes": [
         "vulnerabilites"
       ],
@@ -1095,12 +1097,12 @@
       "image": "https://www.lemagit.fr/visuals/ComputerWeekly/HeroImages/ChatGPT-AI-GenAI-Ascannio-adobe.jpg"
     },
     {
-      "title": "Vulnérabilité dans Oracle Java SE (18 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-016/",
+      "title": "Multiples vulnérabilités dans Oracle MySQL (18 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1563/",
       "date": "2026-11-18T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "Le 17 novembre 2026, Oracle a publié un avis de sécurité concernant la vulnérabilité CVE-2026-114938, surnommée *java4shell*, qui affecte le décodeur Base64 de OpenJDK sur les processeurs x86-64 supportant AVX-512 VBMI. Celle-ci permet à un…",
+      "summary": "De multiples vulnérabilités ont été découvertes dans Oracle MySQL. Elles permettent à un attaquant de provoquer un déni de service à distance, une atteinte à la confidentialité des données et une atteinte à l'intégrité des données.",
       "themes": [
         "vulnerabilites"
       ],
@@ -1119,12 +1121,12 @@
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans Oracle Virtualization (18 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1566/",
+      "title": "Vulnérabilité dans Oracle Java SE (18 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-016/",
       "date": "2026-11-18T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans Oracle Virtualization. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confi…",
+      "summary": "Le 17 novembre 2026, Oracle a publié un avis de sécurité concernant la vulnérabilité CVE-2026-114938, surnommée *java4shell*, qui affecte le décodeur Base64 de OpenJDK sur les processeurs x86-64 supportant AVX-512 VBMI. Celle-ci permet à un…",
       "themes": [
         "vulnerabilites"
       ],
@@ -1143,12 +1145,12 @@
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans les produits F5 (18 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1567/",
+      "title": "Multiples vulnérabilités dans Oracle Virtualization (18 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1566/",
       "date": "2026-11-18T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans les produits F5. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et un contournement de la politique de sécurité.",
+      "summary": "De multiples vulnérabilités ont été découvertes dans Oracle Virtualization. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confi…",
       "themes": [
         "vulnerabilites"
       ],
@@ -1167,12 +1169,12 @@
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans Oracle MySQL (18 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1563/",
+      "title": "Multiples vulnérabilités dans les produits F5 (18 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1567/",
       "date": "2026-11-18T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans Oracle MySQL. Elles permettent à un attaquant de provoquer un déni de service à distance, une atteinte à la confidentialité des données et une atteinte à l'intégrité des données.",
+      "summary": "De multiples vulnérabilités ont été découvertes dans les produits F5. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et un contournement de la politique de sécurité.",
       "themes": [
         "vulnerabilites"
       ],
