@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25T21:38:23Z",
+  "updated": "2026-11-26T08:10:35Z",
   "sources": [
     {
       "source": "CERT-FR",
@@ -19,7 +19,7 @@
     {
       "source": "Le Monde Informatique",
       "ok": true,
-      "items": 18
+      "items": 19
     },
     {
       "source": "IT-Connect",
@@ -43,6 +43,103 @@
     }
   ],
   "items": [
+    {
+      "title": "Artex : les cyberattaquants intensifient l'utilisation d'agents IA offensifs",
+      "link": "https://www.lemondeinformatique.fr/cybersecurite-conformite/artex-les-cyberattaquants-intensifient-l-utilisation-d-agents-ia-offensifs",
+      "date": "2026-11-26T07:30:00Z",
+      "source": "Le Monde Informatique",
+      "lang": "fr",
+      "summary": "L’utilisation d’Artex, un framework de tests d’intrusion piloté par des agents d’intelligence artificielle, progresse dans les campagnes malveillantes. Selon Microsoft Threat Intelligence, plusieurs groupes liés à des États et des acteurs c…",
+      "themes": [
+        "ia"
+      ],
+      "image": "https://cdn.overlord.media/artex_cyberattaquants_agents_ia_offensifs_640bb84deb.jpg"
+    },
+    {
+      "title": "Drupal Warns of New Highly Critical Site Takeover Vulnerability Under Active Exploitation",
+      "link": "https://thehackernews.com/2026/11/drupal-warns-of-new-highly-critical.html",
+      "date": "2026-11-26T07:02:34Z",
+      "source": "The Hacker News",
+      "lang": "en",
+      "summary": "Drupal has warned of a new \"highly critical\" security flaw impacting Drupal core that it said has been exploited in the wild. The vulnerability, tracked as CVE-2026-136716 (CVSS score: N/A), has been described as a case of improper checking…",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiy2EcytpsKiKLhUfvQEADKBG6Ht2NprR2VIhIXPJcNQMIGqKT20l0afBPUVhehKFhRzpkHvl3Qu_qaPjFL3L4UsLYH3L4C1DM63zqskhJV1UAjaPqONaEbNkBFsxVDX2jpPZrMym52WvBx2pHktUiRfdXOcp_23xjTdUOxxjxJtI906XLMmw258Bjah1J2/s1600/drupal-rce.png"
+    },
+    {
+      "title": "Hackers Exploit 10 Vulnerabilities Across Mitel, Juniper, Vates, and Danfoss Products",
+      "link": "https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html",
+      "date": "2026-11-26T06:44:46Z",
+      "source": "The Hacker News",
+      "lang": "en",
+      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added 10 security flaws to its Known Exploited Vulnerabilities (KEV) catalog, including five vulnerabilities impacting Mitel MiCollab that were disclosed last wee…",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEht82Zul6A6D_rTYZuOr0QQWkA4p8kQXRI-4qAYhdGBdTR0ZNzlHkHCiz3eSv5wm9Gq1rADX0CIEBUu08HBUbWd4fVKtL6f7UrWcaa_nVetYt0DyPj2-f_yM80HEIUbuy57mpftPYHHp1FKCNXvkDnFtsj-V5PWGUvWiNL38OKY3EIKUwKHuoKsIc4oSXeC/s1600/mitel.jpg"
+    },
+    {
+      "title": "Cyberattaque 1Password : devez-vous vous inquiéter pour vos mots de passe ?",
+      "link": "https://www.it-connect.fr/cyberattaque-1password-novembre-2026/",
+      "date": "2026-11-26T05:51:00Z",
+      "source": "IT-Connect",
+      "lang": "fr",
+      "summary": "1Password confirme une cyberattaque : des données clients volées sur des serveurs suite à la compromission du compte GitHub d'un salarié. Le post Cyberattaque 1Password : devez-vous vous inquiéter pour vos mots de passe ? a été publié sur I…",
+      "themes": [
+        "systemes"
+      ],
+      "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/cyberattaque-1password-github.png"
+    },
+    {
+      "title": "Signature NTLM : les mises à jour de novembre 2026 perturbent l’authentification sur Windows",
+      "link": "https://www.it-connect.fr/windows-novembre-2026-echec-authentification-ntlm-proxy-sso/",
+      "date": "2026-11-26T05:17:49Z",
+      "source": "IT-Connect",
+      "lang": "fr",
+      "summary": "Depuis les mises à jour Windows de novembre 2026, l'authentification NTLM peut échouer dans certains cas, notamment avec les proxys et certains SSO. Le post Signature NTLM : les mises à jour de novembre 2026 perturbent l’authentification su…",
+      "themes": [
+        "systemes"
+      ],
+      "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/echec-authentification-ntlm-proxy-sso.png"
+    },
+    {
+      "title": "1Password Hacked, Customer Data and Source Code Stolen in GitHub Account Breach",
+      "link": "https://thehackernews.com/2026/11/1password-hacked-customer-data-and.html",
+      "date": "2026-11-26T04:20:22Z",
+      "source": "The Hacker News",
+      "lang": "en",
+      "summary": "Popular password management software 1Password on Wednesday disclosed a security incident involving its backend systems that led to the unauthorized access of some customer information, but emphasized that customer password vaults and other…",
+      "themes": [
+        "donnees"
+      ],
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbu9vulg5_P2PLmwCbF5nNRu8UujJDFNLLCGackgRWjz4lmkQcAom8TerCouyPh1pF8sgBAiJTwO7qAQN3kLVd-_0e7czxqhyphenhyphenUQuSG6WyCJvoNsI92X7tl1ukE6h8QDLmQBUBJaKBCyTYXjaGMUeaczy-sTIjMvDHdQjphWmWyCsUyIG4Y7WD4J2FoQfgY/s1600/1password.jpg"
+    },
+    {
+      "title": "13 Malicious NuGet Packages Turn Fake .NET Job Assessments Into Malware Delivery Traps",
+      "link": "https://thehackernews.com/2026/11/13-malicious-nuget-packages-turn-fake.html",
+      "date": "2026-11-26T03:48:52Z",
+      "source": "The Hacker News",
+      "lang": "en",
+      "summary": "Cybersecurity researchers have discovered 13 malicious NuGet packages that are designed to target Windows .NET developers under the guise of a fake take-home job assessment. \"Most of the packages pose as WinUI 3 and WPF [Windows Presentatio…",
+      "themes": [
+        "systemes"
+      ],
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjt0w3YJQrn6VoUVUTTj46NLfeL_JJE-sDoxKsuBe-_OxBtQ3iX8AZTZ1CEn39-N5TGKYd-0ZKdOT43UwAWUbpIXlFdDwhyphenhyphenEKpkQVVJYJVodQRHyz0pJeKEvJIJgUpAEQqXizajmrriq9Mj1aqioeK1Zug__X26Ra4HwzFg8ImTajGc6b7Ck9LW2OCIpPoa/s1600/dotnet.jpg"
+    },
+    {
+      "title": "Palo Alto Networks warns of Fragnesia flaw exploited in PAN-OS attacks",
+      "link": "https://www.bleepingcomputer.com/news/security/palo-alto-networks-warns-of-fragnesia-flaw-exploited-in-pan-os-attacks/",
+      "date": "2026-11-25T22:05:09Z",
+      "source": "BleepingComputer",
+      "lang": "en",
+      "summary": "Threat actors are chaining exploits for the PHP2Shell and Fragnesia vulnerabilities to target Palo Alto Networks devices with management interfaces exposed to the internet. [...]",
+      "themes": [
+        "vulnerabilites",
+        "reseau"
+      ],
+      "image": "https://www.bleepstatic.com/content/hl-images/2026/11/25/paloalto.jpg"
+    },
     {
       "title": "1Password customer data stolen after employee GitHub account breach",
       "link": "https://www.bleepingcomputer.com/news/security/1password-customer-data-stolen-after-employee-github-account-breach/",
@@ -357,16 +454,6 @@
       "image": "https://cdn.overlord.media/Sans_titre_24_novembre_2026_a_23_12_03_56551750bc.png"
     },
     {
-      "title": "Collectivités territoriales : la cybersécurité passe par la mutualisation des moyens",
-      "link": "https://www.lemondeinformatique.fr/cybersecurite-conformite/collectivites-territoriales-la-cybersecurite-passe-par-la-mutualisation-des-moyens",
-      "date": "2026-11-25T07:00:00Z",
-      "source": "Le Monde Informatique",
-      "lang": "fr",
-      "summary": "Les petites communes peinent encore à disposer des compétences et des ressources nécessaires pour protéger leurs systèmes d'information. Devant une commission du Sénat, l'ANSSI et le GIP ACYMA ont plaidé pour un accompagnement de proximité…",
-      "themes": [],
-      "image": "https://cdn.overlord.media/pexels_ann_hannes_45017_38482455_7f646191dc.jpg"
-    },
-    {
       "title": "Cyberattaque contre Ipsos : le groupe Qilin revendique un vol de données sensibles",
       "link": "https://www.lemondeinformatique.fr/cybersecurite-conformite/cyberattaque-contre-ipsos-le-groupe-qilin-revendique-un-vol-de-donnees-sensibles",
       "date": "2026-11-25T07:00:00Z",
@@ -378,6 +465,16 @@
         "donnees"
       ],
       "image": "https://cdn.overlord.media/Sans_titre_24_novembre_2026_a_22_48_07_40e0add1c1.png"
+    },
+    {
+      "title": "Collectivités territoriales : la cybersécurité passe par la mutualisation des moyens",
+      "link": "https://www.lemondeinformatique.fr/cybersecurite-conformite/collectivites-territoriales-la-cybersecurite-passe-par-la-mutualisation-des-moyens",
+      "date": "2026-11-25T07:00:00Z",
+      "source": "Le Monde Informatique",
+      "lang": "fr",
+      "summary": "Les petites communes peinent encore à disposer des compétences et des ressources nécessaires pour protéger leurs systèmes d'information. Devant une commission du Sénat, l'ANSSI et le GIP ACYMA ont plaidé pour un accompagnement de proximité…",
+      "themes": [],
+      "image": "https://cdn.overlord.media/pexels_ann_hannes_45017_38482455_7f646191dc.jpg"
     },
     {
       "title": "Hackers Compromise 24 Check Point Management Servers in Suspected AI-Driven Attack Campaign",
@@ -516,18 +613,6 @@
         "donnees"
       ],
       "image": "https://www.bleepstatic.com/content/hl-images/2026/11/24/shinyhunters-var-2.jpg"
-    },
-    {
-      "title": "European Commission confirms data theft in EU Academy breach",
-      "link": "https://www.bleepingcomputer.com/news/security/european-commission-confirms-data-theft-in-eu-academy-breach/",
-      "date": "2026-11-24T16:22:44Z",
-      "source": "BleepingComputer",
-      "lang": "en",
-      "summary": "The European Commission, the European Union's main executive body, has confirmed that attackers breached its EU Academy online learning hub and stole the personal data of an undisclosed number of users. [...]",
-      "themes": [
-        "donnees"
-      ],
-      "image": "https://www.bleepstatic.com/content/hl-images/2026/04/03/0_European_Union_flag.jpg"
     },
     {
       "title": "IA : tout savoir sur l’émergence des modèles de décision",
@@ -742,16 +827,6 @@
       "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/tuto-privacyidea-mfa-windows.jpg"
     },
     {
-      "title": "WHMCS SQL Injection Could Expose Customer Data and Admin Password Hashes without Login",
-      "link": "https://thehackernews.com/2026/11/whmcs-sql-injection-flaw-could-expose.html",
-      "date": "2026-11-24T08:34:20Z",
-      "source": "The Hacker News",
-      "lang": "en",
-      "summary": "A flaw in WHMCS's shopping cart, the billing and automation platform many web hosting companies use to run their businesses, could allow anyone on the internet to retrieve customer records and administrator password hashes from an installat…",
-      "themes": [],
-      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgK7wXAof6nH7PDC5-3qxXZJgJvZODTjQcrWFOjO8jeb9yGkK6bUkzm27MzMy5n0S_Xywsj0npu_F0FmQ4JcKxPXNEoezLrpKoSStaYK4Ww46QUuzySTeQnnzcIXs_NADunlqeyuMIl5Wm5PKWc3c0JyNmYPxfbInIWx2tfosieI_QS_e4PX-JILlLH-1U/s1600/hosting.jpg"
-    },
-    {
       "title": "RDMA over USB4 : Windows va permettre de relier plusieurs PC pour faire tourner de gros modèles d’IA",
       "link": "https://www.it-connect.fr/rdma-over-usb4-windows-cluster-ia-locale/",
       "date": "2026-11-24T08:20:00Z",
@@ -763,44 +838,6 @@
         "ia"
       ],
       "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/RDMA-over-USB-pour-cluster-IA-local-avec-plusieurs-PC.jpg"
-    },
-    {
-      "title": "Neutralisé en 2019 par la gendarmerie, le ver USB Retadup revient pour distribuer CoffeeLoader",
-      "link": "https://www.it-connect.fr/retadup-ver-usb-coffeeloader/",
-      "date": "2026-11-24T08:00:00Z",
-      "source": "IT-Connect",
-      "lang": "fr",
-      "summary": "Démantelé en 2019 par la gendarmerie, le botnet du ver USB Retadup a été réactivé via ses anciens domaines. Il distribue désormais le loader CoffeeLoader. Le post Neutralisé en 2019 par la gendarmerie, le ver USB Retadup revient pour distri…",
-      "themes": [],
-      "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/Retadup-USB-worm-CoffeeLoader-novembre-2026.jpg"
-    },
-    {
-      "title": "OpenAI and Cisco Unveil AI-Assisted Linux Security Tool to Block Exploits Before Patching",
-      "link": "https://thehackernews.com/2026/11/openai-and-cisco-unveil-ai-assisted.html",
-      "date": "2026-11-24T06:02:57Z",
-      "source": "The Hacker News",
-      "lang": "en",
-      "summary": "OpenAI and Cisco have teamed up to launch Shirudo (meaning \"shield\" in Japanese), an open-source Linux runtime that allows artificial intelligence (AI) agents to defend systems without downtime. \"It lets agents write dynamic eBPF controls t…",
-      "themes": [
-        "vulnerabilites",
-        "reseau",
-        "systemes",
-        "ia"
-      ],
-      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKBknwzOcmsT5P3Gnyn8-WGRNbttWLAtmWlHkVuS900lrH1Q7Wj_kBCJiASbBvhNUKWEsO8Xt5VKKokGA-M17y8Pj4EtH6564yafSWGebOVgMuTwxUUB5fV4oProNTbg8MeEhcaiy95WbMi6og3q0uSM4SxLCyzVwV3FbCfiSXrVoJtQUrYpJfyeW1AUFm/s1600/openai-linux.jpg"
-    },
-    {
-      "title": "Hackers Exploit N-able MailAssure Flaw While AI Agents Exploit MONAI Label Zero-Day",
-      "link": "https://thehackernews.com/2026/11/hackers-exploit-n-able-mailassure-flaw.html",
-      "date": "2026-11-24T06:02:45Z",
-      "source": "The Hacker News",
-      "lang": "en",
-      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday added two flaws impacting N-able MailAssure and MONAI Label to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation. The critica…",
-      "themes": [
-        "vulnerabilites",
-        "ia"
-      ],
-      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrPCPwSotVSX8IYSgpSrVceRAIYqba8YSZSlNwD5RjetEhPG6vLRhk_NKkatjg1h-fulZJDm4CucsLvQrEtCO6v0NtuJGo3nZD3mXSHyKpgPrUZMpq7YNpheStYC_AqyMWRfWIFiK9bcHJNAw6pwK9JqirhO8JESKdmsI5Pl8UgtsVsRivmMmMenQ01ClW/s1600/cisa-kev.jpg"
     },
     {
       "title": "CrowdStrike absorbe Zscaler : consolidation et convergence des plateformes",
@@ -826,30 +863,6 @@
         "ia"
       ],
       "image": "https://www.lemagit.fr/visuals/ComputerWeekly/Hero Images/AI-artificial-intelligence-button-fotolia.jpg"
-    },
-    {
-      "title": "rust-anything : cet outil open source aide les agents IA à réécrire vos applications en Rust",
-      "link": "https://www.it-connect.fr/rust-anything-reecrire-application-rust-agents-ia/",
-      "date": "2026-11-24T03:00:00Z",
-      "source": "IT-Connect",
-      "lang": "fr",
-      "summary": "Grâce à rust-anything, vous pouvez piloter un agent IA pour réécrire en Rust une application, tout en vérifiant chaque étape pour vous assurer du résultat. Le post rust-anything : cet outil open source aide les agents IA à réécrire vos appl…",
-      "themes": [
-        "ia"
-      ],
-      "image": "https://www.it-connect.fr/wp-content-itc/uploads/2026/11/rust-anything-reecrire-application-rust-agents-ia.png"
-    },
-    {
-      "title": "Webworm Suspected of Modifying SoftEther VPN to Evade Detection and Hide Remote Access",
-      "link": "https://thehackernews.com/2026/11/webworm-suspected-of-modifying.html",
-      "date": "2026-11-23T17:45:15Z",
-      "source": "The Hacker News",
-      "lang": "en",
-      "summary": "The China-aligned threat actor known as Webworm is suspected to be using a custom version of the open-source SoftEther VPN Bridge tool in an attempt to remove recognizable detection fingerprints, while disguising it as network-monitoring so…",
-      "themes": [
-        "reseau"
-      ],
-      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9_mXkFA2_QQWa_ajcGxgoc3rSAfxGJqP-uIREqPGAfJGM7D7-mLrjwSE_F1egX-pwVRvMRinRGs4QbcBE1yJrmHFw4Fa_ILg6ZuTIOy1bf86-wPQ-Zgsqa-6hqdBapRROk97rOeT-Vfa002vHuWF6fCSE1KPttjswyjUeBxjrJzrmVU9KY724e75Giq1T/s1600/chinese-malware.jpg"
     },
     {
       "title": "« Le vent tourne » en Europe : OVHCloud vise 2 milliards d’euros de chiffre d’affaires",
@@ -1003,30 +1016,6 @@
       "image": "https://www.zataz.com/wp-content/uploads/blackhatsector_hack.jpg"
     },
     {
-      "title": "Bulletin d'actualité CERTFR-2026-ACT-049 (23 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/actualite/CERTFR-2026-ACT-049/",
-      "date": "2026-11-23T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "Ce bulletin d'actualité du CERT-FR revient sur les vulnérabilités significatives de la semaine passée pour souligner leurs criticités. Il ne remplace pas l'analyse de l'ensemble des avis et alertes publiés par le CERT-FR dans le cadre d'une…",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
-      "title": "Multiples vulnérabilités dans SPIP (23 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1599/",
-      "date": "2026-11-23T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans SPIP. Elles permettent à un attaquant de provoquer une injection de code indirecte à distance (XSS) et une injection de requêtes illégitimes par rebond (CSRF).",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
       "title": "Multiples vulnérabilités dans les produits Palo Alto Networks (23 novembre 2026)",
       "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1600/",
       "date": "2026-11-23T00:00:00Z",
@@ -1064,12 +1053,36 @@
       "image": ""
     },
     {
+      "title": "Multiples vulnérabilités dans SPIP (23 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1599/",
+      "date": "2026-11-23T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "De multiples vulnérabilités ont été découvertes dans SPIP. Elles permettent à un attaquant de provoquer une injection de code indirecte à distance (XSS) et une injection de requêtes illégitimes par rebond (CSRF).",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
       "title": "Multiples vulnérabilités dans MongoDB (23 novembre 2026)",
       "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1606/",
       "date": "2026-11-23T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
       "summary": "De multiples vulnérabilités ont été découvertes dans MongoDB. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire, une atteinte à la confidentialité des données et une atteinte à l'intégrité des d…",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Bulletin d'actualité CERTFR-2026-ACT-049 (23 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/actualite/CERTFR-2026-ACT-049/",
+      "date": "2026-11-23T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "Ce bulletin d'actualité du CERT-FR revient sur les vulnérabilités significatives de la semaine passée pour souligner leurs criticités. Il ne remplace pas l'analyse de l'ensemble des avis et alertes publiés par le CERT-FR dans le cadre d'une…",
       "themes": [
         "vulnerabilites"
       ],
@@ -1112,19 +1125,6 @@
       "image": "https://www.lemagit.fr/visuals/LeMagIT/hero_article/hero-AMD-Taalas.jpg"
     },
     {
-      "title": "Multiples vulnérabilités dans les produits VMware (20 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1598/",
-      "date": "2026-11-20T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans les produits VMware. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et une injection SQL (SQLi). G…",
-      "themes": [
-        "vulnerabilites",
-        "systemes"
-      ],
-      "image": ""
-    },
-    {
       "title": "Multiples vulnérabilités dans les produits IBM (20 novembre 2026)",
       "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1597/",
       "date": "2026-11-20T00:00:00Z",
@@ -1133,6 +1133,19 @@
       "summary": "De multiples vulnérabilités ont été découvertes dans les produits IBM. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à distance.",
       "themes": [
         "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Multiples vulnérabilités dans le noyau Linux de SUSE (20 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1593/",
+      "date": "2026-11-20T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "De multiples vulnérabilités ont été découvertes dans le noyau Linux de SUSE. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire, une atteinte à la confidentialité des données et une atteinte à l'…",
+      "themes": [
+        "vulnerabilites",
+        "systemes"
       ],
       "image": ""
     },
@@ -1150,18 +1163,6 @@
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans Siemens Industrial Edge (20 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1590/",
-      "date": "2026-11-20T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans Siemens Industrial Edge. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance.",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
       "title": "Multiples vulnérabilités dans le noyau Linux de Debian LTS (20 novembre 2026)",
       "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1595/",
       "date": "2026-11-20T00:00:00Z",
@@ -1175,12 +1176,36 @@
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans le noyau Linux de Debian (20 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1594/",
+      "title": "Vulnérabilité dans GitLab (20 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1591/",
       "date": "2026-11-20T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans le noyau Linux de Debian. Elles permettent à un attaquant de provoquer une élévation de privilèges, une atteinte à la confidentialité des données et un déni de service.",
+      "summary": "Une vulnérabilité a été découverte dans GitLab. Elle permet à un attaquant de provoquer une exécution de code arbitraire à distance.",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Vulnérabilité dans KeyCloak (20 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1586/",
+      "date": "2026-11-20T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "Une vulnérabilité a été découverte dans KeyCloak. Elle permet à un attaquant de provoquer un contournement de la politique de sécurité.",
+      "themes": [
+        "vulnerabilites"
+      ],
+      "image": ""
+    },
+    {
+      "title": "Multiples vulnérabilités dans le noyau Linux de Red Hat (20 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1592/",
+      "date": "2026-11-20T00:00:00Z",
+      "source": "CERT-FR",
+      "lang": "fr",
+      "summary": "De multiples vulnérabilités ont été découvertes dans le noyau Linux de Red Hat. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à…",
       "themes": [
         "vulnerabilites",
         "systemes"
@@ -1212,15 +1237,14 @@
       "image": ""
     },
     {
-      "title": "Multiples vulnérabilités dans le noyau Linux de Red Hat (20 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1592/",
+      "title": "Multiples vulnérabilités dans Siemens Industrial Edge (20 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1590/",
       "date": "2026-11-20T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans le noyau Linux de Red Hat. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à…",
+      "summary": "De multiples vulnérabilités ont été découvertes dans Siemens Industrial Edge. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance.",
       "themes": [
-        "vulnerabilites",
-        "systemes"
+        "vulnerabilites"
       ],
       "image": ""
     },
@@ -1237,24 +1261,12 @@
       "image": ""
     },
     {
-      "title": "Vulnérabilité dans KeyCloak (20 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1586/",
+      "title": "Multiples vulnérabilités dans les produits VMware (20 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1598/",
       "date": "2026-11-20T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "Une vulnérabilité a été découverte dans KeyCloak. Elle permet à un attaquant de provoquer un contournement de la politique de sécurité.",
-      "themes": [
-        "vulnerabilites"
-      ],
-      "image": ""
-    },
-    {
-      "title": "Multiples vulnérabilités dans le noyau Linux de SUSE (20 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1593/",
-      "date": "2026-11-20T00:00:00Z",
-      "source": "CERT-FR",
-      "lang": "fr",
-      "summary": "De multiples vulnérabilités ont été découvertes dans le noyau Linux de SUSE. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire, une atteinte à la confidentialité des données et une atteinte à l'…",
+      "summary": "De multiples vulnérabilités ont été découvertes dans les produits VMware. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et une injection SQL (SQLi). G…",
       "themes": [
         "vulnerabilites",
         "systemes"
@@ -1262,14 +1274,15 @@
       "image": ""
     },
     {
-      "title": "Vulnérabilité dans GitLab (20 novembre 2026)",
-      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1591/",
+      "title": "Multiples vulnérabilités dans le noyau Linux de Debian (20 novembre 2026)",
+      "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1594/",
       "date": "2026-11-20T00:00:00Z",
       "source": "CERT-FR",
       "lang": "fr",
-      "summary": "Une vulnérabilité a été découverte dans GitLab. Elle permet à un attaquant de provoquer une exécution de code arbitraire à distance.",
+      "summary": "De multiples vulnérabilités ont été découvertes dans le noyau Linux de Debian. Elles permettent à un attaquant de provoquer une élévation de privilèges, une atteinte à la confidentialité des données et un déni de service.",
       "themes": [
-        "vulnerabilites"
+        "vulnerabilites",
+        "systemes"
       ],
       "image": ""
     },
